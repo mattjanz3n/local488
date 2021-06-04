@@ -1,0 +1,110 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+@import "../common";
+
+.grf__remove-image-address {
+  position: absolute;
+  align-self: flex-start;
+  z-index: 1;
+  color: #fff;
+  right: 15px;
+}
+
+.wrapper-image-repeater {
+  width: 100%;
+  max-width: 800px;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+
+  .image {
+	flex-wrap: wrap;
+
+	h4 {
+	  flex-basis: 100%;
+
+	  &.title {
+		text-align: left;
+	  }
+	}
+
+	.button-container {
+	  z-index: 1;
+	  margin-left: 50%;
+	  margin-top: 50px;
+	  position: relative;
+	}
+
+	.button {
+	  margin: 0 1px;
+	}
+  }
+}
+
+.wp-block {
+  .before {
+	.button-container {
+	  height: 100%;
+	  padding-left: 50%;
+	}
+  }
+
+  .after {
+	.button-container {
+	  height: 100%;
+	}
+  }
+}
+
+/* Our image information */
+.image {
+  .button {
+	margin: 0 50px;
+	color: #000;
+	border-color: #000;
+
+	&:hover,
+	&:focus {
+	  background-color: #000;
+	  color: #fff;
+	}
+  }
+}
+
+.button {
+  z-index: 1;
+}
+
+.content-image,
+.content-image img {
+  height: 100% !important;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  object-position: left;
+}
+
+.editor-styles-wrapper {
+  .wp-block-cgb-block-local-488-slider {
+	/* Our image information */
+
+	/* Our wrapper */
+	.wrapper {
+	  width: 100%;
+	  min-height: 250px;
+
+	  .images__wrap {
+		display: flex;
+	  }
+	}
+  }
+}

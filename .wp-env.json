@@ -1,0 +1,4 @@
+{
+    "core": "WordPress/WordPress#5.7.2",
+    "plugins": [ "./src/blocks" ]
+}
