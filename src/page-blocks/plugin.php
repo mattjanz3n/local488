@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'LOCAL488_PAGE_BLOCKS_DIR', __DIR__ );
+define( 'LOCAL488_PAGE_BLOCKS_FILE', __FILE__ );
+
 /**
  * Block Initializer.
  */
