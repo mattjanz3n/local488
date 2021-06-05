@@ -22,6 +22,15 @@ Database name also needs to be changed. It's not wordpress, but wp_local488.
 
 ## Commands
 
+### Format files
+
+JavaScript:
+
+
+```
+npm run format:js
+```
+
 ### Start the local server
 
 ```

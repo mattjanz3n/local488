@@ -3,7 +3,7 @@ import { rm } from 'fs/promises';
 import os from 'os';
 import path from 'path';
 
-import { forceMove } from '../util.mjs';
+import { forceMove, writeTempFile } from '../util.mjs';
 import { checkExistence } from './testutils.mjs';
 
 let tempDir = null;
@@ -53,5 +53,21 @@ describe( 'forceMove', () => {
 		expect(
 			checkExistence( path.join( destDir, 'dir', 'file' ) )
 		).not.toThrow();
+	} );
+} );
+
+describe( 'writeTempFile', () => {
+	it( 'Creates a temporary file.', async () => {
+		const { filePath, dirPath } = writeTempFile( 'test' );
+		expect( checkExistence( filePath ) ).not.toThrow();
+		await rm( dirPath, { recursive: true } );
+	} );
+
+	it( 'Writes correct data to file.', async () => {
+		const { filePath, dirPath } = writeTempFile( 'test' );
+		const fileData = fs.readFileSync( filePath, { encoding: 'utf8' } );
+
+		expect( fileData ).toBe( 'test' );
+		await rm( dirPath, { recursive: true } );
 	} );
 } );

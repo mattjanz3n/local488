@@ -3,10 +3,11 @@ import fs from 'fs';
 import { rm } from 'fs/promises';
 import { readConfig } from '@wordpress/env/lib/config/index.js';
 import tar from 'tar';
+import { execSync } from 'child_process';
 
 import startEnvironment from './start-environment.mjs';
 import local488Config from '../local488.config.mjs';
-import { forceMove } from './util.mjs';
+import { forceMove, writeTempFile } from './util.mjs';
 
 /**
  * Synchronize Local 488 development website with local environment.
@@ -14,26 +15,26 @@ import { forceMove } from './util.mjs';
 export default async function syncLocalEnvironment( done ) {
 	// workDirectoryPath is path to where wp-env installs WordPress files.
 	const { workDirectoryPath } = await readConfig(
-		path.resolve( '../.wp-env.json' )
+		path.resolve( './.wp-env.json' )
 	);
 
 	if ( ! fs.existsSync( workDirectoryPath ) ) {
 		startEnvironment();
 	}
 
-	if ( ! fs.existsSync( path.resolve( '../.cache/local488' ) ) ) {
-		fs.mkdirSync( path.resolve( '../.cache/local488' ), {
+	if ( ! fs.existsSync( path.resolve( './.cache/local488' ) ) ) {
+		fs.mkdirSync( path.resolve( './.cache/local488' ), {
 			recursive: true,
 		} );
 	}
 
 	console.log( 'Downloading files from server.' );
-	const filePath = downloadFilesFromServer(
+	const filePath = await downloadFilesFromServer(
 		path.resolve( '../.cache/local488' )
 	);
 
-	if ( ! fs.existsSync( path.resolve( '../.cache/local488/extracted' ) ) ) {
-		fs.mkdirSync( path.resolve( '../.cache/local488/extracted' ), {
+	if ( ! fs.existsSync( path.resolve( './.cache/local488/extracted' ) ) ) {
+		fs.mkdirSync( path.resolve( './.cache/local488/extracted' ), {
 			recursive: true,
 		} );
 	}
@@ -61,33 +62,65 @@ export default async function syncLocalEnvironment( done ) {
  * @param {string} destination Destination where to place the downloaded files.
  * @return {string} Path to the downloaded file.
  */
-export function downloadFilesFromServer( destination ) {
+export async function downloadFilesFromServer( destination ) {
 	if ( ! fs.statSync( destination ).isDirectory() ) {
 		throw new Error( 'Destination is not a directory.' );
 	}
 
 	const initTransfer = `\
-cd ${ local488Config.wpPath } && \
-mysqldump ${ local488Config.dbName } > ${ local488Config.dumpName } && \
+#!/bin/bash
+
+set -e
+
+cd ${ local488Config.wpPath }/wp-content
+wp db export ${ local488Config.dumpName }
+echo 'Creating tarball...'
 tar -czf local488-files.tar.gz  ${ local488Config.dumpName } plugins themes uploads
-`;
-	const endTransfer = `\
-cd ${ local488Config.wpPath } && \
-rm local488-files.tar.gz  ${ local488Config.dumpName }
+
 `;
 
+	const { filePath: initTransferPath, dirPath: initTransferDirPath } = writeTempFile( initTransfer )
+
+	const endTransfer = `\
+#!/bin/bash
+
+set -e
+
+echo 'Cleaning up...'
+cd ${ local488Config.wpPath }/wp-content
+rm local488-files.tar.gz  ${ local488Config.dumpName }
+
+`;
+
+	const { filePath: endTransferPath, dirPath: endTransferDirPath } = writeTempFile( endTransfer )
+
 	try {
-		execSync( `ssh ${ local488Config.sshConnect } -- ${ initTransfer }`, {
+		console.log('Starting initialization script...')
+		execSync( `ssh ${ local488Config.sshConnect } 'bash -s ' < ${ initTransferPath }`, {
 			stdio: 'inherit',
 		} );
+		console.log('Starting download script...')
+		console.log(`Downloading to ${destination}.`)
 		execSync(
-			`scp ${ local488Config.sshConnect }:'~/local488-files.tar.gz' ${ destination }`
+			`scp ${ local488Config.sshConnect }:'${ local488Config.wpPath }/wp-content/local488-files.tar.gz' ${ destination }`,
+			{ stdio: 'inherit' }
 		);
 	} finally {
-		execSync( `ssh ${ local488Config.sshConnect } -- ${ endTransfer }`, {
-			stdio: 'inherit',
-		} );
+
+		try {
+			console.log('Starting cleanup script...')
+			execSync(`ssh ${local488Config.sshConnect} 'bash -s ' < ${endTransferPath}`, {
+				stdio: 'inherit',
+			});
+
+		} finally {
+
+			await rm(initTransferDirPath, { recursive: true })
+			await rm(endTransferDirPath, { recursive: true })
+
+		}
 	}
+
 
 	return path.join( destination, 'local488-files.tar.gz' );
 }

@@ -3,7 +3,6 @@ import path from 'path';
 import os from 'os';
 import { rm } from 'fs/promises';
 
-import startEnvironment from '../start-environment.mjs';
 import syncLocalEnvironment, {
 	installFilesFromServer,
 } from '../sync-local-environment.mjs';
@@ -14,9 +13,7 @@ let extractPath = null;
 let installPath = null;
 let archivePath = null;
 
-jest.mock( '../start-environment.mjs' );
-
-describe.only( 'installFilesFromServer', () => {
+describe( 'installFilesFromServer', () => {
 	beforeAll( () => {
 		tempDir = fs.mkdtempSync( `${ os.tmpdir() }${ path.sep }` );
 		extractPath = path.join( tempDir, 'extracted' );
@@ -117,12 +114,5 @@ describe.only( 'installFilesFromServer', () => {
 				path.join( installPath, 'plugins', 'other-plugin' )
 			)
 		).not.toThrow();
-	} );
-} );
-
-describe.skip( 'syncLocalEnvironment', () => {
-	it( "Creates environment if it doesn't already exist.", async () => {
-		await syncLocalEnvironment();
-		expect( startEnvironment ).toHaveBeenCalled();
 	} );
 } );
