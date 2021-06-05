@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+global $local488_page_blocks;
+$local488_page_blocks = require 'class-local488-page-blocks.php';
+
+
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
@@ -28,12 +32,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function page_blocks_cgb_block_assets() { // phpcs:ignore
+	global $local488_page_blocks;
+	$version = $local488_page_blocks->version;
 	// Register block styles for both frontend + backend.
 	wp_register_style(
 		'page_blocks-cgb-style-css', // Handle.
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
 		is_admin() ? array( 'wp-editor' ) : null, // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
+		$version
 	);
 
 	// Register block editor script for backend.
@@ -41,7 +47,7 @@ function page_blocks_cgb_block_assets() { // phpcs:ignore
 		'page_blocks-cgb-block-js', // Handle.
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
-		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
+		$version,
 		true // Enqueue the script in the footer.
 	);
 
@@ -50,7 +56,7 @@ function page_blocks_cgb_block_assets() { // phpcs:ignore
 		'page_blocks-cgb-block-editor-css', // Handle.
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
+		$version,
 	);
 
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
