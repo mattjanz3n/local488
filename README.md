@@ -2,6 +2,8 @@
 
 This is a monorepo for developing Local488 theme and plugins.
 
+The theme and plugin files are in `src/` subdirectories.
+
 # Development
 
 Requirements:
