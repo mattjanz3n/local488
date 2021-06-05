@@ -4,6 +4,8 @@ This is a monorepo for developing Local488 theme and plugins.
 
 The theme and plugin files are in `src/` subdirectories.
 
+The root directory handles synchronization with the live website, local server setup and related tests.
+
 # Development
 
 Requirements:
@@ -15,6 +17,8 @@ Requirements:
 ## Setup
 
 Run `npm install` then synchronize with live website or use commands listed below.
+
+To make changes to the theme or plugin, use instructions in their README. Eventually, all commands will be run from the repository root, but for now subdirectories in `src/` must be setup for development separately.
 
 ## Synchronizing for the first time
 
