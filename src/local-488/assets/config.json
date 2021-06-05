@@ -6,7 +6,6 @@
 			"./scripts/wp-dashboard/admin.js",
 			"./styles/wp-dashboard/admin.scss"
 		],
-		"colors": ["./styles/wp-dashboard/colors.scss"],
 		"editor": ["./styles/wp-dashboard/editor.scss"],
 		"customizer": ["./scripts/wp-dashboard/customizer.js"]
 	},
