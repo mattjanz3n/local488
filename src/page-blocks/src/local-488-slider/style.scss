@@ -62,7 +62,6 @@
 		}
 
 		.slick-slide {
-		  max-height: 698px;
 		  margin: 0 12px;
 
 		  &.slick-active {
@@ -124,21 +123,8 @@
 	  }
 
 	  .image-slide {
-		width: 100%;
-	  }
-
-	  .image-slide__wrapp {
-		@media (max-width: 1600px) {
-		  max-width: 40.375vw;
-		}
-
-		@media (max-width: 768px) {
-		  max-width: 59.375vw;
-		}
-
-		@media (max-width: 450px) {
-		  max-width: 65.375vw;
-		}
+		  max-width: 90vw;
+		  max-height: 698px;
 	  }
 	}
   }
