@@ -12,7 +12,7 @@ Requirements:
 
 ## Setup
 
-Run `npm install` then synchronize or use gulp commands listed below.
+Run `npm install` then synchronize with live website or use commands listed below.
 
 ## Synchronizing for the first time
 
@@ -21,11 +21,11 @@ Run the synchronization command
 npx gulp env:sync
 ```
 
-The WordPress prefix for tables needs to be fixed in the local `wp-config.php` manually. Set it to be the same prefix as it is on the live website. Currently, that is `qzpjn_` Unfortunately, this cannot yet be done automatically because of `wp-env` limitations. It should be possible in the future.
+After synchronizing, the WordPress prefix for tables needs to be fixed in the local `wp-config.php` manually. Set it to be the same prefix as it is on the live website. Currently, that is `qzpjn_`. Unfortunately, this cannot yet be done automatically because of `wp-env` limitations. It should be possible in the future.
 
 ## Synchronizing later
 
-On every later synchronization, you just need to make sure that the server is started: `npx wp-env start`.
+On every later synchronization, you just need to make sure that the server is started: `npx wp-env start`, and then run `npx gulp env:sync`
 
 ## Destroy local environment and synchronize again
 
@@ -36,10 +36,15 @@ npx gulp env:resync
 
 ## Commands
 
+### Run build tests
+
+```
+npm run test
+```
+
 ### Format files
 
 JavaScript:
-
 
 ```
 npm run format:js
