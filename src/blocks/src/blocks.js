@@ -11,4 +11,3 @@
 
 import './hero/hero.js';
 import './local-488-slider/local-488-slider.js';
-

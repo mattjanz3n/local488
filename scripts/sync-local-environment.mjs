@@ -79,7 +79,10 @@ tar -czf local488-files.tar.gz  ${ local488Config.dumpName } plugins themes uplo
 
 `;
 
-	const { filePath: initTransferPath, dirPath: initTransferDirPath } = writeTempFile( initTransfer )
+	const {
+		filePath: initTransferPath,
+		dirPath: initTransferDirPath,
+	} = writeTempFile( initTransfer );
 
 	const endTransfer = `\
 #!/bin/bash
@@ -92,35 +95,39 @@ rm local488-files.tar.gz  ${ local488Config.dumpName }
 
 `;
 
-	const { filePath: endTransferPath, dirPath: endTransferDirPath } = writeTempFile( endTransfer )
+	const {
+		filePath: endTransferPath,
+		dirPath: endTransferDirPath,
+	} = writeTempFile( endTransfer );
 
 	try {
-		console.log('Starting initialization script...')
-		execSync( `ssh ${ local488Config.sshConnect } 'bash -s ' < ${ initTransferPath }`, {
-			stdio: 'inherit',
-		} );
-		console.log('Starting download script...')
-		console.log(`Downloading to ${destination}.`)
+		console.log( 'Starting initialization script...' );
+		execSync(
+			`ssh ${ local488Config.sshConnect } 'bash -s ' < ${ initTransferPath }`,
+			{
+				stdio: 'inherit',
+			}
+		);
+		console.log( 'Starting download script...' );
+		console.log( `Downloading to ${ destination }.` );
 		execSync(
 			`scp ${ local488Config.sshConnect }:'${ local488Config.wpPath }/wp-content/local488-files.tar.gz' ${ destination }`,
 			{ stdio: 'inherit' }
 		);
 	} finally {
-
 		try {
-			console.log('Starting cleanup script...')
-			execSync(`ssh ${local488Config.sshConnect} 'bash -s ' < ${endTransferPath}`, {
-				stdio: 'inherit',
-			});
-
+			console.log( 'Starting cleanup script...' );
+			execSync(
+				`ssh ${ local488Config.sshConnect } 'bash -s ' < ${ endTransferPath }`,
+				{
+					stdio: 'inherit',
+				}
+			);
 		} finally {
-
-			await rm(initTransferDirPath, { recursive: true })
-			await rm(endTransferDirPath, { recursive: true })
-
+			await rm( initTransferDirPath, { recursive: true } );
+			await rm( endTransferDirPath, { recursive: true } );
 		}
 	}
-
 
 	return path.join( destination, 'local488-files.tar.gz' );
 }
