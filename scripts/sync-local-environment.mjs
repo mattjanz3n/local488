@@ -22,6 +22,8 @@ export default async function syncLocalEnvironment( done ) {
 		startEnvironment();
 	}
 
+	fixPermalinks( path.join(workDirectoryPath, 'WordPress') )
+
 	if ( ! fs.existsSync( path.resolve( './.cache/local488' ) ) ) {
 		fs.mkdirSync( path.resolve( './.cache/local488' ), {
 			recursive: true,
@@ -30,7 +32,7 @@ export default async function syncLocalEnvironment( done ) {
 
 	console.log( 'Downloading files from server.' );
 	const filePath = await downloadFilesFromServer(
-		path.resolve( '../.cache/local488' )
+		path.resolve( './.cache/local488' )
 	);
 
 	if ( ! fs.existsSync( path.resolve( './.cache/local488/extracted' ) ) ) {
@@ -39,15 +41,44 @@ export default async function syncLocalEnvironment( done ) {
 		} );
 	}
 
+	const wpContentPath = path.join(workDirectoryPath, 'WordPress', 'wp-content')
+
 	console.log( 'Installing.' );
 	await installFilesFromServer(
-		path.resolve( '../.cache/local488/extracted' ),
+		path.resolve( './.cache/local488/extracted' ),
 		filePath,
-		workDirectoryPath
+		{
+			moveSpecification: [
+				{
+					tarPath: 'plugins',
+					destinationDirectory: wpContentPath,
+					excludeSubdirs: new Set([ 'page-blocks' ])
+				},
+				{
+					tarPath: 'themes',
+					destinationDirectory: wpContentPath,
+					excludeSubdirs: new Set( [ 'local-488' ] )
+				},
+				{
+					tarPath: 'uploads',
+					destinationDirectory: wpContentPath
+				},
+				{
+					tarPath: local488Config.dumpName,
+					destinationDirectory: path.join(workDirectoryPath, 'WordPress')
+				}
+			]
+		}
 	);
+
+	console.log('Importing database.')
+	importDatabase()
 
 	console.log( 'Fixing up database paths.' );
 	replacePathsInDatabase();
+
+	console.log( 'Synchronization completed!' )
+	console.log( 'Remember to change $table_prefix in', path.join(workDirectoryPath, 'WordPress', 'wp-config.php' ) )
 
 	if ( typeof done === 'function' ) {
 		done();
@@ -199,8 +230,43 @@ export async function installFilesFromServer(
 	}
 }
 
+function importDatabase() {
+	execSync(`npx wp-env run cli 'wp db import ${ local488Config.dumpName }'`, { stdio: 'inherit' })
+}
+
 /**
  * The database contains some hardcoded paths, like the website URL. This needs
  * to be changed in the local environment.
  */
-export function replacePathsInDatabase() {}
+export function replacePathsInDatabase() {
+	for( const [oldPath, newPath] of local488Config.transformPaths.entries() ) {
+		execSync( `npx wp-env run cli 'wp search-replace ${oldPath} ${newPath} --all-tables'`, { stdio: 'inherit' } )
+	}
+}
+
+/**
+ * Fixes permalinks for WordPress installation in dirPath.
+ */
+function fixPermalinks( dirPath ) {
+	const accessPath = path.join(dirPath, '.htaccess')
+	const directives = `\
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+`
+	fs.writeFileSync(accessPath, directives, {flag: 'a'})
+	fs.chmodSync(accessPath, 0o777)
+}

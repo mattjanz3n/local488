@@ -1,0 +1,8 @@
+.most-popular-general-questions-accordion {
+  background: $light-gray;
+  padding: 130px 0 170px 0;
+
+  @include media-breakpoint-down(sm) {
+    padding: 9px 0 8px 0;
+  }
+}

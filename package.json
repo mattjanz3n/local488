@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config jest.config.mjs",
-    "format:js": "wp-scripts format '**/*.mjs' src/"
+    "format:js": "wp-scripts format '**/*.mjs' src/page-blocks/src src/local-488/assets"
   },
   "keywords": [],
   "author": "",

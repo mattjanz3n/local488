@@ -10,4 +10,12 @@ export default {
 	// Has to be just a little funky because it will be in the wp-content/
 	// directory of the live server for a second.
 	dumpName: 'dbdump-al0303.sql',
+
+	// Paths to transform in the database.
+	transformPaths: new Map([
+		['https://local488.wpengine.com', 'http://localhost:8888'],
+		['https://beta.local48.ca', 'http://localhost:8888'],
+		['//local488.wpengine.com', '//localhost:8888'],
+		['//beta.local488.ca', '//localhost:8888']
+	]),
 };

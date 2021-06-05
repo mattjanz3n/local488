@@ -1,0 +1,27 @@
+//.news-counter-js {
+//  position: relative;
+//}
+
+.news-counter-wrap {
+  position: absolute;
+  top: -25%;
+  right: -15%;
+  border-radius: 50%;
+  background-color: $red;
+  color: $white;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 15px;
+  display: none;
+
+  @include max-1200 {
+    right: auto;
+    left: 185px;
+  }
+
+  &.show {
+    display: block;
+  }
+}

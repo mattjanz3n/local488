@@ -1,0 +1,277 @@
+.dispatch {
+  &__title,
+  .notice__title {
+    margin-bottom: 30px;
+    color: $red;
+  }
+
+  &__header {
+    padding-bottom: 60px;
+    margin-bottom: 48px;
+    border-bottom: 2px solid $light-gray;
+    margin-right: 92px;
+
+    @include max-1200 {
+      margin-right: 30px;
+    }
+
+    @include max-576 {
+      padding-top: 21px;
+      padding-bottom: 24px;
+      margin-right: 0;
+    }
+  }
+
+  &__notice,
+  &__accordion {
+    padding-right: 92px;
+
+    @include max-1200 {
+      padding-right: 30px;
+    }
+
+    @include max-992 {
+      padding-right: 15px;
+    }
+
+    @include max-768 {
+      padding-right: 0;
+    }
+  }
+
+  &__header-desc {
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  &__notice {
+    margin-bottom: 66px;
+  }
+
+  .notice {
+    &__desc,
+    &__list {
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    &__subtitle {
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+
+    &__list {
+      padding-left: 25px;
+    }
+  }
+
+  &__accordion {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: -50vw;
+      right: -50vw;
+      background: #dadada;
+    }
+  }
+
+  &__info-column {
+    border-top: 2px solid $black;
+    padding-top: 18px;
+    padding-bottom: 50px;
+  }
+
+  &__info-subtitle {
+    margin-bottom: 30px;
+
+    .icon-column {
+      width: 20px;
+      height: 20px;
+      margin-right: 7px;
+    }
+  }
+
+  &__info-desc {
+    a {
+      font-weight: normal;
+    }
+  }
+
+  &__last-update {
+    padding-top: 15px;
+    padding-bottom: 37px;
+    color: $red;
+    font-weight: 800;
+
+    span {
+      font-weight: normal;
+    }
+
+    @include max-576 {
+      padding-top: 0;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    padding-bottom: 71px;
+
+    @include max-992 {
+      flex-direction: column;
+      padding-bottom: 54px;
+    }
+
+    .form__left {
+      flex: 1 1 35%;
+      padding-right: 24px;
+
+      @include max-992 {
+        flex-basis: 100%;
+        padding-right: 0;
+      }
+
+      .input-wrap {
+        margin-bottom: 10px;
+
+        &.dispatch {
+          margin-bottom: 35px;
+        }
+
+        select {
+          margin-bottom: 6px;
+        }
+      }
+    }
+
+    .form__right {
+      margin-top: 22px;
+      padding: 24px 31px;
+      flex: 1 1 65%;
+      background: $white;
+      min-height: 287px;
+
+      @include max-992 {
+        flex-basis: 100%;
+        margin-top: 27px;
+      }
+
+      &-text {
+        font-family: $sub-font;
+        font-size: rem-calc(16px);
+        line-height: rem-calc(22px);
+        font-weight: 600;
+        letter-spacing: 0.22px;
+        color: $gray;
+      }
+    }
+  }
+
+  &__button {
+    min-width: 100%;
+  }
+
+  .button-primary {
+    margin-bottom: 6px;
+  }
+
+  .aside {
+    .dispatch__aside-title {
+      margin-bottom: 26px !important;
+    }
+
+    &__header {
+      padding-bottom: 64px;
+      position: relative;
+      margin-bottom: 64px;
+
+      @media (min-width: 1680px) {
+        margin-right: -45px;
+      }
+
+      @include max-576 {
+        padding-bottom: 12px;
+        margin-bottom: 49px;
+      }
+
+      .aside__title {
+        margin-bottom: 26px;
+      }
+
+      .aside__content {
+        margin-bottom: 30px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -50vw;
+        left: -92px;
+        bottom: 0;
+        height: 2px;
+        background: $gray;
+
+        @include max-1200 {
+          left: -30px;
+        }
+      }
+    }
+
+    &__row {
+      border-bottom: 2px solid $gray;
+      padding-top: 45px;
+
+      &:last-child {
+        border: none;
+      }
+
+      &-list-link {
+        color: $white;
+        font-size: rem-calc(14px);
+        line-height: rem-calc(22px);
+
+        &.download {
+          font-family: $sub-font;
+        }
+
+        &:hover {
+          color: $red;
+        }
+      }
+
+      &-title {
+        margin-bottom: 25px;
+      }
+
+      &-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 18px;
+
+        &-item {
+          display: inline-flex;
+          margin-bottom: 26px;
+
+          .icon-download {
+            width: 15px;
+            height: 20px;
+            margin-right: 7px;
+
+            svg {
+              fill: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

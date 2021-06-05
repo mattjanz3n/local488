@@ -1,0 +1,48 @@
+.dashboard__top {
+  &-section {
+    padding-top: 150px;
+    padding-bottom: 84px;
+
+    @include max-1200 {
+      padding-top: 70px;
+      padding-bottom: 30px;
+    }
+
+    @include max-576 {
+      padding-top: 30px;
+      padding-bottom: 0;
+    }
+  }
+
+  &-row {
+    padding-bottom: 66px;
+
+    @include max-576 {
+      padding-bottom: 43px;
+    }
+  }
+
+  &-text {
+    margin-bottom: 30px;
+  }
+
+  &-link {
+    min-width: 293px;
+
+    @include max-576 {
+      min-width: 100%;
+    }
+  }
+}
+
+.helpful__card {
+  &-row {
+    padding-bottom: 20px;
+    font-weight: 400 !important;
+  }
+
+  &-link {
+    display: block;
+    font-weight: 700;
+  }
+}

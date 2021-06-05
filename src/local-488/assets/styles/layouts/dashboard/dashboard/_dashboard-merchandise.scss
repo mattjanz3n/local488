@@ -1,0 +1,65 @@
+.merchandise {
+  &__wrap {
+    max-width: 924px;
+    margin: 0 auto;
+  }
+
+  &-main {
+    margin-bottom: 26px;
+
+    @include max-576 {
+      .row {
+        margin-left: -2.5px;
+        margin-right: -2.5px;
+      }
+
+      .col-6 {
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+      }
+
+      .col-12 {
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+      }
+    }
+  }
+
+  &__desc {
+    font-family: $sub-font;
+    font-size: rem-calc(14px);
+    line-height: rem-calc(22px);
+    letter-spacing: 0.22px;
+    color: $blue;
+    margin-bottom: 98px;
+
+    span {
+      color: $red;
+    }
+
+    @include max-576 {
+      font-size: rem-calc(12px);
+      line-height: rem-calc(16px);
+      margin-bottom: 26px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 24px;
+
+    @include max-576 {
+      margin-bottom: 6px;
+    }
+
+    &--large {
+      max-height: 590px;
+    }
+
+    &--small {
+      max-height: 497px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "common/variables";
+@import "common/mixins";
+@import "common/fonts";
+
+/** Import everything from autoload */
+@import "./autoload/**/*";
+@import "common/global";
+@import "components/buttons";
+@import "layouts/header";
+@import "layouts/header-white";
+@import "layouts/footer";
+@import "layouts/dashboard/dashboard";
+@import "archive/archive";
+@import "layouts/gutenberg-custom-styles";
+@import "layouts/posts-slider";
+@import "layouts/cta-message";
+@import "layouts/elections-downloads";
+@import "layouts/news-cookie-count";
+@import "~slick-carousel/slick/slick";
+@import "components/pagination";
+
+/**
+ * Import npm dependencies
+ *
+ * Prefix your imports with `~` to grab from node_modules/
+ * @see https://github.com/webpack-contrib/sass-loader#imports
+ */
+// @import "~some-node-module";

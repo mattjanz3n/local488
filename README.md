@@ -14,11 +14,25 @@ Requirements:
 
 Run `npm install` then synchronize or use gulp commands listed below.
 
-## Synchronizing
+## Synchronizing for the first time
+
+Run the synchronization command
+```
+npx gulp env:sync
+```
 
 The WordPress prefix for tables needs to be fixed in the local `wp-config.php` manually. Set it to be the same prefix as it is on the live website. Currently, that is `qzpjn_` Unfortunately, this cannot yet be done automatically because of `wp-env` limitations. It should be possible in the future.
 
-Database name also needs to be changed. It's not wordpress, but wp_local488.
+## Synchronizing later
+
+On every later synchronization, you just need to make sure that the server is started: `npx wp-env start`.
+
+## Destroy local environment and synchronize again
+
+Run
+```
+npx gulp env:resync
+```
 
 ## Commands
 

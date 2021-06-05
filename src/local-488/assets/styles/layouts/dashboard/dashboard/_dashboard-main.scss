@@ -1,0 +1,453 @@
+.dashboard {
+  &__wrap {
+    display: flex;
+
+    @include max-768 {
+      flex-direction: column;
+    }
+  }
+
+  &-container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  &__main {
+    flex: 1 1 65%;
+    padding-top: 80px;
+
+    @include max-768 {
+      flex-basis: 100%;
+    }
+
+    @include max-576 {
+      padding-top: 22px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 45px;
+    padding-right: 92px;
+
+    @include max-1200 {
+      padding-right: 30px;
+    }
+
+    @include max-768 {
+      flex-direction: column-reverse;
+      padding-right: 0;
+    }
+
+    @include max-576 {
+      padding-bottom: 30px;
+    }
+  }
+
+  &__logout {
+    flex-basis: 30%;
+    padding-left: 15px;
+    text-align: right;
+
+    @include max-768 {
+      margin-bottom: 21px;
+    }
+  }
+
+  &__title {
+    flex-basis: 70%;
+  }
+
+  &__user {
+    color: $red;
+    margin-bottom: 30px;
+    flex-basis: 70%;
+  }
+
+  &__user-login {
+    font-weight: 800;
+    margin-bottom: 30px;
+
+    span {
+      font-weight: normal;
+      letter-spacing: normal;
+    }
+
+    @include max-576 {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__logout-link {
+    font-family: $sub-font;
+    text-transform: uppercase;
+    font-size: rem-calc(14px);
+    font-weight: 700;
+    line-height: rem-calc(22px);
+    letter-spacing: 0.5px;
+    position: relative;
+    text-decoration: none;
+    padding-right: 25px;
+    display: inline-flex;
+
+    &::after {
+      content: '';
+      right: 0;
+      top: 0;
+      position: absolute;
+      background: $black;
+      height: 22px;
+      width: 19px;
+      mask: url("../images/login-icon.svg") 19px 22px;
+      transition: all 0.3s ease-in;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      &::after {
+        background: $red;
+      }
+    }
+  }
+
+  &__content {
+    padding-top: 65px;
+    padding-right: 92px;
+    position: relative;
+    background: $light-gray;
+
+    @include max-1200 {
+      padding-right: 30px;
+    }
+
+    @include max-768 {
+      padding-right: 0;
+    }
+
+    @include max-576 {
+      padding-top: 39px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      left: -50vw;
+      bottom: -420px;
+      background: inherit;
+      z-index: -1;
+
+      @include max-768 {
+        right: -50vw;
+      }
+    }
+
+    .content {
+      &__title {
+        margin-bottom: 50px;
+
+        @include max-576 {
+          margin-bottom: 36px;
+        }
+      }
+
+      &__subtitle {
+        margin-bottom: 24px;
+      }
+
+      &__desc {
+        margin-bottom: 90px;
+
+        @include max-576 {
+          margin-bottom: 40px;
+        }
+      }
+
+      &__accordion {
+        padding-bottom: 63px;
+
+        p {
+          margin-bottom: 8px;
+          font-weight: 800;
+        }
+
+        @include max-576 {
+          padding-bottom: 50px;
+        }
+
+        &.discounts__accordion {
+          padding-bottom: 0;
+
+          @include max-576 {
+            padding-bottom: 36px;
+          }
+        }
+      }
+    }
+  }
+
+  &__main--full {
+    flex: 0 0 100%;
+
+    .dashboard__content {
+      padding: 129px 0;
+
+      &::before {
+        right: -50vw;
+      }
+
+      &.small-overlay {
+        &::before {
+          bottom: 0;
+        }
+      }
+
+      @include max-576 {
+        padding: 56px 0 0;
+      }
+    }
+  }
+
+  &__aside {
+    flex: 1 1 35%;
+    background: $black;
+    padding-left: 92px;
+    padding-top: 99px;
+    position: relative;
+    z-index: 1;
+
+    &.dispatch__aside {
+      padding-top: 80px;
+
+      .dispatch__aside-title {
+        @include max-576 {
+          margin-bottom: 0;
+        }
+      }
+
+      .dispatch__row {
+        @include max-576 {
+          padding-top: 25px;
+        }
+      }
+    }
+
+    @include max-1200 {
+      padding-left: 30px;
+    }
+
+    @include max-768 {
+      flex-basis: 100%;
+    }
+
+    @include max-576 {
+      padding-left: 0;
+      padding-top: 46px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: inherit;
+      top: 0;
+      left: 0;
+      right: -50vw;
+      bottom: -420px;
+      z-index: -1;
+
+      @include max-768 {
+        left: -50vw;
+      }
+    }
+
+    .aside {
+      &__title {
+        margin-bottom: 46px;
+      }
+
+      &__content {
+        margin-bottom: 46px;
+
+        @media (min-width: 1680px) {
+          margin-right: -45px;
+        }
+      }
+
+      &__link {
+        min-width: 293px;
+        margin-bottom: 58px;
+
+        @include max-992 {
+          max-width: 230px;
+        }
+
+        @include max-768 {
+          min-width: 293px;
+        }
+
+        @include max-576 {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+
+  &__work-status,
+  &__dues {
+    padding-bottom: 22px;
+  }
+
+  &__member-info {
+    .member-info {
+      &__title {
+        margin-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      &__form {
+        .input-wrap {
+          max-width: 450px;
+          margin-bottom: 8px;
+
+          @include max-768 {
+            max-width: 100%;
+          }
+
+          &:last-child {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      &__row {
+        padding-top: 20px;
+        padding-bottom: 27px;
+        border-bottom: 2px solid rgba(140, 143, 159, 0.15);
+      }
+
+      &__birthdate {
+        margin-bottom: 7px;
+      }
+
+      &__link {
+        font-family: $sub-font;
+        font-style: normal;
+        font-weight: normal;
+        font-size: rem-calc(10px);
+        line-height: rem-calc(14px);
+        letter-spacing: 0.21px;
+        text-decoration-line: underline;
+        text-transform: capitalize;
+        color: $red;
+        display: block;
+        padding-left: 18px;
+        position: relative;
+
+        &:hover {
+          color: $black;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 12px;
+          width: 12px;
+          background: url("../images/info.svg") center no-repeat;
+          background-size: cover;
+        }
+
+        &.no-image {
+          padding-left: 0;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      &__terms {
+        font-size: rem-calc(10px);
+        line-height: rem-calc(14px);
+        font-family: $sub-font;
+        color: $red;
+        font-weight: normal !important;
+
+        a {
+          display: inline-block !important;
+        }
+      }
+
+      &__button-submit {
+        min-width: 203px;
+        margin-top: 43px;
+        margin-bottom: 18px;
+      }
+    }
+  }
+
+  .trade-info__wrap {
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__certificates {
+    input {
+      margin-bottom: 23px;
+    }
+
+    .certificate__desc {
+      letter-spacing: normal;
+      margin-bottom: 35px;
+
+      span {
+        font-weight: 800;
+      }
+    }
+
+    .certificate__numbers {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      margin-bottom: 8px;
+    }
+
+    .certificate__number {
+      margin-right: 14px;
+    }
+
+    .certificate__button {
+      text-transform: uppercase;
+      min-width: 90px;
+    }
+
+    .certificates__button-submit {
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    .certificate-type-number {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.checkbox__label {
+  font-family: $font;
+  font-size: rem-calc(18px);
+  line-height: rem-calc(32px);
+  letter-spacing: 0.36px;
+  margin-bottom: 8px;
+
+  @include max-576 {
+    font-size: rem-calc(14px);
+    line-height: rem-calc(20px);
+  }
+}

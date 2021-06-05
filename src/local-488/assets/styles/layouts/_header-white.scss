@@ -1,0 +1,54 @@
+.header__row {
+  &::after {
+    transition: all 0.3s ease-in-out;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-color: #edeef0;
+    left: 0;
+  }
+}
+
+.menu-page-opened {
+  @media (min-width: 1200px) {
+    background-color: transparent;
+    padding-bottom: 0;
+
+    .menu-open,
+    &.scrolled {
+      padding-bottom: 280px;
+      background-color: $white;
+      transition: all 0.3s ease-in-out;
+
+      .header__row {
+        &::after {
+          left: -50vw;
+          right: -50vw;
+          height: 2px;
+        }
+      }
+
+      .header__current-item {
+        display: block;
+      }
+
+      .navbar-nav {
+        .menu-item a {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+.current-menu-parent {
+  > a {
+    text-decoration: underline !important;
+  }
+
+  .current-menu-item {
+    > a {
+      text-decoration: underline !important;
+    }
+  }
+}
