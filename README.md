@@ -20,6 +20,8 @@ Run `npm install` then synchronize with live website or use commands listed belo
 
 To make changes to the theme or plugin, use instructions in their README. Eventually, all commands will be run from the repository root, but for now subdirectories in `src/` must be setup for development separately.
 
+"Synchronizing" means pulling the live website to the local environment.
+
 ## Synchronizing for the first time
 
 Run the synchronization command
