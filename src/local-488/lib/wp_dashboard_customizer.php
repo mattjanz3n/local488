@@ -18,7 +18,6 @@ if ( ! class_exists( 'WP_Dashboard_Customizer' ) ) :
 		public function __construct() {
 			add_action( 'login_enqueue_scripts', [ $this, 'login_assets' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_assets' ] );
-			add_action( 'admin_init', [ $this, 'admin_color_scheme' ] );
 			add_filter( 'login_headerurl', [ $this, 'login_logo_url' ] );
 			add_filter( 'login_headertext', [ $this, 'login_logo_title' ] );
 		}
@@ -48,19 +47,6 @@ if ( ! class_exists( 'WP_Dashboard_Customizer' ) ) :
 			if ( 'post.php' === $hook ) {
 				wp_enqueue_style( 'editor-stylesheet', asset_path( 'styles/editor.css' ), [], '1.0.0', 'all' );
 			}
-		}
-
-		/**
-		 * WP hook 'admin_init'. Fires as an admin screen or script is being initialized.
-		 * https://developer.wordpress.org/reference/hooks/admin_init/
-		 */
-		public function admin_color_scheme() {
-			wp_admin_css_color(
-				'alternative',
-				__( 'Alternative', 'local_488' ),
-				asset_path( 'styles/colors.css' ),
-				[ '#131619', '#23282d', '#0073aa', '#d54e21' ]
-			);
 		}
 
 		/**
