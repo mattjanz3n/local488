@@ -60,6 +60,14 @@ npx gulp env:resync
 npm run test
 ```
 
+### Deploy to live website
+
+Make sure that you have SSH connection to the server setup, and that `local488.config.mjs` is correct. This may not work on windows because it uses `scp` to copy files.
+
+```
+npx gulp deploy
+```
+
 ### Formatting and linting
 
 - `npm run lint` Lint and format everything.
