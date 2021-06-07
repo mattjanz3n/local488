@@ -21,11 +21,10 @@ $custom_class = isset( $block['className'] ) ? $block['className'] : '';
 	<?php
 	$arg           = array(
 		'post_type'      => 'managers-messages',
-		'order'          => 'ASC',
-		'orderby'        => 'menu_order',
+		'orderby'        => 'date',
 		'posts_per_page' => 1,
 	);
-		$the_query = new WP_Query( $arg );
+	$the_query = new WP_Query( $arg );
 	if ( $the_query->have_posts() ) :
 		?>
 		<?php
