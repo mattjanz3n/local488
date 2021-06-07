@@ -14,7 +14,3 @@ indent_style = tab
 
 [{*.txt,wp-config-sample.php,wp-config.php}]
 end_of_line = crlf
-
-[*.scss]
-indent_style = space
-indent_size = 2
