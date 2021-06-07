@@ -19,7 +19,7 @@ $custom_class = isset( $block['className'] ) ? $block['className'] : '';
 ?>
 <section id="<?php echo $block_id; ?>" class="<?php echo $slug; ?> <?php echo $align_class; ?> <?php echo $custom_class; ?>">
 	<?php
-	$arg           = array(
+	$arg       = array(
 		'post_type'      => 'managers-messages',
 		'orderby'        => 'date',
 		'posts_per_page' => 1,

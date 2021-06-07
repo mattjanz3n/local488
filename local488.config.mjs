@@ -18,4 +18,9 @@ export default {
 		[ '//local488.wpengine.com', '//localhost:8888' ],
 		[ '//beta.local488.ca', '//localhost:8888' ],
 	] ),
+
+	// Classifying subprojects into themes and plugins.
+	themes: [ 'local-488' ],
+
+	plugins: [ 'page-blocks' ],
 };
