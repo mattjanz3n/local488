@@ -6,7 +6,9 @@
 	"scripts": {
 		"test": "jest --config jest.config.mjs",
 		"format:js": "wp-scripts format '**/*.mjs' src/page-blocks/src src/local-488/assets",
-		"lint:styles": "wp-scripts lint-style --fix"
+		"lint:styles": "wp-scripts lint-style --fix",
+		"lint:php": "./vendor/bin/phpcs -s src/local-488 src/page-blocks",
+		"lint:php:fix": "./vendor/bin/phpcbf src/local-488 src/page-blocks"
 	},
 	"keywords": [],
 	"author": "",
