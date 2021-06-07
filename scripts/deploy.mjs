@@ -4,7 +4,7 @@ import { execSync } from 'child_process'
 import { rm } from 'fs'
 
 import build from './build.mjs'
-import local488Config from '../local488Config.mjs'
+import local488Config from '../local488.config.mjs'
 import { writeTempFile } from './util.mjs'
 
 /**
@@ -31,7 +31,6 @@ export default async function deploy( done ) {
 
 	console.log('Transferring tarball...')
 	execSync(`scp local488-deploy.tar.gz ${local488Config.sshConnect}:'${local488Config.wpPath}/wp-content'`, {
-		cwd: path.resolve('src'),
 		stdio: 'inherit'
 	})
 
@@ -63,13 +62,13 @@ cd ..
 rm -rf local488-extract
 
 `
-	const scriptPath = writeTempFile( installScript )
+	const { filePath: scriptPath, dirPath } = writeTempFile( installScript )
 	try {
 		console.log('Installing...')
 		execSync(`ssh ${local488Config.sshConnect} 'bash -s ' < ${scriptPath}`, { stdio: 'inherit' })
 	} finally {
-		await rm( scriptPath, { recursive: true } )
-		await rm( path.resolve('src/local488-deploy.tar.gz') )
+		await rm( dirPath, { recursive: true } )
+		await rm( path.resolve('./local488-deploy.tar.gz') )
 	}
 
 	done()
