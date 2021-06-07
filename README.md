@@ -16,11 +16,21 @@ Requirements:
 
 ## Setup
 
-Run `npm install` then synchronize with live website or use commands listed below.
+Install npm dependencies
+
+```
+npm install
+```
+
+Install composer dependencies
+
+```
+composer install
+```
+
+Synchronize local environment with the live website, or run any of the commands listed below.
 
 To make changes to the theme or plugin, use instructions in their README. Eventually, all commands will be run from the repository root, but for now subdirectories in `src/` must be setup for development separately.
-
-"Synchronizing" means pulling the live website to the local environment.
 
 ## Synchronizing for the first time
 
@@ -50,13 +60,13 @@ npx gulp env:resync
 npm run test
 ```
 
-### Format files
+### Formatting and linting
 
-JavaScript:
+- `npm run format:js` Format JavaScript.
+- `npm run lint:styles` Lint styles.
+- `npm run lint:php` Lint PHP.
+- `npm run lint:php:fix` Lint PHP and fix errors automatically.
 
-```
-npm run format:js
-```
 
 ### Start the local server
 
