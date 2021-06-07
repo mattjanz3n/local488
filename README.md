@@ -62,6 +62,7 @@ npm run test
 
 ### Formatting and linting
 
+- `npm run lint` Lint and format everything.
 - `npm run format:js` Format JavaScript.
 - `npm run lint:styles` Lint styles.
 - `npm run lint:php` Lint PHP.
