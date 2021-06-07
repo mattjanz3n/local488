@@ -15,7 +15,7 @@ gulp.task(
 	'env:resync',
 	gulp.series( destroyContainers, syncLocalEnvironment )
 );
-gulp.task('deploy', deploy );
-gulp.task('build', build );
+gulp.task( 'deploy', deploy );
+gulp.task( 'build', build );
 
 gulp.task( 'test:download', testDownloadFiles );

@@ -22,5 +22,5 @@ export default {
 	// Classifying subprojects into themes and plugins.
 	themes: [ 'local-488' ],
 
-	plugins: [ 'page-blocks' ]
+	plugins: [ 'page-blocks' ],
 };
