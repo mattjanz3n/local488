@@ -1,0 +1,6 @@
+{
+    "name": "overhaul-media/local488",
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3"
+    }
+}
