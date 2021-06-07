@@ -22,22 +22,22 @@ if ( ! function_exists( 'local_488_scripts' ) ) :
 		wp_deregister_script( 'jquery' );
 
 		// CDN hosted jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
-		wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-2.2.4.min.js', [], '2.2.4', false );
+		wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-2.2.4.min.js', array(), '2.2.4', false );
 
 		// Enqueue the main JS file.
-		wp_enqueue_script( 'main-javascript', asset_path( 'scripts/main.js' ), [ 'jquery' ], '1.0.0', true );
+		wp_enqueue_script( 'main-javascript', asset_path( 'scripts/main.js' ), array( 'jquery' ), '1.0.0', true );
 
 		// Enqueue the notification cookie script
-		wp_enqueue_script( 'notice-bar-script', asset_path( 'scripts/notice-bar.js' ), [ 'jquery' ], '1.0.0', true );
+		wp_enqueue_script( 'notice-bar-script', asset_path( 'scripts/notice-bar.js' ), array( 'jquery' ), '1.0.0', true );
 
 		// Enqueue the Google maps JS file.
-		$key = get_field('google_api_key', 'option');
+		$key = get_field( 'google_api_key', 'option' );
 		wp_enqueue_script( 'maps-javascript', "//maps.googleapis.com/maps/api/js?key=$key&language=en", array( 'jquery' ), '1.0.0', true );
 
 		// Throw variables from back to front end.
 		$theme_vars = array(
-			'home'   => get_home_url(),
-			'isHome' => is_front_page(),
+			'home'    => get_home_url(),
+			'isHome'  => is_front_page(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		);
 		wp_localize_script( 'main-javascript', 'themeVars', $theme_vars );

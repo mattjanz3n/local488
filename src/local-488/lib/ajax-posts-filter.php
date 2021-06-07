@@ -1,40 +1,41 @@
 <?php
 
-	function posts_filter () {
+function posts_filter() {
 	?>
-		<?php
-		$category = $_POST['category'];
+	<?php
+	$category = $_POST['category'];
 
-		if (!empty($category)) {
-			$arg = array(
-					'post_type' => 'post',
-					'order'          => 'DESC',
-					'orderby'        => 'date',
-					'posts_per_page' => 9999,
-					'post_status'    => 'publish',
-					'tax_query' => array(
-							array(
-									'taxonomy' => 'category',
-									'field' => 'slug',
-									'terms' => $category,
-							)
-					)
-			);
-		}
-		else {
-			$arg = array(
-					'post_type' => 'post',
-					'order'          => 'DESC',
-					'orderby'        => 'date',
-					'posts_per_page' => 9999,
-					'post_status'    => 'publish',
-			);
-		}
-		$the_query_post = new WP_Query( $arg );
-		if ( $the_query_post->have_posts() ) :?>
-			<?php while ( $the_query_post->have_posts() ) :
+	if ( ! empty( $category ) ) {
+		$arg = array(
+			'post_type'      => 'post',
+			'order'          => 'DESC',
+			'orderby'        => 'date',
+			'posts_per_page' => 9999,
+			'post_status'    => 'publish',
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'slug',
+					'terms'    => $category,
+				),
+			),
+		);
+	} else {
+		$arg = array(
+			'post_type'      => 'post',
+			'order'          => 'DESC',
+			'orderby'        => 'date',
+			'posts_per_page' => 9999,
+			'post_status'    => 'publish',
+		);
+	}
+	$the_query_post = new WP_Query( $arg );
+	if ( $the_query_post->have_posts() ) :
+		?>
+			<?php
+			while ( $the_query_post->have_posts() ) :
 				$the_query_post->the_post();
-				$post_time = get_the_time( 'l, j F, Y');
+				$post_time = get_the_time( 'l, j F, Y' );
 				?>
 				<article class="loc-single-post" id="post-<?php the_ID(); ?>">
 					<div class="loc-single-post__header">
@@ -44,21 +45,27 @@
 							</time>
 						</div>
 						<div class="nav-categories loc-single-post__categories">
-							<?php $categories_list = get_the_category();
-							if(!empty ($categories_list) ) :
-								foreach( $categories_list as $category ){
-									$category_color = get_field('category_color', $category->taxonomy . '_' . $category->cat_ID); ?>
-									<a  class="nav-categories loc-single-post__categories-link <?php echo "$category->slug";?> <?= $category_color ?> .category-list__category-link" href="#<?= $category->slug; ?>" data-slug="<?= $category->slug; ?>"><?php echo "$category->name";?></a>
-								<?php }
-							endif; ?>
+							<?php
+							$categories_list = get_the_category();
+							if ( ! empty( $categories_list ) ) :
+								foreach ( $categories_list as $category ) {
+									$category_color = get_field( 'category_color', $category->taxonomy . '_' . $category->cat_ID );
+									?>
+									<a  class="nav-categories loc-single-post__categories-link <?php echo "$category->slug"; ?> <?php echo $category_color; ?> .category-list__category-link" href="#<?php echo $category->slug; ?>" data-slug="<?php echo $category->slug; ?>"><?php echo "$category->name"; ?></a>
+									<?php
+								}
+							endif;
+							?>
 						</div>
 
-						<?php $post_title = get_the_title();
+						<?php
+						$post_title = get_the_title();
 
-						if(!empty($post_title)) : ?>
+						if ( ! empty( $post_title ) ) :
+							?>
 
 							<h4 class="entry-title loc-single-post__title-small">
-								<a href="<?php echo esc_url( get_permalink() ) ?>">
+								<a href="<?php echo esc_url( get_permalink() ); ?>">
 									<?php echo $post_title; ?>
 								</a>
 							</h4>
@@ -68,9 +75,9 @@
 
 					</div>
 					<div class="entry-footer loc-single-post__footer">
-						<a class="loc-single-post__post-link" href="<?php echo esc_url( get_permalink() ) ?>">
+						<a class="loc-single-post__post-link" href="<?php echo esc_url( get_permalink() ); ?>">
 
-							<?php _e('Read More', THEME_TD); ?>
+							<?php _e( 'Read More', THEME_TD ); ?>
 
 							<span class="loc-single-post__post-link-svg">
 								<svg width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,8 +89,12 @@
 					</div>
 				</article>
 			<?php endwhile; ?>
-		<?php endif;  wp_reset_query(); wp_die();?>
-<?php
+		<?php
+		endif;
+	wp_reset_query();
+	wp_die();
+	?>
+	<?php
 }
 
 add_action( 'wp_ajax_posts_filter', 'posts_filter' );

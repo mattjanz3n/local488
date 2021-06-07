@@ -16,10 +16,10 @@ if ( ! class_exists( 'WP_Dashboard_Customizer' ) ) :
 		 * WP_Dashboard_Customizer constructor.
 		 */
 		public function __construct() {
-			add_action( 'login_enqueue_scripts', [ $this, 'login_assets' ] );
-			add_action( 'admin_enqueue_scripts', [ $this, 'admin_assets' ] );
-			add_filter( 'login_headerurl', [ $this, 'login_logo_url' ] );
-			add_filter( 'login_headertext', [ $this, 'login_logo_title' ] );
+			add_action( 'login_enqueue_scripts', array( $this, 'login_assets' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_assets' ) );
+			add_filter( 'login_headerurl', array( $this, 'login_logo_url' ) );
+			add_filter( 'login_headertext', array( $this, 'login_logo_title' ) );
 		}
 
 		/**
@@ -27,7 +27,7 @@ if ( ! class_exists( 'WP_Dashboard_Customizer' ) ) :
 		 * https://developer.wordpress.org/reference/hooks/login_enqueue_scripts/
 		 */
 		public function login_assets() {
-			wp_enqueue_style( 'login-stylesheet', asset_path( 'styles/login.css' ), [], '1.0.0', 'all' );
+			wp_enqueue_style( 'login-stylesheet', asset_path( 'styles/login.css' ), array(), '1.0.0', 'all' );
 
 			// Use site logo for login page
 			$this->print_login_logo();
@@ -40,12 +40,12 @@ if ( ! class_exists( 'WP_Dashboard_Customizer' ) ) :
 		 * @param string $hook The current admin page.
 		 */
 		public function admin_assets( $hook ) {
-			wp_enqueue_style( 'admin-stylesheet', asset_path( 'styles/admin.css' ), [], '1.0.0', 'all' );
-			wp_enqueue_script( 'admin-javascript', asset_path( 'scripts/admin.js' ), [ 'jquery' ], '1.0.0', true );
+			wp_enqueue_style( 'admin-stylesheet', asset_path( 'styles/admin.css' ), array(), '1.0.0', 'all' );
+			wp_enqueue_script( 'admin-javascript', asset_path( 'scripts/admin.js' ), array( 'jquery' ), '1.0.0', true );
 
 			// Add custom styles for TinyMCE and Gutenberg editor (not for blocs)
 			if ( 'post.php' === $hook ) {
-				wp_enqueue_style( 'editor-stylesheet', asset_path( 'styles/editor.css' ), [], '1.0.0', 'all' );
+				wp_enqueue_style( 'editor-stylesheet', asset_path( 'styles/editor.css' ), array(), '1.0.0', 'all' );
 			}
 		}
 

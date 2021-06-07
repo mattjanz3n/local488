@@ -63,11 +63,11 @@ function page_blocks_cgb_block_assets() { // phpcs:ignore
 	wp_localize_script(
 		'page_blocks-cgb-block-js',
 		'cgbGlobal', // Array containing dynamic data for a JS Global.
-		[
+		array(
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
 			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
 			// Add more data here that you want to access from `cgbGlobal` object.
-		]
+		)
 	);
 
 	/**
@@ -81,7 +81,8 @@ function page_blocks_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-page-blocks', array(
+		'cgb/block-page-blocks',
+		array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
 			'style'         => 'page_blocks-cgb-style-css',
 			// Enqueue blocks.build.js in the editor only.

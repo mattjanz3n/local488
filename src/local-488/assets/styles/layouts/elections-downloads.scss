@@ -1,59 +1,60 @@
 .elections-downloads {
-  background-color: $light-gray;
-  padding-top: 90px;
-  padding-bottom: 122px;
+	background-color: $light-gray;
+	padding-top: 90px;
+	padding-bottom: 122px;
 
-  &__title {
-    padding-bottom: 50px;
-  }
+	&__title {
+		padding-bottom: 50px;
+	}
 
-  .elections-downloads__items {
-    font-family: $sub-font;
+	.elections-downloads__items {
+		font-family: $sub-font;
 
-    .elections-downloads__item {
-      .downloads-item__title {
-        font-size: 12px;
-        line-height: 20px;
-        letter-spacing: 0.21px;
-        font-weight: 600;
-        font-family: $sub-font;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
+		.elections-downloads__item {
 
-      .loc-single-post__download-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 0;
-        margin-bottom: 44px;
-        border-top: 2px solid rgba(0, 0, 0, 0.2);
-        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+			.downloads-item__title {
+				font-size: 12px;
+				line-height: 20px;
+				letter-spacing: 0.21px;
+				font-weight: 600;
+				font-family: $sub-font;
+				text-transform: uppercase;
+				margin-bottom: 8px;
+			}
 
-        @include max-576 {
-          margin-bottom: 22px;
-          padding: 10px 0;
-        }
+			.loc-single-post__download-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 20px 0;
+				margin-bottom: 44px;
+				border-top: 2px solid rgba(0, 0, 0, 0.2);
+				border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
-        .loc-single-post__download-text {
-          font-weight: 400;
-        }
+				@include max-576 {
+					margin-bottom: 22px;
+					padding: 10px 0;
+				}
 
-        .loc-single-post__download-link {
-          display: flex;
-          align-items: center;
-        }
+				.loc-single-post__download-text {
+					font-weight: 400;
+				}
 
-        .loc-single-post__download-icon {
-          margin-right: 17px;
-          display: inline-flex;
-          align-items: center;
-        }
+				.loc-single-post__download-link {
+					display: flex;
+					align-items: center;
+				}
 
-        .loc-single-post__download-text-size {
-          flex-basis: 25%;
-        }
-      }
-    }
-  }
+				.loc-single-post__download-icon {
+					margin-right: 17px;
+					display: inline-flex;
+					align-items: center;
+				}
+
+				.loc-single-post__download-text-size {
+					flex-basis: 25%;
+				}
+			}
+		}
+	}
 }

@@ -1,75 +1,75 @@
 .single-managers-messages {
-  background-color: $white;
-  padding-bottom: 140px;
+	background-color: $white;
+	padding-bottom: 140px;
 
-  @include media-breakpoint-down(xs) {
-    padding-bottom: 32px;
-  }
+	@include media-breakpoint-down(xs) {
+		padding-bottom: 32px;
+	}
 
-  .single-managers-messages-article {
-    padding-top: 96px;
+	.single-managers-messages-article {
+		padding-top: 96px;
 
-    @include media-breakpoint-down(xs) {
-      padding-top: 50px;
-    }
+		@include media-breakpoint-down(xs) {
+			padding-top: 50px;
+		}
 
-    &__post-time {
-      font-family: $sub-font;
-      font-weight: bold;
-      font-size: 16px;
-      letter-spacing: 0.15px;
-      margin-bottom: 21px;
+		&__post-time {
+			font-family: $sub-font;
+			font-weight: bold;
+			font-size: 16px;
+			letter-spacing: 0.15px;
+			margin-bottom: 21px;
 
-      @include media-breakpoint-down(xs) {
-        margin-bottom: 23px;
-      }
-    }
+			@include media-breakpoint-down(xs) {
+				margin-bottom: 23px;
+			}
+		}
 
-    &__content {
-      padding: 0;
-      letter-spacing: 0;
+		&__content {
+			padding: 0;
+			letter-spacing: 0;
 
-      @include media-breakpoint-down(xs) {
-        letter-spacing: 0.15px;
+			@include media-breakpoint-down(xs) {
+				letter-spacing: 0.15px;
 
-        figure {
-          margin-bottom: 6px;
-        }
-      }
+				figure {
+					margin-bottom: 6px;
+				}
+			}
 
-      p {
-        margin-bottom: 24px;
-      }
-    }
+			p {
+				margin-bottom: 24px;
+			}
+		}
 
-    &__back-link--top {
-      display: none;
+		&__back-link--top {
+			display: none;
 
-      @include media-breakpoint-down(xs) {
-        display: block;
-        margin-bottom: 35px;
-      }
-    }
-  }
+			@include media-breakpoint-down(xs) {
+				display: block;
+				margin-bottom: 35px;
+			}
+		}
+	}
 
-  .heateor_sss_sharing_container {
-    position: static;
-    padding-bottom: 42px;
+	.heateor_sss_sharing_container {
+		position: static;
+		padding-bottom: 42px;
 
-    @include media-breakpoint-down(xs) {
-      padding-bottom: 59px;
-    }
+		@include media-breakpoint-down(xs) {
+			padding-bottom: 59px;
+		}
 
-    &::after {
-      display: none;
-    }
+		&::after {
+			display: none;
+		}
 
-    .heateor_sss_sharing_title {
-      padding: 28px 0 0 0;
+		.heateor_sss_sharing_title {
+			padding: 28px 0 0 0;
 
-      @include media-breakpoint-down(xs) {
-        padding-top: 10px;
-      }
-    }
-  }
+			@include media-breakpoint-down(xs) {
+				padding-top: 10px;
+			}
+		}
+	}
 }

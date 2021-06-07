@@ -10,7 +10,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 
-		<?php get_template_part('template-parts/section-hero-small'); ?>
+		<?php get_template_part( 'template-parts/section-hero-small' ); ?>
 
 		<div class="container container--small">
 
@@ -19,17 +19,21 @@ get_header(); ?>
 				<div class="archive-page__buttons-wrapper">
 
 
-					<?php $categories = get_categories();
+					<?php
+					$categories = get_categories();
 
-					if(!empty($categories) ) :
+					if ( ! empty( $categories ) ) :
 
-						foreach( $categories as $cat ) : ?>
+						foreach ( $categories as $cat ) :
+							?>
 
-							<a class="archive-category-button <?php echo 'archive-category-button--' . "$cat->slug";?>" href="<?php echo esc_url( get_category_link( $cat ) ); ?>"><?php echo "$cat->name"; ?></a>
+							<a class="archive-category-button <?php echo 'archive-category-button--' . "$cat->slug"; ?>" href="<?php echo esc_url( get_category_link( $cat ) ); ?>"><?php echo "$cat->name"; ?></a>
 
-						<?php endforeach;
-					
-					endif; ?>
+							<?php
+						endforeach;
+
+					endif;
+					?>
 
 
 				</div>
@@ -38,7 +42,8 @@ get_header(); ?>
 				if ( have_posts() ) :
 
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						/*
 						* Include the Post-Format-specific template for the content.
@@ -49,14 +54,15 @@ get_header(); ?>
 
 					endwhile;
 
-					get_template_part('template-parts/content-page-pagination');
+					get_template_part( 'template-parts/content-page-pagination' );
 
 
 					else :
 
 						get_template_part( 'template-parts/content', 'none' );
 
-				endif; ?>
+				endif;
+					?>
 
 			</section><!-- #main -->
 

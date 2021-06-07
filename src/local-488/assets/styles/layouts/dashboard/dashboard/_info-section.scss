@@ -1,35 +1,35 @@
 .info {
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  text-align: center;
-  padding: 13.55% 0;
-  margin-bottom: 67px;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	text-align: center;
+	padding: 13.55% 0;
+	margin-bottom: 67px;
 
-  @include max-576 {
-    margin-bottom: 0;
-    padding: 29.5% 0;
-  }
+	@include max-576 {
+		margin-bottom: 0;
+		padding: 29.5% 0;
+	}
 
-  &__link {
-    min-width: 278px;
-    display: inline-block;
-    margin: 0 auto;
-  }
+	&__link {
+		min-width: 278px;
+		display: inline-block;
+		margin: 0 auto;
+	}
 
-  &__helpful {
-    background-image: url("../images/helpful.jpg");
+	&__helpful {
+		background-image: url("../images/helpful.jpg");
 
-    @include max-576 {
-      background-image: url("../images/helpful-mob.jpg");
-    }
-  }
+		@include max-576 {
+			background-image: url("../images/helpful-mob.jpg");
+		}
+	}
 
-  &__discounts {
-    background-image: url("../images/discounts.jpg");
+	&__discounts {
+		background-image: url("../images/discounts.jpg");
 
-    @include max-576 {
-      background-image: url("../images/discounts-mob.jpg");
-    }
-  }
+		@include max-576 {
+			background-image: url("../images/discounts-mob.jpg");
+		}
+	}
 }

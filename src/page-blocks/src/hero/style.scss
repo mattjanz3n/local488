@@ -4,13 +4,13 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-cgb-block-page-blocks  {
-  background: $red;
-  border: 0.2rem solid $black;
-  color: $black;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem;
+.wp-block-cgb-block-page-blocks {
+	background: $red;
+	border: 0.2rem solid $black;
+	color: $black;
+	margin: 0 auto;
+	max-width: 740px;
+	padding: 2rem;
 }
 
 /**
@@ -22,145 +22,148 @@
 @import "../common";
 
 .wp-block {
-  // This may need to be .wp-block in WordPress 5+
-  .section {
-	min-height: 70vh;
-	padding: 1rem;
-  }
-
-  a {
-	text-transform: uppercase;
-	text-decoration: underline;
-	color: inherit;
-  }
-
-  .button-container {
-	padding: 1em;
-	background: $white;
-	margin: 0 0 1.2rem 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	min-height: 120px;
-
-	p {
-	  font-size: 13px;
-	  color: $white;
-	  margin: 0 0 1rem 0;
+	// This may need to be .wp-block in WordPress 5+
+	.section {
+		min-height: 70vh;
+		padding: 1rem;
 	}
 
-	.buttom {
-	  margin-bottom: 0;
+	a {
+		text-transform: uppercase;
+		text-decoration: underline;
+		color: inherit;
 	}
-  }
 
-  .button {
-	margin-bottom: 1rem;
-  }
+	.button-container {
+		padding: 1em;
+		background: $white;
+		margin: 0 0 1.2rem 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		min-height: 120px;
 
-  .image {
-	height: 10.7rem;
-	width: 100%;
-	object-fit: cover;
-  }
+		p {
+			font-size: 13px;
+			color: $white;
+			margin: 0 0 1rem 0;
+		}
+
+		.buttom {
+			margin-bottom: 0;
+		}
+	}
+
+	.button {
+		margin-bottom: 1rem;
+	}
+
+	.image {
+		height: 10.7rem;
+		width: 100%;
+		object-fit: cover;
+	}
 }
 
 .hero-section {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  background-blend-mode: multiply;
-  padding-top: 101px;
-  padding-bottom: 100px;
-  position: relative;
-
-  @media (max-width: 1200px) {
-	&::before {
-	  content: '';
-	  position: absolute;
-	  top: 0;
-	  bottom: 0;
-	  left: 0;
-	  right: 0;
-	  opacity: 0.6;
-	  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(176.69deg, rgba(19, 31, 94, 0.5) 32.44%, rgba(19, 31, 94, 0) 57.35%, rgba(19, 31, 94, 0.2) 83%);
-	}
-  }
-
-  @media (max-width: 576px) {
-	background-blend-mode: soft-light;
-
-	&:before {
-	  opacity: 1;
-	  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(0deg, rgba(19, 31, 94, 0.8) 7.44%, rgba(19, 31, 94, 0) 24.35%, rgba(19, 31, 94, 0.8) 83%);
-	}
-  }
-
-  @media (min-width: 350px) and (max-width: 450px) {
-	padding-bottom: 170px;
-  }
-
-  &__wrap {
-	width: 100%;
-	z-index: 1;
-
-	p {
-	  letter-spacing: 0.5px;
-	  font-size: 24px;
-	  line-height: 32px;
-
-	  @media (max-width: 576px) {
-		font-size: 18px;
-		line-height: 24px;
-	  }
-	}
-
-	&--dashboard {
-	  padding-left: 30px;
-	}
-  }
-
-  &__anchor {
-	position: absolute;
-	bottom: 92px;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 2;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	background-blend-mode: multiply;
+	padding-top: 101px;
+	padding-bottom: 100px;
+	position: relative;
 
 	@media (max-width: 1200px) {
-	  bottom: 61px;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			opacity: 0.6;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(176.69deg, rgba(19, 31, 94, 0.5) 32.44%, rgba(19, 31, 94, 0) 57.35%, rgba(19, 31, 94, 0.2) 83%);
+		}
 	}
 
-	@media (max-width: 464px) {
-	  bottom: 122px;
+	@media (max-width: 576px) {
+		background-blend-mode: soft-light;
+
+		&::before {
+			opacity: 1;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(0deg, rgba(19, 31, 94, 0.8) 7.44%, rgba(19, 31, 94, 0) 24.35%, rgba(19, 31, 94, 0.8) 83%);
+		}
 	}
 
-	@media (max-width: 351px) {
-	  bottom: 21px;
+	@media (min-width: 350px) and (max-width: 450px) {
+		padding-bottom: 170px;
 	}
 
+	&__wrap {
+		width: 100%;
+		z-index: 1;
 
-	svg {
-	  path,
-	  circle {
-		transition: stroke 0.5s ease-in-out;
-	  }
+		p {
+			letter-spacing: 0.5px;
+			font-size: 24px;
+			line-height: 32px;
+
+			@media (max-width: 576px) {
+				font-size: 18px;
+				line-height: 24px;
+			}
+		}
+
+		&--dashboard {
+			padding-left: 30px;
+		}
 	}
 
-	&:hover {
-	  path,
-	  circle {
-		stroke: $red;
-	  }
-	}
-  }
+	&__anchor {
+		position: absolute;
+		bottom: 92px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
 
-  #bottom-hero {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-  }
+		@media (max-width: 1200px) {
+			bottom: 61px;
+		}
+
+		@media (max-width: 464px) {
+			bottom: 122px;
+		}
+
+		@media (max-width: 351px) {
+			bottom: 21px;
+		}
+
+
+		svg {
+
+			path,
+			circle {
+				transition: stroke 0.5s ease-in-out;
+			}
+		}
+
+		&:hover {
+
+			path,
+			circle {
+				stroke: $red;
+			}
+		}
+	}
+
+	#bottom-hero {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
 }

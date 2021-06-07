@@ -1,57 +1,59 @@
 .dashboards__downloads-wrap {
-  padding-top: 120px;
-  max-width: 924px;
-  margin: 0 auto;
+	padding-top: 120px;
+	max-width: 924px;
+	margin: 0 auto;
 
-  @include max-576 {
-    padding-top: 35px;
-  }
+	@include max-576 {
+		padding-top: 35px;
+	}
 }
 
 .downloads {
-  &__title {
-    margin-bottom: 0.75em;
-  }
 
-  &__list {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 60px;
+	&__title {
+		margin-bottom: 0.75em;
+	}
 
-    @include max-576 {
-      margin-bottom: 35px;
-    }
-  }
+	&__list {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 60px;
 
-  &__item {
-    margin-bottom: 1.5em;
-    max-width: 290px;
+		@include max-576 {
+			margin-bottom: 35px;
+		}
+	}
 
-    @include max-576 {
-      max-width: 100%;
-    }
-  }
+	&__item {
+		margin-bottom: 1.5em;
+		max-width: 290px;
 
-  &__icon {
-    width: 19px;
-    height: 27px;
-    margin-right: 0.5em;
-    flex: 0 0 auto;
-    fill: $black;
-    transition: all 0.3s ease-in;
-  }
+		@include max-576 {
+			max-width: 100%;
+		}
+	}
 
-  &__link {
-    font-size: rem-calc(14px);
-    line-height: rem-calc(22px);
-    font-family: $sub-font;
-    letter-spacing: 0.3px;
-    display: inline-flex;
+	&__icon {
+		width: 19px;
+		height: 27px;
+		margin-right: 0.5em;
+		flex: 0 0 auto;
+		fill: $black;
+		transition: all 0.3s ease-in;
+	}
 
-    &:hover {
-      .downloads__icon {
-        fill: $red;
-      }
-    }
-  }
+	&__link {
+		font-size: rem-calc(14px);
+		line-height: rem-calc(22px);
+		font-family: $sub-font;
+		letter-spacing: 0.3px;
+		display: inline-flex;
+
+		&:hover {
+
+			.downloads__icon {
+				fill: $red;
+			}
+		}
+	}
 }

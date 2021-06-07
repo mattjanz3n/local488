@@ -12,29 +12,29 @@
 defined( 'THEME_TD' ) ? THEME_TD : define( 'THEME_TD', 'local_488' );
 
 // Load modules
-$theme_includes = [
+$theme_includes = array(
 	'/lib/helpers.php',
-	'/lib/cleanup.php',                      						// Clean up default theme includes
-	'/lib/enqueue-scripts.php',              					  	// Enqueue styles and scripts
-	'/lib/protocol-relative-theme-assets.php',					// Protocol (http/https) relative assets path
-	'/lib/framework.php',                   					   // Css framework related stuff (content width, nav walker class, comments, pagination, etc.)
-	'/lib/theme-support.php',               					   // Theme support options
-	'/lib/template-tags.php',               					   // Custom template tags
-	'/lib/menu-areas.php',                  					   // Menu areas
-	'/lib/widget-areas.php',                					   // Widget areas
-	'/lib/customizer.php',                  					   // Theme customizer
-	'/lib/vc_shortcodes.php',               					   // Visual Composer shortcodes
-	'/lib/jetpack.php',                     					   // Jetpack compatibility file
-	'/lib/acf_field_groups_type.php',       					   // ACF Field Groups Organizer
-	'/lib/acf_blocks_loader.php',           					   // ACF Blocks Loader
-	'/lib/wp_dashboard_customizer.php',     					   // WP Dashboard customizer
-	'/lib/acf-options.php',        			  						// Acf options page
-	'/lib/ajax-posts-filter.php',        							// Ajax Posts Filter
-	'/lib/ajax-categories-posts-filter.php', 						// Ajax Categories Community Involvement Posts Filter
-	'/lib/ajax-categories-new-and-events-posts-filter.php',  		// Ajax Categories New and Events Posts Filter
+	'/lib/cleanup.php',                                             // Clean up default theme includes
+	'/lib/enqueue-scripts.php',                                     // Enqueue styles and scripts
+	'/lib/protocol-relative-theme-assets.php',                  // Protocol (http/https) relative assets path
+	'/lib/framework.php',                                          // Css framework related stuff (content width, nav walker class, comments, pagination, etc.)
+	'/lib/theme-support.php',                                      // Theme support options
+	'/lib/template-tags.php',                                      // Custom template tags
+	'/lib/menu-areas.php',                                         // Menu areas
+	'/lib/widget-areas.php',                                       // Widget areas
+	'/lib/customizer.php',                                         // Theme customizer
+	'/lib/vc_shortcodes.php',                                      // Visual Composer shortcodes
+	'/lib/jetpack.php',                                            // Jetpack compatibility file
+	'/lib/acf_field_groups_type.php',                              // ACF Field Groups Organizer
+	'/lib/acf_blocks_loader.php',                                  // ACF Blocks Loader
+	'/lib/wp_dashboard_customizer.php',                            // WP Dashboard customizer
+	'/lib/acf-options.php',                                         // Acf options page
+	'/lib/ajax-posts-filter.php',                                   // Ajax Posts Filter
+	'/lib/ajax-categories-posts-filter.php',                        // Ajax Categories Community Involvement Posts Filter
+	'/lib/ajax-categories-new-and-events-posts-filter.php',         // Ajax Categories New and Events Posts Filter
 	'/lib/ajax-get-new-post.php',
-	'/lib/breadcrumbs.php',        									// Breadcrumbs
-];
+	'/lib/breadcrumbs.php',                                         // Breadcrumbs
+);
 
 foreach ( $theme_includes as $file ) {
 	if ( ! locate_template( $file ) ) {
@@ -46,26 +46,26 @@ foreach ( $theme_includes as $file ) {
 }
 unset( $file, $filepath );
 
-//Remove Comments//
+// Remove Comments//
 function hide_menu() {
-	
-   	 /* REMOVE DEFAULT MENUS */
-	 remove_menu_page( 'edit-comments.php' ); //Comments
-	 remove_menu_page( 'plugins.php' ); //Plugins
+
+	 /* REMOVE DEFAULT MENUS */
+	 remove_menu_page( 'edit-comments.php' ); // Comments
+	 remove_menu_page( 'plugins.php' ); // Plugins
 }
 
-add_action('admin_head', 'hide_menu');
+add_action( 'admin_head', 'hide_menu' );
 
 function remove_dashboard_meta() {
-        remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
-        remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
-        remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
-        remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
-        remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-        remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
-        remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
-        remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
-        remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');//since 3.8
+		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );// since 3.8
 }
 add_action( 'admin_init', 'remove_dashboard_meta' );
 
@@ -136,9 +136,11 @@ define( 'DISALLOW_FILE_EDIT', true );
 /**
  * Json Request
  */
-function runJsonRequest(){
-  include('lib/request-json.php');
-  exit();
+function runJsonRequest() {
+	include 'lib/request-json.php';
+	exit();
 }
 
-if(isset($_GET['json_request'])) add_action('init', 'runJsonRequest');
+if ( isset( $_GET['json_request'] ) ) {
+	add_action( 'init', 'runJsonRequest' );
+}

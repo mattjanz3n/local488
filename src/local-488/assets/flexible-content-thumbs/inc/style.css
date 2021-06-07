@@ -6,10 +6,12 @@
 	background-color: #fff;
 	padding: 10px;
 }
+
 .module-preview img {
 	width: auto;
 	height: 300px;
 }
+
 .acf-tooltip li:hover {
-	background-color:#0074a9;
+	background-color: #0074a9;
 }

@@ -1,1 +1,1 @@
-jQuery(document).ready(() => {});
+jQuery( document ).ready( () => {} );

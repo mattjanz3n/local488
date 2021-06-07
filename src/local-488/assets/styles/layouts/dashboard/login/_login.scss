@@ -1,52 +1,53 @@
 .site-main {
-  .login-main {
-    padding-top: 160px;
-    padding-bottom: 100px;
 
-    @include max-576 {
-      padding: 35px 0;
-    }
-  }
+	.login-main {
+		padding-top: 160px;
+		padding-bottom: 100px;
 
-  .login__form {
-    margin-bottom: 50px;
+		@include max-576 {
+			padding: 35px 0;
+		}
+	}
 
-    .input-wrap {
-      margin-bottom: 27px;
+	.login__form {
+		margin-bottom: 50px;
 
-      input {
-        width: 100%;
-      }
-    }
-  }
+		.input-wrap {
+			margin-bottom: 27px;
 
-  .notification-message {
-    font-size: rem-calc(10px);
-    line-height: rem-calc(22px);
-    letter-spacing: 0.21px;
-    color: $red;
-    font-family: $sub-font;
-    text-transform: capitalize;
-  }
+			input {
+				width: 100%;
+			}
+		}
+	}
 
-  .login__button {
-    width: 100%;
-    max-width: 290px;
+	.notification-message {
+		font-size: rem-calc(10px);
+		line-height: rem-calc(22px);
+		letter-spacing: 0.21px;
+		color: $red;
+		font-family: $sub-font;
+		text-transform: capitalize;
+	}
 
-    @include max-576 {
-      max-width: 100%;
-    }
-  }
+	.login__button {
+		width: 100%;
+		max-width: 290px;
 
-  .login__links {
-    list-style: none;
-    padding-left: 0;
+		@include max-576 {
+			max-width: 100%;
+		}
+	}
 
-    .login__link-item {
-      font-size: rem-calc(14px);
-      line-height: rem-calc(20px);
-      letter-spacing: 0.21px;
-      margin-bottom: 25px;
-    }
-  }
+	.login__links {
+		list-style: none;
+		padding-left: 0;
+
+		.login__link-item {
+			font-size: rem-calc(14px);
+			line-height: rem-calc(20px);
+			letter-spacing: 0.21px;
+			margin-bottom: 25px;
+		}
+	}
 }

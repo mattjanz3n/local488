@@ -7,7 +7,7 @@
  */
 
 get_header();
-get_template_part('template-parts/section-hero-small');?>
+get_template_part( 'template-parts/section-hero-small' );?>
 
 	<section id="primary" class="content-area container">
 		<section id="main" class="site-main search-page" role="main">
@@ -17,7 +17,7 @@ get_template_part('template-parts/section-hero-small');?>
 				if ( have_posts() ) :
 					?>
 
-					<?php get_template_part('searchform'); ?>
+					<?php get_template_part( 'searchform' ); ?>
 
 					<header class="page-header search-page__header">
 						<?php /* translators: %s: search term */ ?>
@@ -26,18 +26,19 @@ get_template_part('template-parts/section-hero-small');?>
 					<?php
 
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						/**
 						 * Run the loop for the search to output the results.
 						 * If you want to overload this in a child theme then include a file
 						 * called content-search.php and that will be used instead.
 						 */
-						get_template_part( 'template-parts/content');
+						get_template_part( 'template-parts/content' );
 
 					endwhile;
 
-					get_template_part('template-parts/content-page-pagination');
+					get_template_part( 'template-parts/content-page-pagination' );
 
 
 					else :

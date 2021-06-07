@@ -18,5 +18,8 @@ $align_class  = $block['align'] ? 'align' . $block['align'] : '';
 $custom_class = isset( $block['className'] ) ? $block['className'] : '';
 ?>
 <section id="<?php echo $block_id; ?>" class="<?php echo $slug; ?> <?php echo $align_class; ?> <?php echo $custom_class; ?>">
-	<?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?>
+	<?php
+	if ( function_exists( 'dimox_breadcrumbs' ) ) {
+		dimox_breadcrumbs();}
+	?>
 </section>

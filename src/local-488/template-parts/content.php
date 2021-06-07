@@ -18,18 +18,20 @@
 				<path d="M10.287 12.857L6.43 9l3.857-3.857" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
 			<span class="loc-single-post__back-link-text archive-back-link__text">
-				<?php _e('Back to List', THEME_TD); ?>
+				<?php _e( 'Back to List', THEME_TD ); ?>
 			</span>
 		</a>
 
-		<?php $categories_list = get_the_category();
+		<?php
+		$categories_list = get_the_category();
 
-		if(!empty ($categories_list) ) : ?>
+		if ( ! empty( $categories_list ) ) :
+			?>
 			<div class="nav-categories loc-single-post__categories">
 
-				<?php foreach( $categories_list as $category ) : ?>
+				<?php foreach ( $categories_list as $category ) : ?>
 
-					<a data-slug="<?php echo $category->slug; ?>" class="nav-categories-link loc-single-post__categories-link <?php echo 'nav-categories-link--' . "$category->slug";?>" href="#<?php echo $category->slug; ?>"><?php echo "$category->name";?></a>
+					<a data-slug="<?php echo $category->slug; ?>" class="nav-categories-link loc-single-post__categories-link <?php echo 'nav-categories-link--' . "$category->slug"; ?>" href="#<?php echo $category->slug; ?>"><?php echo "$category->name"; ?></a>
 
 				<?php endforeach; ?>
 
@@ -37,13 +39,14 @@
 
 		<?php endif; ?>
 
-		<?php if ( is_single() ) {
+		<?php
+		if ( is_single() ) {
 			the_title( '<h1 class="entry-title loc-single-post__title">', '</h1>' );
 		} else {
 			the_title( '<h4 class="entry-title loc-single-post__title-small"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
 		}
 
-		if ( 'post' === get_post_type() ) : 
+		if ( 'post' === get_post_type() ) :
 
 			if ( is_single() ) {
 				$post_time = get_the_time( 'l, j F, Y' );
@@ -53,7 +56,8 @@
 
 
 
-			if(!empty($post_time) ) : ?>
+			if ( ! empty( $post_time ) ) :
+				?>
 
 				<div class="loc-single-post__post-time">
 					<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
@@ -63,39 +67,44 @@
 					</time>
 				</div>
 
-			<?php endif;
+				<?php
+			endif;
 
 
 
-		endif; ?>
+		endif;
+		?>
 
 	</header><!-- .entry-header -->
 
-	<?php if ( is_single() ) :
+	<?php
+	if ( is_single() ) :
 		$post_excerpt = get_the_excerpt();
 		else :
-		$post_excerpt = limited_excerpt(21);
+			$post_excerpt = limited_excerpt( 21 );
 	endif;
 
-	if (!empty($post_excerpt)) : ?>
+		if ( ! empty( $post_excerpt ) ) :
+			?>
 
 		<div class="entry-content loc-single-post__excerpt">
 
-			<?php echo $post_excerpt; ?>
+				<?php echo $post_excerpt; ?>
 
 		</div>
 
-	<?php endif; ?>
+		<?php endif; ?>
 
 	<div class="entry-content loc-single-post__content">
 
-		<?php the_content(
-				sprintf(
+		<?php
+		the_content(
+			sprintf(
 					/* translators: %s: Name of current post. */
-					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'local_488' ), array( 'span' => array( 'class' => array() ) ) ),
-					the_title( '<span class="screen-reader-text">"', '"</span>', false )
-				)
-			);
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'local_488' ), array( 'span' => array( 'class' => array() ) ) ),
+				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			)
+		);
 
 			wp_link_pages(
 				array(
@@ -103,22 +112,24 @@
 					'after'  => '</div>',
 				)
 			);
-		?>
+			?>
 
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer loc-single-post__footer">
 
-		<?php $file = get_field('attachments');
+		<?php
+		$file = get_field( 'attachments' );
 
-			if ( !empty($file) && ($file['subtype'] === 'pdf') && (is_single()) ) :
-				$url = $file['url'];
-				$title = $file['title']; ?>
-				<p class="loc-single-post__attachments"><?php _e('attachments', THEME_TD); ?></p>
+		if ( ! empty( $file ) && ( $file['subtype'] === 'pdf' ) && ( is_single() ) ) :
+			$url   = $file['url'];
+			$title = $file['title'];
+			?>
+				<p class="loc-single-post__attachments"><?php _e( 'attachments', THEME_TD ); ?></p>
 
 				<div class="loc-single-post__download-wrapper">
 
-					<a class="loc-single-post__download-link" download href="<?php echo esc_attr($url); ?>" title="<?php echo esc_attr($title); ?>">
+					<a class="loc-single-post__download-link" download href="<?php echo esc_attr( $url ); ?>" title="<?php echo esc_attr( $title ); ?>">
 
 						<span class="loc-single-post__download-icon">
 							<svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,16 +148,18 @@
 
 						</span>
 
-						<span class="loc-single-post__download-text"><?php echo esc_html($title) . '.pdf'; ?></span>
-						<span class="loc-single-post__download-text loc-single-post__download-text--mobail"><?php echo esc_html($title) . '.pdf'; ?></span>
+						<span class="loc-single-post__download-text"><?php echo esc_html( $title ) . '.pdf'; ?></span>
+						<span class="loc-single-post__download-text loc-single-post__download-text--mobail"><?php echo esc_html( $title ) . '.pdf'; ?></span>
 
 					</a>
 
-					<?php $file_size = filesize( get_attached_file( $file['ID'] ) );
+					<?php
+					$file_size = filesize( get_attached_file( $file['ID'] ) );
 
-					$file_size_in_kb = round($file_size / 1000, 2); ?>
+					$file_size_in_kb = round( $file_size / 1000, 2 );
+					?>
 
-					<p class="loc-single-post__download-text-size"><?php echo $file_size_in_kb; ?><?php _e(' KB', THEME_TD); ?></p>
+					<p class="loc-single-post__download-text-size"><?php echo $file_size_in_kb; ?><?php _e( ' KB', THEME_TD ); ?></p>
 
 				</div>
 
@@ -162,15 +175,15 @@
 				</svg>
 
 				<span class="loc-single-post__back-link-text archive-back-link__text">
-					<?php _e('Back to List', THEME_TD); ?>
+					<?php _e( 'Back to List', THEME_TD ); ?>
 				</span>
 			</a>
 
 		<?php else : ?>
 
-			<a class="loc-single-post__post-link read-more-button" href="<?php echo esc_url( get_permalink() ) ?>">
+			<a class="loc-single-post__post-link read-more-button" href="<?php echo esc_url( get_permalink() ); ?>">
 
-				<?php _e('Read More', THEME_TD); ?>
+				<?php _e( 'Read More', THEME_TD ); ?>
 
 				<span class="loc-single-post__post-link-svg read-more-button__svg">
 					<svg width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">

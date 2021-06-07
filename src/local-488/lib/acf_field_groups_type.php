@@ -30,17 +30,17 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 		 *
 		 * @var array
 		 */
-		private $default_terms = [ 'Template', 'Option', 'Post Type', 'Flexible Content', 'Block', 'Taxonomy', 'User', 'Menu Item' ];
+		private $default_terms = array( 'Template', 'Option', 'Post Type', 'Flexible Content', 'Block', 'Taxonomy', 'User', 'Menu Item' );
 
 		/**
 		 * ACF_Field_Groups_Type constructor.
 		 */
 		public function __construct() {
-			add_action( 'init', [ $this, 'field_group_taxonomy' ] );
-			add_filter( 'manage_edit-acf-field-group_columns', [ $this, 'field_group_columns' ], 20, 1 );
-			add_action( 'manage_acf-field-group_posts_custom_column', [ $this, 'field_group_columns_html' ], 20, 2 );
-			add_action( 'restrict_manage_posts', [ $this, 'field_group_filter' ], 10, 2 );
-			add_action( 'acf/input/admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+			add_action( 'init', array( $this, 'field_group_taxonomy' ) );
+			add_filter( 'manage_edit-acf-field-group_columns', array( $this, 'field_group_columns' ), 20, 1 );
+			add_action( 'manage_acf-field-group_posts_custom_column', array( $this, 'field_group_columns_html' ), 20, 2 );
+			add_action( 'restrict_manage_posts', array( $this, 'field_group_filter' ), 10, 2 );
+			add_action( 'acf/input/admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		}
 
 		/**
@@ -51,16 +51,16 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 			register_taxonomy(
 				$this->taxonomy,
 				$this->post_type,
-				[
+				array(
 					'label'             => __( 'Field Group Type' ),
-					'labels'            => [
+					'labels'            => array(
 						'separate_items_with_commas' => __( 'Start typing: ' ) . implode( ', ', $this->default_terms ),
-					],
+					),
 					'rewrite'           => false,
 					'show_ui'           => true,
 					'show_admin_column' => true,
 					'query_var'         => true,
-				]
+				)
 			);
 
 			/**
@@ -80,7 +80,7 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 		 */
 		public function field_group_columns( $columns ) {
 			unset( $columns['taxonomy-acf-fg-type'] );
-			$new = [];
+			$new = array();
 			foreach ( $columns as $key => $title ) {
 				if ( $key === 'acf-fg-status' ) {
 					$new[ $this->taxonomy ] = __( 'Type' );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 				return;
 			}
 
-			$taxonomies = [ $this->taxonomy ];
+			$taxonomies = array( $this->taxonomy );
 			foreach ( $taxonomies as $taxonomy_slug ) {
 				$taxonomy_obj  = get_taxonomy( $taxonomy_slug );
 				$taxonomy_name = $taxonomy_obj->labels->name;
@@ -152,7 +152,7 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 			$dir_path = 'assets/flexible-content-thumbs/';
 			$dir_uri  = get_stylesheet_directory_uri() . '/' . $dir_path;
 			$dir      = new DirectoryIterator( locate_template( $dir_path ) );
-			$files    = [];
+			$files    = array();
 			foreach ( $dir as $file_info ) {
 				if ( ! $file_info->isDot() && ! $file_info->isDir() ) {
 					$module_name           = preg_replace( '/\\.[^.\\s]{3,4}$/', '', $file_info->getFilename() );
@@ -163,10 +163,10 @@ if ( ! class_exists( 'ACF_Field_Groups_Type' ) ) :
 			wp_localize_script(
 				'flexible-content-thumbs-js',
 				'flexibleContentThumbs',
-				[
+				array(
 					'dirUri' => $dir_uri,
 					'files'  => $files,
-				]
+				)
 			);
 			wp_enqueue_script( 'flexible-content-thumbs-js' );
 			wp_enqueue_style( 'flexible-content-thumbs-css', get_stylesheet_directory_uri() . '/assets/flexible-content-thumbs/inc/style.css', false, '1.0.0' );

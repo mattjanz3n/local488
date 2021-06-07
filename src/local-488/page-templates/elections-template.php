@@ -2,43 +2,43 @@
 /**
  * Template Name: Elections template
  *
- *
  * @package Local_488
  */
 $fields = get_fields( get_the_ID() );
 
 get_header();
-get_template_part('template-parts/section-hero-small'); ?>
+get_template_part( 'template-parts/section-hero-small' ); ?>
 	<section class="elections-main">
-		<?php  the_content(); ?>
+		<?php the_content(); ?>
 	</section>
 	<section class="elections-downloads">
 		<div class="container container--middle">
-			<?php if ($fields['title_above_download_links']) : ?>
-			<h3 class="elections-downloads__title"><?=$fields['title_above_download_links'] ?></h3>
-			<?php endif;?>
-			<?php if ( $fields['download_links'] ): ?>
+			<?php if ( $fields['title_above_download_links'] ) : ?>
+			<h3 class="elections-downloads__title"><?php echo $fields['title_above_download_links']; ?></h3>
+			<?php endif; ?>
+			<?php if ( $fields['download_links'] ) : ?>
 				<div class="elections-downloads__items">
-						<?php foreach( $fields['download_links'] as $field ) :?>
+						<?php foreach ( $fields['download_links'] as $field ) : ?>
 						<div class="elections-downloads__item">
-							<?php if (!empty($field['title_above_link'])) : ?>
-								<div class="downloads-item__title"><?=$field['title_above_link'] ?></div>
-							<?php endif;?>
-							<?php if (!empty($field['download_file'])) :
-								$file = $field['download_file'];
-								$file_url = $file['url'];
+							<?php if ( ! empty( $field['title_above_link'] ) ) : ?>
+								<div class="downloads-item__title"><?php echo $field['title_above_link']; ?></div>
+							<?php endif; ?>
+							<?php
+							if ( ! empty( $field['download_file'] ) ) :
+								$file       = $field['download_file'];
+								$file_url   = $file['url'];
 								$file_title = $file['title'];
-								$file_name = basename($file['title']);
-								if (strlen($file_name) > 20) {
-									$name_start = substr("$file_name",0, 9);
-									$name_end = substr("$file_name", -9);
+								$file_name  = basename( $file['title'] );
+								if ( strlen( $file_name ) > 20 ) {
+									$name_start = substr( "$file_name", 0, 9 );
+									$name_end   = substr( "$file_name", -9 );
 									$short_name = $name_start . '...' . $name_end;
 								} else {
 									$short_name = $file_name;
 								}
 								?>
 								<div class="loc-single-post__download-wrapper">
-									<a class="loc-single-post__download-link" download href="<?php echo esc_attr($file_url); ?>" title="<?php echo esc_attr($file_title); ?>">
+									<a class="loc-single-post__download-link" download href="<?php echo esc_attr( $file_url ); ?>" title="<?php echo esc_attr( $file_title ); ?>">
 										<span class="loc-single-post__download-icon">
 											<svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M6.20911 6.20868H1.24219L6.20911 1.24176V6.20868Z" fill="black"/>
@@ -54,15 +54,17 @@ get_template_part('template-parts/section-hero-small'); ?>
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M13 19.119C13.518 19.6869 13.9764 20 14.3139 20C14.4639 20 14.6588 19.9499 14.8558 19.5564C14.9506 19.3676 14.9868 19.2451 15 19.1805C14.9242 19.1217 14.695 19 14.1292 19C13.8082 18.9996 13.4274 19.0387 13 19.119Z" fill="black"/>
 											</svg>
 										</span>
-										<span class="loc-single-post__download-text"><?php echo $short_name . '.pdf'?></span>
+										<span class="loc-single-post__download-text"><?php echo $short_name . '.pdf'; ?></span>
 									</a>
 
 
-									<?php $filesize = filesize( get_attached_file( $file['ID'] ) );
+									<?php
+									$filesize = filesize( get_attached_file( $file['ID'] ) );
 
-									$fileSizeInKb = round($filesize / 1000, 2); ?>
+									$fileSizeInKb = round( $filesize / 1000, 2 );
+									?>
 
-									<div class="loc-single-post__download-text-size"><?php echo $fileSizeInKb; ?><?php _e(' KB', THEME_TD); ?></div>
+									<div class="loc-single-post__download-text-size"><?php echo $fileSizeInKb; ?><?php _e( ' KB', THEME_TD ); ?></div>
 								</div>
 							<?php endif; ?>
 						</div>

@@ -1,47 +1,44 @@
 <?php
 
-function categories_posts_filter () {
+function categories_posts_filter() {
 
 	$category = $_POST['category'];
 	$paged    = $_POST['paged'];
 
-
-
-	if (!empty($category)) {
+	if ( ! empty( $category ) ) {
 		$arg = array(
-				'post_type' => 'community-involvemen',
-				'order'          => 'DESC',
-				'orderby'        => 'date',
-				'posts_per_page' => 8,
-				'post_status'    => 'publish',
-				'paged'          => $paged,
-				'tax_query' => array(
-						array(
-								'taxonomy' => 'community_categories',
-								'field' => 'slug',
-								'terms' => $category,
-						)
-				)
+			'post_type'      => 'community-involvemen',
+			'order'          => 'DESC',
+			'orderby'        => 'date',
+			'posts_per_page' => 8,
+			'post_status'    => 'publish',
+			'paged'          => $paged,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'community_categories',
+					'field'    => 'slug',
+					'terms'    => $category,
+				),
+			),
 		);
-	}
- else {
+	} else {
 		$arg = array(
-				'post_type' => 'community-involvemen',
-				'order'          => 'DESC',
-				'orderby'        => 'date',
-				'posts_per_page' => 8,
-				'post_status'    => 'publish',
-				'paged'          => $paged,
+			'post_type'      => 'community-involvemen',
+			'order'          => 'DESC',
+			'orderby'        => 'date',
+			'posts_per_page' => 8,
+			'post_status'    => 'publish',
+			'paged'          => $paged,
 		);
 	}
 
 		$the_query_post = new WP_Query( $arg );
 
-		if ( $the_query_post->have_posts() ) :
+	if ( $the_query_post->have_posts() ) :
 
-			while ( $the_query_post->have_posts() ) :
+		while ( $the_query_post->have_posts() ) :
 
-				$the_query_post->the_post(); ?>
+			$the_query_post->the_post(); ?>
 
 				<article class="community-involvment__post community-involvment-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -49,9 +46,11 @@ function categories_posts_filter () {
 
 					<div class="community-involvment-article__content">
 
-						<?php $post_time = get_the_time( 'l, F j, Y');
+						<?php
+						$post_time = get_the_time( 'l, F j, Y' );
 
-						if(!empty($post_time) ) : ?>
+						if ( ! empty( $post_time ) ) :
+							?>
 
 							<div class="community-involvment-article__post-time">
 								<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
@@ -65,16 +64,16 @@ function categories_posts_filter () {
 
 
 
-						<?php $terms = get_the_terms( $post->ID , 'community_categories' ); ?>
+						<?php $terms = get_the_terms( $post->ID, 'community_categories' ); ?>
 
-						<?php if(!empty ($terms) ) : ?>
+						<?php if ( ! empty( $terms ) ) : ?>
 
 
 							<div class="nav-archive-categories community-involvment-article__categories">
 
 								<?php foreach ( $terms as $term ) : ?>
 
-									<a class="nav-archive-categories__link community-involvment-article__categories-link <?php echo 'nav-archive-categories__link--' . "$term->slug";?>" href="<?php echo $term->slug; ?>"  data-slug="<?php echo $term->slug; ?>" ><?php echo "$term->name"; ?></a>
+									<a class="nav-archive-categories__link community-involvment-article__categories-link <?php echo 'nav-archive-categories__link--' . "$term->slug"; ?>" href="<?php echo $term->slug; ?>"  data-slug="<?php echo $term->slug; ?>" ><?php echo "$term->name"; ?></a>
 
 								<?php endforeach; ?>
 
@@ -84,17 +83,19 @@ function categories_posts_filter () {
 
 
 
-						<?php $post_title = get_the_title();
+						<?php
+						$post_title = get_the_title();
 
-						if(!empty($post_title) ) : ?>
+						if ( ! empty( $post_title ) ) :
+							?>
 
-							<h4 class="community-involvment-article__title"><a href="<?php echo esc_url( get_permalink() ) ?>"><?php echo $post_title; ?></a></h4>
+							<h4 class="community-involvment-article__title"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $post_title; ?></a></h4>
 
 						<?php endif; ?>
 
-						<a class="community-involvment-article__post-link read-more-button" href="<?php echo esc_url( get_permalink() ) ?>">
+						<a class="community-involvment-article__post-link read-more-button" href="<?php echo esc_url( get_permalink() ); ?>">
 
-							<?php _e('Read More', THEME_TD); ?>
+							<?php _e( 'Read More', THEME_TD ); ?>
 
 							<span class="community-involvment-article__post-link-svg read-more-button__svg">
 									<svg width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +108,7 @@ function categories_posts_filter () {
 					</div>
 
 
-					<div class="community-involvment-article__image-wrapper" <?php if(!empty($thumbnail)) : ?>
+					<div class="community-involvment-article__image-wrapper" <?php if ( ! empty( $thumbnail ) ) : ?>
 						style="background-image: url( <?php echo $thumbnail; ?> )"
 					<?php endif; ?> >
 
@@ -119,20 +120,32 @@ function categories_posts_filter () {
 
 			<?php endwhile; ?>
 
-			<?php ( $pages = $the_query_post->max_num_pages );
-			if ( $pages > 1 ) : ?>
+			<?php
+			( $pages = $the_query_post->max_num_pages );
+			if ( $pages > 1 ) :
+				?>
 					<ul class="main__pagination">
-						<?php for ( $i = 1; $i <= $pages; $i ++ ): ?>
+						<?php for ( $i = 1; $i <= $pages; $i ++ ) : ?>
 							<li class="paged-number"><a href="#"
 														class="pagination"
 														data-paged="<?php echo $i; ?>"><?php echo $i; ?></a>
 							</li>
 						<?php endfor; ?>
-						<li class="prev-pagination <?php if($paged == 1) echo ('disable');?>"><a href="#" class="page" data-value="prev"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="pagination-icon">
+						<li class="prev-pagination 
+						<?php
+						if ( $paged == 1 ) {
+							echo ( 'disable' );}
+						?>
+						"><a href="#" class="page" data-value="prev"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="pagination-icon">
 									<circle r="8" transform="matrix(-1 0 0 1 9 9)" stroke="black" stroke-width="2"/>
 									<path d="M10.2868 12.8571L6.42969 8.99996L10.2868 5.14282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg></a></li>
-						<li class="next-pagination <?php if($paged == $the_query_post->max_num_pages) echo ('disable');?>"><a href="#" class="page" data-value="next"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="pagination-icon">
+						<li class="next-pagination 
+						<?php
+						if ( $paged == $the_query_post->max_num_pages ) {
+							echo ( 'disable' );}
+						?>
+						"><a href="#" class="page" data-value="next"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="pagination-icon">
 									<circle r="8" transform="matrix(-1 0 0 1 9 9)" stroke="black" stroke-width="2"/>
 									<path d="M10.2868 12.8571L6.42969 8.99996L10.2868 5.14282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
@@ -141,8 +154,12 @@ function categories_posts_filter () {
 			<?php endif; ?>
 
 
-		<?php endif;  wp_reset_query(); wp_die();?>
-<?php
+		<?php
+		endif;
+	wp_reset_query();
+	wp_die();
+	?>
+	<?php
 }
 
 add_action( 'wp_ajax_categories_posts_filter', 'categories_posts_filter' );

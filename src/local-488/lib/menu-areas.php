@@ -17,7 +17,7 @@ function register_theme_menus() {
 	register_nav_menus(
 		array(
 			'primary'     => __( 'Primary Menu', 'local_488' ),
-			'secondary'     => __( 'Secondary Menu', 'local_488' ),
+			'secondary'   => __( 'Secondary Menu', 'local_488' ),
 			'footer_menu' => __( 'Footer Menu', 'local_488' ),
 		)
 	);

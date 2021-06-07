@@ -10,44 +10,49 @@ get_header(); ?>
 
 <div class="content-area news-and-events-archive">
 
-	<?php get_template_part('template-parts/section-hero-small');
+	<?php
+	get_template_part( 'template-parts/section-hero-small' );
 
 	$args = array(
 		'posts_per_page' => 6,
-		'paged' => get_query_var( 'paged' )
+		'paged'          => get_query_var( 'paged' ),
 	);
 
-	 if( wp_is_mobile() ) :
+	if ( wp_is_mobile() ) :
 
 		$args = array(
 			'posts_per_page' => 8,
-			'paged' => get_query_var( 'paged' )
+			'paged'          => get_query_var( 'paged' ),
 		);
 
 	endif;
 
 	$query = new WP_Query( $args );
 
-	if( $query->have_posts() ) : ?>
+	if ( $query->have_posts() ) :
+		?>
 
 		<section class="news-and-events-content-section">
 			<div class="news-and-events-content-section__container container container--small">
 
 				<div class="news-and-events-content-section__buttons-wrapper">
 
-					<?php $categories = get_categories();
+					<?php
+					$categories = get_categories();
 
-					if( $categories ) :
-						foreach( $categories as $cat ) : ?>
+					if ( $categories ) :
+						foreach ( $categories as $cat ) :
+							?>
 
-							<a id="<?php echo $cat->slug ?>" class="news-and-events-content-section__button archive-category-button <?php echo 'archive-category-button--' . "$cat->slug";?> active" href="<?php echo esc_url( get_category_link( $cat ) ); ?>" data-slug="<?php echo $cat->slug; ?>" >
+							<a id="<?php echo $cat->slug; ?>" class="news-and-events-content-section__button archive-category-button <?php echo 'archive-category-button--' . "$cat->slug"; ?> active" href="<?php echo esc_url( get_category_link( $cat ) ); ?>" data-slug="<?php echo $cat->slug; ?>" >
 								<?php echo "$cat->name"; ?>
 							</a>
 
-						<?php
+							<?php
 						endforeach;
 
-					endif; ?>
+					endif;
+					?>
 
 
 				</div>
@@ -55,18 +60,26 @@ get_header(); ?>
 				<div class="news-and-events-content-section__wrapper">
 
 
-					<?php while( $query->have_posts() ): $query->the_post();
+					<?php
+					while ( $query->have_posts() ) :
+						$query->the_post();
 
 						 get_template_part( 'template-parts/content', get_post_format() );
 
 					endwhile;
 
 					( $pages = $query->max_num_pages );
-					if ( $pages > 1 ) : ?>
+					if ( $pages > 1 ) :
+						?>
 							<ul class="main__pagination">
-								<?php for ( $i = 1; $i <= $pages; $i ++ ): ?>
+								<?php for ( $i = 1; $i <= $pages; $i ++ ) : ?>
 									<li class="paged-number"><a href="#"
-																class="pagination <?php if($i == 1) echo ('active');?>"
+																class="pagination 
+																<?php
+																if ( $i == 1 ) {
+																	echo ( 'active' );}
+																?>
+																"
 																data-paged="<?php echo $i; ?>"><?php echo $i; ?></a>
 									</li>
 								<?php endfor; ?>
@@ -90,12 +103,14 @@ get_header(); ?>
 
 		</section>
 
-	<?php wp_reset_query();
+		<?php
+		wp_reset_query();
 
-	else : ?>
+	else :
+		?>
 
-		<h2><?php _e('Sorry, there are no posts.', THEME_TD); ?></h2>
+		<h2><?php _e( 'Sorry, there are no posts.', THEME_TD ); ?></h2>
 
 	<?php endif;
 
-get_footer(); ?>
+	get_footer(); ?>

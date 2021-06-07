@@ -64,49 +64,57 @@ if ( ! function_exists( 'local_488_theme_support' ) ) :
 			)
 		);
 
-//		add_theme_support( 'disable-custom-colors' );
-		add_theme_support( 'editor-color-palette',
-			[
-				[
+		// add_theme_support( 'disable-custom-colors' );
+		add_theme_support(
+			'editor-color-palette',
+			array(
+				array(
 					'name'  => esc_html__( 'Blue', THEME_TD ),
 					'slug'  => 'blue',
 					'color' => '#131f5f',
-				],
-				[
+				),
+				array(
 					'name'  => esc_html__( 'Red', THEME_TD ),
 					'slug'  => 'red',
 					'color' => '#db2222',
-				],
-				[
+				),
+				array(
 					'name'  => esc_html__( 'Light Gray', THEME_TD ),
 					'slug'  => 'light-gray',
 					'color' => '#edeef0',
-				],
-				[
+				),
+				array(
 					'name'  => esc_html__( 'Gray', THEME_TD ),
 					'slug'  => 'gray',
 					'color' => '#6c7178',
-				],
-				[
+				),
+				array(
 					'name'  => esc_html__( 'White', THEME_TD ),
 					'slug'  => 'White',
 					'color' => '#ffffff',
-				],
-				[
+				),
+				array(
 					'name'  => esc_html__( 'Black', THEME_TD ),
 					'slug'  => 'Black',
 					'color' => '#000000',
-				],
+				),
 
-			] );
+			)
+		);
 
-		add_filter( 'excerpt_length', function(){
-			return 65;
-		} );
+		add_filter(
+			'excerpt_length',
+			function() {
+				return 65;
+			}
+		);
 
-		add_filter('excerpt_more', function($more) {
-			return '.';
-		});
+		add_filter(
+			'excerpt_more',
+			function( $more ) {
+				return '.';
+			}
+		);
 
 	}
 
@@ -123,29 +131,29 @@ endif;
 
 
 if ( ! function_exists( 'limited_excerpt' ) ) :
-	function limited_excerpt($limit) {
-			$excerpt = explode(' ', get_the_excerpt(), $limit);
+	function limited_excerpt( $limit ) {
+			$excerpt = explode( ' ', get_the_excerpt(), $limit );
 
-			if (count($excerpt) >= $limit) {
-				array_pop($excerpt);
-				$excerpt = implode(" ", $excerpt) . ' ...';
-			} else {
-				$excerpt = implode(" ", $excerpt);
-			}
+		if ( count( $excerpt ) >= $limit ) {
+			array_pop( $excerpt );
+			$excerpt = implode( ' ', $excerpt ) . ' ...';
+		} else {
+			$excerpt = implode( ' ', $excerpt );
+		}
 
-			$excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+			$excerpt = preg_replace( '`\[[^\]]*\]`', '', $excerpt );
 
 			return $excerpt;
 	};
 endif;
 
 
-if ( ! function_exists('local_acf_google_map_api') ) :
+if ( ! function_exists( 'local_acf_google_map_api' ) ) :
 
 	function local_acf_google_map_api( $api ) {
-		$api['key'] = get_field('google_api_key', 'option');
+		$api['key'] = get_field( 'google_api_key', 'option' );
 		return $api;
 	}
-	add_filter('acf/fields/google_map/api', 'local_acf_google_map_api');
+	add_filter( 'acf/fields/google_map/api', 'local_acf_google_map_api' );
 
 endif;

@@ -1,12 +1,10 @@
 //=================================\\
 // Google Map Settings \\
 //=================================\\
-let acf_map = $('.acf-map');
+let acf_map = $( '.acf-map' );
 export default function googleMaps() {
-	if (acf_map.length) {
-
-		(function ($) {
-
+	if ( acf_map.length ) {
+		( function ( $ ) {
 			/**
 			 * initMap
 			 *
@@ -18,27 +16,26 @@ export default function googleMaps() {
 			 * @param   jQuery $el The jQuery element.
 			 * @return  object The map instance.
 			 */
-			function initMap($el) {
-
+			function initMap( $el ) {
 				// Find marker elements within map.
-				let $markers = $el.find('.marker');
+				let $markers = $el.find( '.marker' );
 
 				// Create gerenic map.
 				let mapArgs = {
-					zoom: $el.data('zoom') || 13,
+					zoom: $el.data( 'zoom' ) || 13,
 					mapTypeId: google.maps.MapTypeId.ROADMAP,
 					disableDefaultUI: true,
 				};
-				let map = new google.maps.Map($el[0], mapArgs);
+				let map = new google.maps.Map( $el[ 0 ], mapArgs );
 
 				// Add markers.
 				map.markers = [];
-				$markers.each(function () {
-					initMarker($(this), map);
-				});
+				$markers.each( function () {
+					initMarker( $( this ), map );
+				} );
 
 				// Center map based on markers.
-				centerMap(map);
+				centerMap( map );
 
 				// Return map instance.
 				return map;
@@ -56,43 +53,49 @@ export default function googleMaps() {
 			 * @param   object The map instance.
 			 * @return  object The marker instance.
 			 */
-			function initMarker($marker, map) {
-
+			function initMarker( $marker, map ) {
 				// Get position from marker.
-				let lat = $marker.data('lat');
-				let lng = $marker.data('lng');
+				let lat = $marker.data( 'lat' );
+				let lng = $marker.data( 'lng' );
 				let latLng = {
-					lat: parseFloat(lat),
-					lng: parseFloat(lng),
+					lat: parseFloat( lat ),
+					lng: parseFloat( lng ),
 				};
 
-				const icon1 = $marker.data('marker');
-				const icon2 = $marker.data('marker2');
+				const icon1 = $marker.data( 'marker' );
+				const icon2 = $marker.data( 'marker2' );
 
 				// Create marker instance.
-				let marker = new google.maps.Marker({
+				let marker = new google.maps.Marker( {
 					position: latLng,
 					icon: icon1,
-					url: 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng,
+					url:
+						'https://www.google.com/maps/search/?api=1&query=' +
+						lat +
+						',' +
+						lng,
 					map: map,
-				});
+				} );
 
-				google.maps.event.addListener(marker, 'mouseover', function () {
-					marker.setIcon(icon2);
-				});
+				google.maps.event.addListener(
+					marker,
+					'mouseover',
+					function () {
+						marker.setIcon( icon2 );
+					}
+				);
 
-				google.maps.event.addListener(marker, 'mouseout', function () {
-					marker.setIcon(icon1);
-				});
+				google.maps.event.addListener( marker, 'mouseout', function () {
+					marker.setIcon( icon1 );
+				} );
 
 				// Append to reference for later use.
-				map.markers.push(marker);
-
+				map.markers.push( marker );
 
 				// Open Google Maps in a new tab when marker is clicked.
-				google.maps.event.addListener(marker, 'click', function () {
-					window.open(this.url, '_blank');
-				});
+				google.maps.event.addListener( marker, 'click', function () {
+					window.open( this.url, '_blank' );
+				} );
 			}
 
 			/**
@@ -106,35 +109,32 @@ export default function googleMaps() {
 			 * @param   object The map instance.
 			 * @return  void
 			 */
-			function centerMap(map) {
-
+			function centerMap( map ) {
 				// Create map boundaries from all map markers.
 				let bounds = new google.maps.LatLngBounds();
-				map.markers.forEach(function (marker) {
-					bounds.extend({
+				map.markers.forEach( function ( marker ) {
+					bounds.extend( {
 						lat: marker.position.lat(),
 						lng: marker.position.lng(),
-					});
-				});
+					} );
+				} );
 
 				// Case: Single marker.
-				if (map.markers.length == 1) {
-					map.setCenter(bounds.getCenter());
+				if ( map.markers.length == 1 ) {
+					map.setCenter( bounds.getCenter() );
 
 					// Case: Multiple markers.
 				} else {
-					map.fitBounds(bounds);
+					map.fitBounds( bounds );
 				}
 			}
 
 			// Render maps on page load.
-			$(document).ready(function () {
-				$('.acf-map').each(function () {
-					initMap($(this));
-				});
-			});
-
-		})(jQuery);
+			$( document ).ready( function () {
+				$( '.acf-map' ).each( function () {
+					initMap( $( this ) );
+				} );
+			} );
+		} )( jQuery );
 	}
 }
-

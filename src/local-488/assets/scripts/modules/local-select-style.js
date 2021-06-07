@@ -1,13 +1,12 @@
 //=================================\\
 // Select anf opstions styles \\
 //=================================\\
-const localOption = $('.gfield_select');
+const localOption = $( '.gfield_select' );
 
 export default function selectStyle() {
-
-	if (localOption.length) {
-		$(document).ready(function () {
-			$('.gfield_select').select2();
-		})
+	if ( localOption.length ) {
+		$( document ).ready( function () {
+			$( '.gfield_select' ).select2();
+		} );
 	}
 }

@@ -1,131 +1,146 @@
 .block-editor {
-  .editor-post-title {
-    padding: 0 17px;
 
-    @media screen and (min-width: 600px) {
-      padding-left: 35px;
-      padding-right: 15px;
-    }
+	.editor-post-title {
+		padding: 0 17px;
 
-    &__block {
-      @media screen and (min-width: 600px) {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
+		@media screen and (min-width: 600px) {
+			padding-left: 35px;
+			padding-right: 15px;
+		}
 
-    &__input {
-      border-width: 1px 1px 1px 0;
-    }
+		&__block {
 
-    .editor-post-permalink {
-      left: 0;
-      right: 0;
+			@media screen and (min-width: 600px) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 
-      @media screen and (min-width: 600px) {
-        margin: 0 0 0 3px;
-      }
-    }
-  }
+		&__input {
+			border-width: 1px 1px 1px 0;
+		}
 
-  .editor-post-featured-image .components-responsive-wrapper__content {
-    width: 100%;
-  }
+		.editor-post-permalink {
+			left: 0;
+			right: 0;
 
-  .editor-block-list__layout {
-    padding: 0 30px;
+			@media screen and (min-width: 600px) {
+				margin: 0 0 0 3px;
+			}
+		}
+	}
 
-    @media screen and (min-width: 600px) {
-      padding-left: 75px;
-      padding-right: 55px;
-    }
-  }
+	.editor-post-featured-image .components-responsive-wrapper__content {
+		width: 100%;
+	}
 
-  .wp-block {
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+	.editor-block-list__layout {
+		padding: 0 30px;
 
-    &.editor-default-block-appender.block-editor-default-block-appender {
-      @media screen and (min-width: 600px) {
-        margin: 0 -40px;
-      }
-    }
-  }
+		@media screen and (min-width: 600px) {
+			padding-left: 75px;
+			padding-right: 55px;
+		}
+	}
 
-  .editor-post-publish-panel {
-    @media screen and (min-width: 600px) {
-      width: 25%;
-    }
-  }
+	.wp-block {
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
 
-  &-block-list__empty-block-inserter,
-  &-default-block-appender &-inserter {
-    @media screen and (min-width: 600px) {
-      left: -59px;
-    }
-  }
+		&.editor-default-block-appender.block-editor-default-block-appender {
+
+			@media screen and (min-width: 600px) {
+				margin: 0 -40px;
+			}
+		}
+	}
+
+	.editor-post-publish-panel {
+
+		@media screen and (min-width: 600px) {
+			width: 25%;
+		}
+	}
+
+	&-block-list__empty-block-inserter,
+	&-default-block-appender &-inserter {
+
+		@media screen and (min-width: 600px) {
+			left: -59px;
+		}
+	}
 }
 
 .editor-styles-wrapper {
-  ul {
-    list-style: none;
-  }
 
-  .block-library-list {
-    ol {
-      margin: 0;
-    }
+	ul {
+		list-style: none;
+	}
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-  }
+	.block-library-list {
 
-  .editor-block-list__layout {
-    ul {
-      list-style: none;
-    }
+		ol {
+			margin: 0;
+		}
 
-    &.is-sidebar-opened {
-      .edit-post-sidebar,
-      .edit-post-plugin-sidebar__sidebar-layout {
-        @media screen and (min-width: 783px) {
-          width: 280px;
-        }
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+	}
 
-        @media screen and (min-width: 1025px) {
-          width: 25%;
-        }
-      }
+	.editor-block-list__layout {
 
-      .edit-post-layout__content {
-        @media screen and (min-width: 783px) {
-          margin-right: 280px;
-        }
+		ul {
+			list-style: none;
+		}
 
-        @media screen and (min-width: 1025px) {
-          margin-right: 25%;
-        }
-      }
-    }
-  }
+		&.is-sidebar-opened {
+
+			.edit-post-sidebar,
+			.edit-post-plugin-sidebar__sidebar-layout {
+
+				@media screen and (min-width: 783px) {
+					width: 280px;
+				}
+
+				@media screen and (min-width: 1025px) {
+					width: 25%;
+				}
+			}
+
+			.edit-post-layout__content {
+
+				@media screen and (min-width: 783px) {
+					margin-right: 280px;
+				}
+
+				@media screen and (min-width: 1025px) {
+					margin-right: 25%;
+				}
+			}
+		}
+	}
 }
 
 .edit-post-layout {
-  .components-notice-list {
-    z-index: 100;
-  }
+
+	.components-notice-list {
+		z-index: 100;
+	}
 }
 
 .wp-core-ui {
-  .attachment {
-    .landscape {
-      img {
-        max-width: none;
-      }
-    }
-  }
+
+	.attachment {
+
+		.landscape {
+
+			img {
+				max-width: none;
+			}
+		}
+	}
 }

@@ -12,43 +12,52 @@
  * @var array $block
  */
 
- $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; ?>
 
-<?php $args = array(
-	'post_type' => 'our-offices',
+<?php
+$args = array(
+	'post_type'      => 'our-offices',
 	'posts_per_page' => 6,
-	'paged' => $paged
+	'paged'          => $paged,
 );
 
 
-	query_posts($args);
-query_posts($args);
+	query_posts( $args );
+query_posts( $args );
 global $post;
-	if ( have_posts() ) :
-		setup_postdata( $post );?>
+if ( have_posts() ) :
+	setup_postdata( $post );
+	?>
 		<section class="our-offices" >
 
 			<div class="our-offices__container container container--medium">
 
 				<div class="our-offices__wrapper">
 
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						?>
 
 						<article class="our-offices__article our-offices-article">
 
 							<div class="our-offices-article__content">
 
-								<?php $post_title = get_the_title();
-								if(!empty($post_title) ) { ?>
+								<?php
+								$post_title = get_the_title();
+								if ( ! empty( $post_title ) ) {
+									?>
 
 									<h4 class="our-offices-article__title"><?php echo $post_title; ?></h4>
 
-								<?php }
+									<?php
+								}
 
 
 								$excerpt = get_the_excerpt();
 
-								if(!empty($excerpt)) { ?>
+								if ( ! empty( $excerpt ) ) {
+									?>
 
 									<div class="our-offices-article__excerpt">
 
@@ -57,11 +66,11 @@ global $post;
 									</div>
 								<?php } ?>
 
-							<?php $location = get_field('google_map', $post->ID); ?>
+							<?php $location = get_field( 'google_map', $post->ID ); ?>
 
 								<a class="our-offices-article__direction-link read-more-button" target="_blank" href="https://www.google.com/maps/place/<?php echo $location['address']; ?>" >
 
-									<?php _e('Get Directions', THEME_TD); ?>
+									<?php _e( 'Get Directions', THEME_TD ); ?>
 
 									<span class="read-more-button__svg our-offices-article__direction-svg">
 										<svg width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,8 +80,10 @@ global $post;
 									</span>
 								</a>
 
-								<?php $article_content = get_the_content();
-								if(!empty($article_content)) { ?>
+								<?php
+								$article_content = get_the_content();
+								if ( ! empty( $article_content ) ) {
+									?>
 
 									<div class="our-offices-article__text-content">
 
@@ -101,14 +112,16 @@ global $post;
 							</div>
 
 
-							<?php $image_url = get_field('google_map_pointer', $post->ID);
+							<?php
+							$image_url = get_field( 'google_map_pointer', $post->ID );
 
-							if(!empty($location)) {?>
+							if ( ! empty( $location ) ) {
+								?>
 
 								<div class="acf-map" data-zoom="14">
 									<div class="marker" 
-									data-lat="<?php echo esc_attr($location['lat']); ?>" 
-									data-lng="<?php echo esc_attr($location['lng']); ?>" 
+									data-lat="<?php echo esc_attr( $location['lat'] ); ?>" 
+									data-lng="<?php echo esc_attr( $location['lng'] ); ?>" 
 									data-marker="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/map-marker-svg.svg" 
 									data-marker2="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/map-marker-svg-hover.svg" 
 									> </div>
@@ -122,7 +135,7 @@ global $post;
 
 					<?php endwhile; ?>
 
-				<?php get_template_part('template-parts/content-page-pagination'); ?>
+				<?php get_template_part( 'template-parts/content-page-pagination' ); ?>
 
 
 				</div>
@@ -135,7 +148,7 @@ global $post;
 
 	<?php else : ?>
 
-		<h2><?php _e('Sorry, there are no Pipeline newslatter.', THEME_TD); ?></h2>
+		<h2><?php _e( 'Sorry, there are no Pipeline newslatter.', THEME_TD ); ?></h2>
 
-	<?php endif;wp_reset_postdata(); ?>
-
+	<?php endif;
+	wp_reset_postdata(); ?>

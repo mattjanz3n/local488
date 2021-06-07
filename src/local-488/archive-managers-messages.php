@@ -8,19 +8,19 @@
 
 get_header();
 
-get_template_part('template-parts/section-hero-small');
+get_template_part( 'template-parts/section-hero-small' );
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $args = array(
-	'post_type' => 'managers-messages',
+	'post_type'      => 'managers-messages',
 	'posts_per_page' => 10,
-	'paged' => $paged
+	'paged'          => $paged,
 );
 
-	query_posts($args);
-			
-	if ( have_posts() ) : ?>
+	query_posts( $args );
+
+if ( have_posts() ) : ?>
 
 		<section class="managers-messages" >
 
@@ -28,20 +28,25 @@ $args = array(
 
 				<div class="managers-messages__wrapper">
 
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						?>
 
 						<article class="managers-messages__article">
 	
-							<?php $post_title = get_the_title();
-							if(!empty($post_title) ) : ?>
+							<?php
+							$post_title = get_the_title();
+							if ( ! empty( $post_title ) ) :
+								?>
 	
-								<h4 class="managers-messages__title"><a href="<?php echo esc_url( get_permalink() ) ?>"><?php echo $post_title; ?></a></h4>
+								<h4 class="managers-messages__title"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $post_title; ?></a></h4>
 							
 							<?php endif; ?>
 
-							<a class="managers-messages__post-link read-more-button" href="<?php echo esc_url( get_permalink() ) ?>">
+							<a class="managers-messages__post-link read-more-button" href="<?php echo esc_url( get_permalink() ); ?>">
 	
-								<?php _e('Read More', THEME_TD); ?>
+								<?php _e( 'Read More', THEME_TD ); ?>
 	
 								<span class="single-managers-messages-article__post-link-svg read-more-button__svg">
 									<svg width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,9 +59,12 @@ $args = array(
 						</article>
 
 
-					<?php endwhile;
+						<?php
+					endwhile;
 
-				get_template_part('template-parts/content-page-pagination'); ?><!-- section with related articles -->
+					get_template_part( 'template-parts/content-page-pagination' );
+					?>
+				<!-- section with related articles -->
 
 				</div>
 
@@ -68,7 +76,7 @@ $args = array(
 
 	<?php else : ?>
 
-		<h2><?php _e('Sorry, there are no Pipeline newslatter.', THEME_TD); ?></h2>
+		<h2><?php _e( 'Sorry, there are no Pipeline newslatter.', THEME_TD ); ?></h2>
 
 	<?php endif; ?>
 

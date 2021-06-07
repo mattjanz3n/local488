@@ -10,20 +10,22 @@ get_header(); ?>
 
 <section class="pipeline-newslatter-hero-wrapper" >
 
-	<?php get_template_part('template-parts/section-hero-small'); ?>
+	<?php get_template_part( 'template-parts/section-hero-small' ); ?>
 
 </section>
 
-<?php $post_type = get_post_type();
-$args = array(
-	'post_type' => $post_type,
+<?php
+$post_type = get_post_type();
+$args      = array(
+	'post_type'      => $post_type,
 	'posts_per_page' => 8,
-	'paged' => get_query_var( 'paged' )
-); 
+	'paged'          => get_query_var( 'paged' ),
+);
 
 	$number_of_posts = new WP_Query( $args );
-			
-	if ( $number_of_posts->have_posts() ) : ?>
+
+if ( $number_of_posts->have_posts() ) :
+	?>
 
 		<section class="pipeline-newslatter" >
 
@@ -31,13 +33,16 @@ $args = array(
 
 				<div class="pipeline-newslatter__wrapper">
 
-					<?php while ( $number_of_posts->have_posts() ) : $number_of_posts->the_post(); ?>
+					<?php
+					while ( $number_of_posts->have_posts() ) :
+						$number_of_posts->the_post();
+						?>
 
 						<article class="pipeline-newslatter__post pipeline-newslatter-article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					
 							<?php $thumbnail = get_the_post_thumbnail_url(); ?>
 
-							<div class="pipeline-newslatter-article__image-wrapper" <?php if(!empty($thumbnail)) : ?>
+							<div class="pipeline-newslatter-article__image-wrapper" <?php if ( ! empty( $thumbnail ) ) : ?>
 								style="background-image: url( <?php echo $thumbnail; ?> )"
 								<?php endif; ?> >
 							
@@ -45,9 +50,11 @@ $args = array(
 
 							<div class="pipeline-newslatter-article__content">
 							
-								<?php $post_time = get_the_time( 'l, j F, Y');
-							
-								if(!empty($post_time) ) : ?>
+								<?php
+								$post_time = get_the_time( 'l, j F, Y' );
+
+								if ( ! empty( $post_time ) ) :
+									?>
 
 									<div class="pipeline-newslatter-article__post-time">
 										<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
@@ -60,18 +67,22 @@ $args = array(
 								<?php endif; ?>
 
 
-								<?php $post_title = get_the_title();
+								<?php
+								$post_title = get_the_title();
 
-								if(!empty($post_title) ) : ?>
+								if ( ! empty( $post_title ) ) :
+									?>
 									
 									<h4 class="pipeline-newslatter-article__title"><?php echo $post_title; ?></h4>
 								
-								<?php endif;
-								
-							 $file = get_field('attachments');
+									<?php
+								endif;
+
+								$file = get_field( 'attachments' );
 
 
-								if(!empty( $file['url']) ) : ?>
+								if ( ! empty( $file['url'] ) ) :
+									?>
 									<a class="pipeline-newslatter-article__download-link" download href="<?php echo $file['url']; ?>">
 										<span class="pipeline-newslatter-article__download-icon">
 											<svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +101,7 @@ $args = array(
 
 										</span>
 										<span class="pipeline-newslatter-article__download-text">
-											<?php _e('Download PDF file', THEME_TD); ?>
+											<?php _e( 'Download PDF file', THEME_TD ); ?>
 										</span>
 									</a>
 								<?php endif; ?>
@@ -99,9 +110,12 @@ $args = array(
 
 						</article>
 
-					<?php endwhile;
+						<?php
+					endwhile;
 
-				get_template_part('template-parts/content-page-pagination'); ?><!-- section with related articles -->
+					get_template_part( 'template-parts/content-page-pagination' );
+					?>
+				<!-- section with related articles -->
 
 
 				</div>
@@ -110,12 +124,14 @@ $args = array(
 
 		</section>
 
-	<?php wp_reset_query();
+	<?php
+	wp_reset_query();
 
-	else : ?>
+	else :
+		?>
 
-		<h2><?php _e('Sorry, there are no Pipeline newslatter.', THEME_TD); ?></h2>
+		<h2><?php _e( 'Sorry, there are no Pipeline newslatter.', THEME_TD ); ?></h2>
 
 	<?php endif;
 
-get_footer(); ?>
+	get_footer(); ?>

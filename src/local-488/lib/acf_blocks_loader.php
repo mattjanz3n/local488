@@ -31,7 +31,7 @@ if ( ! class_exists( 'ACF_Blocks_Loader' ) && function_exists( 'acf_register_blo
 		 * ACF_Blocks_Loader constructor.
 		 */
 		public function __construct() {
-			add_action( 'acf/init', [ $this, 'register_blocks' ] );
+			add_action( 'acf/init', array( $this, 'register_blocks' ) );
 		}
 
 		/**
@@ -55,19 +55,19 @@ if ( ! class_exists( 'ACF_Blocks_Loader' ) && function_exists( 'acf_register_blo
 					$file_path    = locate_template( $this->get_block_template_path( $slug ) );
 					$file_headers = get_file_data(
 						$file_path,
-						[
+						array(
 							'title'       => 'Block Name',
 							'description' => 'Description',
 							'category'    => 'Category',
 							'icon'        => 'Icon',
 							'keywords'    => 'Keywords',
 							'supports'    => 'Supports',
-						]
+						)
 					);
 
 					// Register new block
 					acf_register_block(
-						[
+						array(
 							'name'            => $slug,
 							'title'           => $file_headers['title'] ?: __( 'Unnamed Block:', 'local_488' ) . ' ' . $slug,
 							'description'     => $file_headers['description'],
@@ -75,10 +75,10 @@ if ( ! class_exists( 'ACF_Blocks_Loader' ) && function_exists( 'acf_register_blo
 							'icon'            => $file_headers['icon'],
 							'keywords'        => explode( ' ', $file_headers['keywords'] ),
 							'supports'        => json_decode( $file_headers['supports'], true ),
-							'render_callback' => [ $this, 'block_render_callback' ],
+							'render_callback' => array( $this, 'block_render_callback' ),
 							'enqueue_style'   => get_template_directory_uri() . '/' . $this->get_block_dir_path( $slug ) . 'style.css',
 							'enqueue_script'  => get_template_directory_uri() . '/' . $this->get_block_dir_path( $slug ) . 'script.js',
-						]
+						)
 					);
 				}
 			}

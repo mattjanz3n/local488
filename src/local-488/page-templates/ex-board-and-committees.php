@@ -10,7 +10,7 @@ get_header();
 
 $page_image = get_the_post_thumbnail();
 
-if (!empty($page_image)) : ?>
+if ( ! empty( $page_image ) ) : ?>
 
 	<section class="hero hero--large">
 		<div class="container">
@@ -21,8 +21,10 @@ if (!empty($page_image)) : ?>
 						<?php get_breadcrumbs(); ?>
 					</ul>
 				</div>
-					<?php $page_title = get_the_title();
-					if(!empty($page_title)) : ?>
+					<?php
+					$page_title = get_the_title();
+					if ( ! empty( $page_title ) ) :
+						?>
 						<h1 class="hero__title hero__title--small white-headline">
 							<?php echo $page_title; ?>
 						</h1>
@@ -35,29 +37,36 @@ if (!empty($page_image)) : ?>
 		</div>
 	</section>
 
-<?php else :
+	<?php
+else :
 
-	get_template_part('template-parts/section-hero-small');
+	get_template_part( 'template-parts/section-hero-small' );
 
 endif;
 
-if( have_rows('ex_board_and_committees') ) :
-	$counter = 0; ?>
+if ( have_rows( 'ex_board_and_committees' ) ) :
+	$counter = 0;
+	?>
 	<section class="ex-board-and-committees-accordion">
 		<div class="container container--medium">
 			<div class="dashboard__content small-overlay">
 				<div class="content__accordion discounts__accordion">
 					<div id="accordion" class="accordion full-page">
 
-					<?php while( have_rows('ex_board_and_committees') ) : the_row();
+					<?php
+					while ( have_rows( 'ex_board_and_committees' ) ) :
+						the_row();
 
-					$counter++; ?>
+						$counter++;
+						?>
 
 
 						<div class="card">
 
-							<?php $card_title = get_sub_field('title');
-							if(!empty($card_title)) : ?>
+							<?php
+							$card_title = get_sub_field( 'title' );
+							if ( ! empty( $card_title ) ) :
+								?>
 
 								<div class="card-header" id="heading<?php echo $counter; ?>">
 									<h5 class="mb-0">
@@ -69,8 +78,10 @@ if( have_rows('ex_board_and_committees') ) :
 
 							<?php endif; ?>
 
-							<?php $card_description = get_sub_field('description');
-							if(!empty($card_description)) : ?>
+							<?php
+							$card_description = get_sub_field( 'description' );
+							if ( ! empty( $card_description ) ) :
+								?>
 
 								<div id="collapse<?php echo $counter; ?>" class="collapse" aria-labelledby="heading<?php echo $counter; ?>" data-parent="#accordion">
 									<div class="card-body">
@@ -91,9 +102,11 @@ if( have_rows('ex_board_and_committees') ) :
 
 <?php endif; ?>
 
-<?php $page_content = get_the_content();
+<?php
+$page_content = get_the_content();
 
-if(!empty($page_content)) : ?>
+if ( ! empty( $page_content ) ) :
+	?>
 
 	<section class="ex-board-and-committees-content">
 
@@ -101,6 +114,7 @@ if(!empty($page_content)) : ?>
 
 	</section>
 
-<?php endif;
+	<?php
+endif;
 
 get_footer();

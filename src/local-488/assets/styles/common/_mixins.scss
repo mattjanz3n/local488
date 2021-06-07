@@ -1,35 +1,41 @@
 @function rem-calc($size) {
-  @return $size / 16px * 1rem;
+
+	@return $size / 16px * 1rem;
 }
 
 //Responsive breakpoints
 
 @mixin max-1200 {
-  @media (max-width: 1199.98px) {
-    @content;
-  }
+
+	@media (max-width: 1199.98px) {
+		@content;
+	}
 }
 
 @mixin max-992 {
-  @media (max-width: 991.98px) {
-    @content;
-  }
+
+	@media (max-width: 991.98px) {
+		@content;
+	}
 }
 
 @mixin max-768 {
-  @media (max-width: 767.98px) {
-    @content;
-  }
+
+	@media (max-width: 767.98px) {
+		@content;
+	}
 }
 
 @mixin max-576 {
-  @media (max-width: 575.98px) {
-    @content;
-  }
+
+	@media (max-width: 575.98px) {
+		@content;
+	}
 }
 
 @mixin max-420 {
-  @media (max-width: 420px) {
-    @content;
-  }
+
+	@media (max-width: 420px) {
+		@content;
+	}
 }

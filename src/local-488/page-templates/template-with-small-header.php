@@ -6,14 +6,15 @@
  */
 
 get_header();
-get_template_part('template-parts/section-hero-small');
+get_template_part( 'template-parts/section-hero-small' );
 ?>
 
 	<div id="primary" class="content-area">
 		<section id="main" class="site-main" role="main">
 
 			<?php
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) :
+				the_post();
 
 				get_template_part( 'template-parts/content', 'page' );
 

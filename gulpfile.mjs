@@ -9,6 +9,9 @@ import destroyContainers from './scripts/destroy-containers.mjs';
 gulp.task( 'env:sync', syncLocalEnvironment );
 gulp.task( 'env:start', startEnvironment );
 gulp.task( 'env:transform', transformPaths );
-gulp.task( 'env:resync', gulp.series(destroyContainers, syncLocalEnvironment) )
+gulp.task(
+	'env:resync',
+	gulp.series( destroyContainers, syncLocalEnvironment )
+);
 
 gulp.task( 'test:download', testDownloadFiles );

@@ -1,19 +1,19 @@
 .ex-board-and-committees-accordion {
-  background: $light-gray;
-  padding-bottom: 144px;
-  padding-top: 61px;
+	background: $light-gray;
+	padding-bottom: 144px;
+	padding-top: 61px;
 
-  @include max-576 {
-    padding-bottom: 0;
-    padding-top: 9px;
-  }
+	@include max-576 {
+		padding-bottom: 0;
+		padding-top: 9px;
+	}
 
-  .dashboard__content {
-    padding-right: 0;
+	.dashboard__content {
+		padding-right: 0;
 
-    @include media-breakpoint-down(sm) {
-      padding-bottom: 11px;
-      padding-top: 0;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			padding-bottom: 11px;
+			padding-top: 0;
+		}
+	}
 }

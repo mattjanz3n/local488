@@ -1,187 +1,189 @@
 .footer {
-  position: relative;
-  background-color: $light-gray;
+	position: relative;
+	background-color: $light-gray;
 
-  .container-relative {
-    position: relative;
-    padding-top: 320px;
-    z-index: 2;
+	.container-relative {
+		position: relative;
+		padding-top: 320px;
+		z-index: 2;
 
-    @include media-breakpoint-down(lg) {
-      padding-top: 22.222vw;
-    }
+		@include media-breakpoint-down(lg) {
+			padding-top: 22.222vw;
+		}
 
-    @include media-breakpoint-down(md) {
-      padding-top: 20.996vw;
-    }
+		@include media-breakpoint-down(md) {
+			padding-top: 20.996vw;
+		}
 
-    @include media-breakpoint-down(sm) {
-      padding-top: 0;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			padding-top: 0;
+		}
+	}
 
-  &__large-text {
-    position: absolute;
-    left: 5px;
-    top: 35px;
-    color: rgba(140, 143, 159, 0.15);
-    font: 200px/180px $sub-font;
-    letter-spacing: -3px;
-    opacity: 0.8;
-    font-weight: 900;
-    pointer-events: none;
+	&__large-text {
+		position: absolute;
+		left: 5px;
+		top: 35px;
+		color: rgba(140, 143, 159, 0.15);
+		font: 200px/180px $sub-font;
+		letter-spacing: -3px;
+		opacity: 0.8;
+		font-weight: 900;
+		pointer-events: none;
 
-    @include media-breakpoint-down(lg) {
-      font-size: 13.889vw;
-      line-height: 12.5vw;
-    }
+		@include media-breakpoint-down(lg) {
+			font-size: 13.889vw;
+			line-height: 12.5vw;
+		}
 
-    @include media-breakpoint-down(md) {
-      font-size: 13.672vw;
-      line-height: 11.719vw;
-      letter-spacing: 0;
-    }
+		@include media-breakpoint-down(md) {
+			font-size: 13.672vw;
+			line-height: 11.719vw;
+			letter-spacing: 0;
+		}
 
-    @include media-breakpoint-down(sm) {
-      font-size: 16.875vw;
-      left: 0;
-      top: 0;
-      line-height: 15.625vw;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			font-size: 16.875vw;
+			left: 0;
+			top: 0;
+			line-height: 15.625vw;
+		}
+	}
 
-  &__wrap {
-    background-color: $blue;
-    padding-top: 81px;
-    position: relative;
-    z-index: 1;
+	&__wrap {
+		background-color: $blue;
+		padding-top: 81px;
+		position: relative;
+		z-index: 1;
 
-    @include media-breakpoint-down(sm) {
-      padding-top: 38%;
-    }
+		@include media-breakpoint-down(sm) {
+			padding-top: 38%;
+		}
 
-    @include media-breakpoint-down(xs) {
-      padding-top: 33%;
-    }
+		@include media-breakpoint-down(xs) {
+			padding-top: 33%;
+		}
 
-    @media (max-width: 350px) {
-      padding-top: 31.5%;
-    }
-  }
+		@media (max-width: 350px) {
+			padding-top: 31.5%;
+		}
+	}
 
-  &__main {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+	&__main {
+		display: flex;
+		justify-content: space-between;
+		position: relative;
 
-    @include media-breakpoint-down(sm) {
-      flex-direction: column-reverse;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			flex-direction: column-reverse;
+		}
+	}
 
-  &__column {
-    margin-bottom: 58px;
+	&__column {
+		margin-bottom: 58px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 26px;
-      text-align: center;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 26px;
+			text-align: center;
+		}
+	}
 
-  &__button {
-    display: block;
-    margin-bottom: 21px;
+	&__button {
+		display: block;
+		margin-bottom: 21px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 27px;
-      padding: 14px 40px;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 27px;
+			padding: 14px 40px;
+		}
+	}
 
-  &__title {
-    margin-bottom: 42px;
+	&__title {
+		margin-bottom: 42px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 24px;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 24px;
+		}
+	}
 
-  &__logo {
-    margin-bottom: 34px;
+	&__logo {
+		margin-bottom: 34px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 45px;
-      max-height: 143px;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 45px;
+			max-height: 143px;
+		}
+	}
 
-  &__copyright {
-    font: 11.5px/19px $sub-font;
-    color: $white;
-    letter-spacing: 0.21px;
+	&__copyright {
+		font: 11.5px/19px $sub-font;
+		color: $white;
+		letter-spacing: 0.21px;
 
-    p {
-      margin-bottom: 0;
-    }
-  }
+		p {
+			margin-bottom: 0;
+		}
+	}
 
-  &__socials {
-    margin-left: 200px;
+	&__socials {
+		margin-left: 200px;
 
-    @include media-breakpoint-down(sm) {
-      margin-left: 0;
-      margin-bottom: 9px;
-    }
+		@include media-breakpoint-down(sm) {
+			margin-left: 0;
+			margin-bottom: 9px;
+		}
 
-    a {
-      color: $white;
-      margin-right: 17px;
+		a {
+			color: $white;
+			margin-right: 17px;
 
-      &:hover {
-        color: $red;
-      }
+			&:hover {
+				color: $red;
+			}
 
-      @include max-768 {
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-  }
+			@include max-768 {
 
-  &__menu {
-    .menu {
-      list-style: none;
-      margin-bottom: 22px;
-      padding-left: 0;
-      font-family: $sub-font;
-      column-count: 2;
-      column-gap: 0;
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
 
-      @include media-breakpoint-down(sm) {
-        column-count: 1;
-        text-align: center;
-        margin-bottom: 12px;
-      }
+	&__menu {
 
-      li {
-        min-width: 200px;
+		.menu {
+			list-style: none;
+			margin-bottom: 22px;
+			padding-left: 0;
+			font-family: $sub-font;
+			column-count: 2;
+			column-gap: 0;
 
-        @include media-breakpoint-down(sm) {
-          margin-bottom: 5px;
-        }
-      }
+			@include media-breakpoint-down(sm) {
+				column-count: 1;
+				text-align: center;
+				margin-bottom: 12px;
+			}
 
-      a {
-        color: $white;
-        text-decoration: none;
-        font-size: 16px;
-        line-height: 22px;
+			li {
+				min-width: 200px;
 
-        &:hover {
-          color: $red;
-        }
-      }
-    }
-  }
+				@include media-breakpoint-down(sm) {
+					margin-bottom: 5px;
+				}
+			}
+
+			a {
+				color: $white;
+				text-decoration: none;
+				font-size: 16px;
+				line-height: 22px;
+
+				&:hover {
+					color: $red;
+				}
+			}
+		}
+	}
 }

@@ -1,75 +1,75 @@
 .search-page {
-  padding: 60px 0;
+	padding: 60px 0;
 
-  @include media-breakpoint-down(sm) {
-    padding: 40px 0;
-  }
+	@include media-breakpoint-down(sm) {
+		padding: 40px 0;
+	}
 
-  &__title {
-    //  margin-bottom: 50px;
-    margin-bottom: 0;
+	&__title {
+		//  margin-bottom: 50px;
+		margin-bottom: 0;
 
-    //  @include media-breakpoint-down(sm) {
-    //    margin-bottom: 30px;
-    //  }
-  }
+		//  @include media-breakpoint-down(sm) {
+		//    margin-bottom: 30px;
+		//  }
+	}
 
-  form {
-    margin-bottom: 50px;
+	form {
+		margin-bottom: 50px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 25px;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 25px;
+		}
+	}
 
-  .page-header {
-    margin-bottom: 0;
+	.page-header {
+		margin-bottom: 0;
 
-    //  @include media-breakpoint-down(sm) {
-    //    margin-bottom: 20px;
-    //  }
-  }
+		//  @include media-breakpoint-down(sm) {
+		//    margin-bottom: 20px;
+		//  }
+	}
 
-  .page-content p {
-    margin-bottom: 40px;
+	.page-content p {
+		margin-bottom: 40px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 20px;
-    }
-  }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 20px;
+		}
+	}
 
-  article {
-    background-color: transparent;
-    padding: 50px 0;
-    border-bottom: 2px solid $gray;
+	article {
+		background-color: transparent;
+		padding: 50px 0;
+		border-bottom: 2px solid $gray;
 
-    @include media-breakpoint-down(sm) {
-      padding: 25px 0;
+		@include media-breakpoint-down(sm) {
+			padding: 25px 0;
 
-      .loc-single-post__categories {
-        margin-bottom: 15px;
-      }
+			.loc-single-post__categories {
+				margin-bottom: 15px;
+			}
 
-      .loc-single-post__post-time {
-        font-size: 15px;
-        margin: 0 0 10px 0;
-      }
-    }
+			.loc-single-post__post-time {
+				font-size: 15px;
+				margin: 0 0 10px 0;
+			}
+		}
 
-    h2 {
-      font-family: "demos-next", serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.5px;
-      line-height: 2.25rem;
-      font-weight: bold;
-    }
+		h2 {
+			font-family: "demos-next", serif;
+			font-size: 1.5rem;
+			letter-spacing: 0.5px;
+			line-height: 2.25rem;
+			font-weight: bold;
+		}
 
-    a {
-      text-decoration: none;
-    }
+		a {
+			text-decoration: none;
+		}
 
-    .entry-meta {
-      display: none;
-    }
-  }
+		.entry-meta {
+			display: none;
+		}
+	}
 }

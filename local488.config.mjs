@@ -12,10 +12,10 @@ export default {
 	dumpName: 'dbdump-al0303.sql',
 
 	// Paths to transform in the database.
-	transformPaths: new Map([
-		['https://local488.wpengine.com', 'http://localhost:8888'],
-		['https://beta.local48.ca', 'http://localhost:8888'],
-		['//local488.wpengine.com', '//localhost:8888'],
-		['//beta.local488.ca', '//localhost:8888']
-	]),
+	transformPaths: new Map( [
+		[ 'https://local488.wpengine.com', 'http://localhost:8888' ],
+		[ 'https://beta.local48.ca', 'http://localhost:8888' ],
+		[ '//local488.wpengine.com', '//localhost:8888' ],
+		[ '//beta.local488.ca', '//localhost:8888' ],
+	] ),
 };

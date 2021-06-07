@@ -1,23 +1,24 @@
 .single-community-involvemen-article {
-  padding: 50px 0;
+	padding: 50px 0;
 
-  &__image-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+	&__image-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 30px;
 
-    img {
-      @include media-breakpoint-down(sm) {
-        max-width: 290px;
-      }
-    }
-  }
+		img {
 
-  &__post-title {
-    margin-bottom: 30px;
-  }
+			@include media-breakpoint-down(sm) {
+				max-width: 290px;
+			}
+		}
+	}
 
-  &__post-time {
-    margin-bottom: 30px;
-  }
+	&__post-title {
+		margin-bottom: 30px;
+	}
+
+	&__post-time {
+		margin-bottom: 30px;
+	}
 }

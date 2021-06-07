@@ -7,7 +7,7 @@
  */
 
 get_header();
-get_template_part('template-parts/section-hero-small'); ?>
+get_template_part( 'template-parts/section-hero-small' ); ?>
 
 	<div id="primary" class="content-area">
 
@@ -15,11 +15,14 @@ get_template_part('template-parts/section-hero-small'); ?>
 		
 			<div class="container container--small">
 
-				<?php while ( have_posts() ) : the_post(); 
+				<?php
+				while ( have_posts() ) :
+					the_post();
 
-					get_template_part('template-parts/content-managers-messages');
+					get_template_part( 'template-parts/content-managers-messages' );
 
-				 endwhile; ?>
+				 endwhile;
+				?>
 
 			</div>
 
@@ -27,4 +30,5 @@ get_template_part('template-parts/section-hero-small'); ?>
 
 	</div>
 
-<?php get_footer();
+<?php
+get_footer();

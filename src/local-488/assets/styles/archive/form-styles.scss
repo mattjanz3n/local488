@@ -1,202 +1,209 @@
 .select2-container--default {
-  .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: $light-gray !important;
-    color: $black !important;
-  }
+
+	.select2-results__option--highlighted.select2-results__option--selectable {
+		background-color: $light-gray !important;
+		color: $black !important;
+	}
 }
 
 .select2 {
-  &.select2-container {
-    width: 100% !important;
-  }
+
+	&.select2-container {
+		width: 100% !important;
+	}
 }
 
 .select2-selection {
-  &--single {
-    background: transparent !important;
-    border: 2px solid !important;
-    padding: 12px 14px 14px !important;
-    border-radius: 0 !important;
-    height: 52px !important;
 
-    &:focus {
-      border-color: $black !important;
-      border-width: 4px !important;
-      outline: none;
-      padding: 10px 14px 14px 12px !important;
-    }
-  }
+	&--single {
+		background: transparent !important;
+		border: 2px solid !important;
+		padding: 12px 14px 14px !important;
+		border-radius: 0 !important;
+		height: 52px !important;
 
-  &__rendered {
-    padding: 0 !important;
-    font-size: 1rem;
-    line-height: 1.375rem;
-    font-family: $sub-font;
-    font-weight: 400;
-    letter-spacing: 0.22px;
-    outline: none;
-    background: transparent;
-  }
+		&:focus {
+			border-color: $black !important;
+			border-width: 4px !important;
+			outline: none;
+			padding: 10px 14px 14px 12px !important;
+		}
+	}
 
-  &__arrow {
-    width: 18px !important;
-    height: 10px !important;
-    top: 21px !important;
-    right: 18px !important;
-    background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2220%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M1%201l9%208%209-8%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+	&__rendered {
+		padding: 0 !important;
+		font-size: 1rem;
+		line-height: 1.375rem;
+		font-family: $sub-font;
+		font-weight: 400;
+		letter-spacing: 0.22px;
+		outline: none;
+		background: transparent;
+	}
 
-    b {
-      display: none;
-    }
-  }
+	&__arrow {
+		width: 18px !important;
+		height: 10px !important;
+		top: 21px !important;
+		right: 18px !important;
+		background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2220%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M1%201l9%208%209-8%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		b {
+			display: none;
+		}
+	}
 }
 
 .select2-search {
-  display: none !important;
+	display: none !important;
 }
 
 .select2-results__option {
-  border-left: 2px solid $black;
-  border-right: 2px solid $black;
+	border-left: 2px solid $black;
+	border-right: 2px solid $black;
 
-  &--selectable {
-    font-family: $sub-font;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.21875px;
-    padding: 13px 6px !important;
-  }
+	&--selectable {
+		font-family: $sub-font;
+		font-size: 16px;
+		line-height: 22px;
+		letter-spacing: 0.21875px;
+		padding: 13px 6px !important;
+	}
 
-  &--selected {
-    background-color: $light-gray !important;
-    color: $black !important;
-  }
+	&--selected {
+		background-color: $light-gray !important;
+		color: $black !important;
+	}
 
-  &:last-child {
-    border-bottom: 2px solid $black;
-  }
+	&:last-child {
+		border-bottom: 2px solid $black;
+	}
 }
 
 .gform_wrapper {
-  padding-top: 120px;
-  padding-bottom: 160px;
-  background: $body-bg;
+	padding-top: 120px;
+	padding-bottom: 160px;
+	background: $body-bg;
 
-  @include media-breakpoint-down(md) {
-    padding-top: 44px;
-    padding-bottom: 35px;
-  }
+	@include media-breakpoint-down(md) {
+		padding-top: 44px;
+		padding-bottom: 35px;
+	}
 
-  .validation_message {
-    font-size: 12px;
-    color: $red;
-    line-height: 22px;
-    letter-spacing: 0.21px;
-    font-family: $sub-font;
-  }
+	.validation_message {
+		font-size: 12px;
+		color: $red;
+		line-height: 22px;
+		letter-spacing: 0.21px;
+		font-family: $sub-font;
+	}
 
-  .validation_error {
-    display: none;
-  }
+	.validation_error {
+		display: none;
+	}
 
-  .gform_ajax_spinner {
-    display: none;
-  }
+	.gform_ajax_spinner {
+		display: none;
+	}
 
-  .gform_heading {
-    margin-bottom: 38px;
+	.gform_heading {
+		margin-bottom: 38px;
 
-    @include media-breakpoint-down(sm) {
-      margin-bottom: 27px;
-    }
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 27px;
+		}
 
-    .gform_title {
-      font-size: 48px;
+		.gform_title {
+			font-size: 48px;
 
-      @include media-breakpoint-down(sm) {
-        font-size: 31px;
-      }
-    }
-  }
+			@include media-breakpoint-down(sm) {
+				font-size: 31px;
+			}
+		}
+	}
 
-  .gform_body {
-    ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
+	.gform_body {
 
-      li {
-        margin-bottom: 24px;
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
 
-        .ginput_container {
-          margin-top: -2px;
+			li {
+				margin-bottom: 24px;
 
-          &:focus {
-            border: 2px solid #000;
-            border-width: 4px;
-          }
-        }
+				.ginput_container {
+					margin-top: -2px;
 
-        .gfield_required {
-          color: $red;
-          margin-left: 4px;
-        }
-      }
+					&:focus {
+						border: 2px solid #000;
+						border-width: 4px;
+					}
+				}
 
-      @include media-breakpoint-down(sm) {
-        li:last-child {
-          margin-bottom: 19px;
-        }
-      }
+				.gfield_required {
+					color: $red;
+					margin-left: 4px;
+				}
+			}
 
-      li.gfield_error {
-        & .gfield_label {
-          color: $red;
-        }
+			@include media-breakpoint-down(sm) {
 
-        input,
-        select,
-        textarea {
-          border-color: $red;
-        }
+				li:last-child {
+					margin-bottom: 19px;
+				}
+			}
 
-        select {
-          background: transparent url("../images/red-arrow-down.svg") no-repeat;
-          background-position: right 15px top 50%;
-          color: $red;
-        }
+			li.gfield_error {
 
-        .ginput_container_textarea {
-          &::before {
-            border-color: $red;
-          }
+				& .gfield_label {
+					color: $red;
+				}
 
-          &::after {
-            background: transparent url("../images/red-3-lines.svg") no-repeat;
-          }
-        }
+				input,
+				select,
+				textarea {
+					border-color: $red;
+				}
 
-        .select2-selection--single {
-          border-color: $red !important;
+				select {
+					background: transparent url("../images/red-arrow-down.svg") no-repeat;
+					background-position: right 15px top 50%;
+					color: $red;
+				}
 
-          .select2-selection__rendered {
-            color: $red;
-          }
+				.ginput_container_textarea {
 
-          .select2-selection__arrow {
-            background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2220%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M1%201l9%208%209-8%22%20stroke%3D%22%23DB2222%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E);
-          }
-        }
-      }
-    }
-  }
+					&::before {
+						border-color: $red;
+					}
+
+					&::after {
+						background: transparent url("../images/red-3-lines.svg") no-repeat;
+					}
+				}
+
+				.select2-selection--single {
+					border-color: $red !important;
+
+					.select2-selection__rendered {
+						color: $red;
+					}
+
+					.select2-selection__arrow {
+						background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2220%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M1%201l9%208%209-8%22%20stroke%3D%22%23DB2222%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E);
+					}
+				}
+			}
+		}
+	}
 }
 
 .gform_confirmation_message {
-  text-align: center;
-  font-family: $sub-font;
-  padding: 30px 0;
+	text-align: center;
+	font-family: $sub-font;
+	padding: 30px 0;
 }

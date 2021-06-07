@@ -9,7 +9,7 @@ get_header();
 
 the_content();
 
-if( have_rows('general_questions') ) :
+if ( have_rows( 'general_questions' ) ) :
 	$counter = 0; ?>
 	<section class="most-popular-general-questions-accordion">
 		<div class="container container--medium">
@@ -17,15 +17,20 @@ if( have_rows('general_questions') ) :
 			<div class="content__accordion discounts__accordion">
 				<div id="accordion" class="accordion full-page">
 
-				<?php while( have_rows('general_questions') ) : the_row();
+				<?php
+				while ( have_rows( 'general_questions' ) ) :
+					the_row();
 
-				$counter++; ?>
+					$counter++;
+					?>
 
 
 					<div class="card">
 
-						<?php $card_question = get_sub_field('question');
-						if(!empty($card_question)) : ?>
+						<?php
+						$card_question = get_sub_field( 'question' );
+						if ( ! empty( $card_question ) ) :
+							?>
 
 							<div class="card-header" id="heading<?php echo $counter; ?>">
 								<h5 class="mb-0">
@@ -37,8 +42,10 @@ if( have_rows('general_questions') ) :
 
 						<?php endif; ?>
 
-						<?php $card_answer = get_sub_field('answer');
-						if(!empty($card_answer)) : ?>
+						<?php
+						$card_answer = get_sub_field( 'answer' );
+						if ( ! empty( $card_answer ) ) :
+							?>
 
 							<div id="collapse<?php echo $counter; ?>" class="collapse" aria-labelledby="heading<?php echo $counter; ?>" data-parent="#accordion">
 								<div class="card-body">
@@ -59,6 +66,7 @@ if( have_rows('general_questions') ) :
 	</section>
 
 
-<?php endif;
+	<?php
+endif;
 
 get_footer();

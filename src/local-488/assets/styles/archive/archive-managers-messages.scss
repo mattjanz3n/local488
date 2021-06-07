@@ -1,39 +1,40 @@
 .single-managers-messages {
-  .footer {
-    background-color: $white;
-  }
+
+	.footer {
+		background-color: $white;
+	}
 }
 
 .managers-messages {
-  padding-top: 51px;
-  padding-bottom: 115px;
-  background-color: $light-gray;
+	padding-top: 51px;
+	padding-bottom: 115px;
+	background-color: $light-gray;
 
-  @include media-breakpoint-down(xs) {
-    padding-top: 24px;
-    padding-bottom: 20px;
-  }
+	@include media-breakpoint-down(xs) {
+		padding-top: 24px;
+		padding-bottom: 20px;
+	}
 
-  &__article {
-    padding-top: 45px;
-    padding-bottom: 43px;
-    border-bottom: 4px solid $black;
+	&__article {
+		padding-top: 45px;
+		padding-bottom: 43px;
+		border-bottom: 4px solid $black;
 
-    @include media-breakpoint-down(xs) {
-      padding-top: 30px;
-      padding-bottom: 29px;
-    }
-  }
+		@include media-breakpoint-down(xs) {
+			padding-top: 30px;
+			padding-bottom: 29px;
+		}
+	}
 
-  &__title {
-    margin-bottom: 37px;
+	&__title {
+		margin-bottom: 37px;
 
-    @include media-breakpoint-down(xs) {
-      margin-bottom: 20px;
-    }
+		@include media-breakpoint-down(xs) {
+			margin-bottom: 20px;
+		}
 
-    a {
-      text-decoration: none;
-    }
-  }
+		a {
+			text-decoration: none;
+		}
+	}
 }

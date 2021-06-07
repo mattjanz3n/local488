@@ -10,12 +10,13 @@ get_header(); ?>
 
 <div id="primary" class="content-area single-page-news-and-events">
 
-	<?php get_template_part('template-parts/section-hero-small'); ?>
+	<?php get_template_part( 'template-parts/section-hero-small' ); ?>
 
 		<section id="main" class="single-page-content-section" role="main">
 			<div class="container container--small">
 				<?php
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) :
+					the_post();
 
 					get_template_part( 'template-parts/content', get_post_format() );
 
@@ -25,8 +26,9 @@ get_header(); ?>
 			</div>
 		</section><!-- #main -->
 
-			<?php get_template_part('template-parts/section-single-page-related-articles'); ?><!-- section with related articles -->
+			<?php get_template_part( 'template-parts/section-single-page-related-articles' ); ?><!-- section with related articles -->
 
 	</div><!-- #primary -->
 
-<?php get_footer();
+<?php
+get_footer();

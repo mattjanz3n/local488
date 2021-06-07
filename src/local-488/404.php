@@ -8,7 +8,7 @@
 
 get_header();
 
-get_template_part('template-parts/section-hero-small');?>
+get_template_part( 'template-parts/section-hero-small' );?>
 
 	<div id="primary" class="content-area">
 		<section id="main" class="site-main container" role="main">
@@ -23,7 +23,7 @@ get_template_part('template-parts/section-hero-small');?>
 
 				</div><!-- .page-content -->
 
-				<?php get_template_part('searchform'); ?>
+				<?php get_template_part( 'searchform' ); ?>
 
 			</section><!-- .error-404 -->
 

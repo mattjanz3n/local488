@@ -18,14 +18,16 @@
 		</svg>
 
 		<span class="loc-single-post__back-link-text archive-back-link__text">
-			<?php _e('Back to List', THEME_TD); ?>
+			<?php _e( 'Back to List', THEME_TD ); ?>
 		</span>
 	</a>
 
 
-	<?php $post_time = get_the_time( 'F j, Y');
+	<?php
+	$post_time = get_the_time( 'F j, Y' );
 
-	if(!empty($post_time) ) : ?>
+	if ( ! empty( $post_time ) ) :
+		?>
 
 		<div class="single-managers-messages-article__post-time">
 			<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
@@ -51,7 +53,7 @@
 			</svg>
 
 			<span class="loc-single-post__back-link-text archive-back-link__text">
-				<?php _e('Back to List', THEME_TD); ?>
+				<?php _e( 'Back to List', THEME_TD ); ?>
 			</span>
 		</a>
 

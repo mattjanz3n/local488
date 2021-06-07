@@ -36,14 +36,14 @@ class Local_488_Navwalker extends Walker_Nav_Menu {
 	 * @param array  $args args
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent  = str_repeat( "\t", $depth );
-		if ($depth === 0) {
+		$indent = str_repeat( "\t", $depth );
+		if ( $depth === 0 ) {
 			$output .= "\n$indent<ul role=\"menu\" class=\"dropdown-menu\">\n";
 		}
-		if ($depth === 1) {
+		if ( $depth === 1 ) {
 			$output .= "\n$indent<ul role=\"menu\" class=\"second-dropdown-menu\">\n";
 		}
-		if ($depth === 2) {
+		if ( $depth === 2 ) {
 			$output .= "\n$indent<ul role=\"menu\" class=\"third-dropdown-menu\">\n";
 		}
 	}
@@ -107,11 +107,11 @@ class Local_488_Navwalker extends Walker_Nav_Menu {
 				$atts['href']          = '#';
 				$atts['class']         = 'dropdown-toggle first-level-item';
 				$atts['aria-haspopup'] = 'true';
-			} elseif ($args->has_children && $depth === 1 ) {
+			} elseif ( $args->has_children && $depth === 1 ) {
 				$atts['href']          = '#';
 				$atts['class']         = 'dropdown-toggle second-level-item';
 				$atts['aria-haspopup'] = 'true';
-			} elseif ($args->has_children && $depth === 2 ) {
+			} elseif ( $args->has_children && $depth === 2 ) {
 				$atts['href']          = '#';
 				$atts['class']         = 'dropdown-toggle third-level-item';
 				$atts['aria-haspopup'] = 'true';
@@ -137,7 +137,8 @@ class Local_488_Navwalker extends Walker_Nav_Menu {
 			 */
 			if ( ! empty( $item->attr_title ) ) {
 				$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
-			} else {              $item_output .= '<a' . $attributes . '>';
+			} else {
+				$item_output .= '<a' . $attributes . '>';
 			}
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
@@ -233,14 +234,14 @@ function local_488_pagination( $echo = true ) {
 	$big   = 999999999; // need an unlikely integer
 	$pages = paginate_links(
 		array(
-			'base'         => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format'       => '?paged=%#%',
-			'current'      => max( 1, get_query_var( 'paged' ) ),
-			'total'        => $wp_query->max_num_pages,
-			'type'         => 'array',
-			'prev_next'    => true,
-			'prev_text'    => __( '&laquo; Prev' ),
-			'next_text'    => __( 'Next &raquo;' ),
+			'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format'    => '?paged=%#%',
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'     => $wp_query->max_num_pages,
+			'type'      => 'array',
+			'prev_next' => true,
+			'prev_text' => __( '&laquo; Prev' ),
+			'next_text' => __( 'Next &raquo;' ),
 		)
 	);
 	if ( is_array( $pages ) ) {
@@ -356,7 +357,10 @@ if ( ! class_exists( 'Local_488_Comments' ) ) :
 					<div class="notice">
 						<p class="bottom"><?php _e( 'Your comment is awaiting moderation.', 'local_488' ); ?></p>
 					</div>
-				<?php else : comment_text(); ?>
+						<?php
+				else :
+					comment_text();
+					?>
 				<?php endif; ?>
 			</section><!-- /.comment-content -->
 			<div class="comment-meta comment-meta-data hide">
@@ -384,7 +388,7 @@ if ( ! class_exists( 'Local_488_Comments' ) ) :
 		 * @param array   $args args
 		 * @return void
 		 */
-		public function end_el( & $output, $comment, $depth = 0, $args = array() ) {
+		public function end_el( &$output, $comment, $depth = 0, $args = array() ) {
 			?>
 		</li><!-- /#comment-' . get_comment_ID() . ' -->
 			<?php

@@ -22,7 +22,7 @@ export default async function syncLocalEnvironment( done ) {
 		startEnvironment();
 	}
 
-	fixPermalinks( path.join(workDirectoryPath, 'WordPress') )
+	fixPermalinks( path.join( workDirectoryPath, 'WordPress' ) );
 
 	if ( ! fs.existsSync( path.resolve( './.cache/local488' ) ) ) {
 		fs.mkdirSync( path.resolve( './.cache/local488' ), {
@@ -41,7 +41,11 @@ export default async function syncLocalEnvironment( done ) {
 		} );
 	}
 
-	const wpContentPath = path.join(workDirectoryPath, 'WordPress', 'wp-content')
+	const wpContentPath = path.join(
+		workDirectoryPath,
+		'WordPress',
+		'wp-content'
+	);
 
 	console.log( 'Installing.' );
 	await installFilesFromServer(
@@ -52,33 +56,39 @@ export default async function syncLocalEnvironment( done ) {
 				{
 					tarPath: 'plugins',
 					destinationDirectory: wpContentPath,
-					excludeSubdirs: new Set([ 'page-blocks' ])
+					excludeSubdirs: new Set( [ 'page-blocks' ] ),
 				},
 				{
 					tarPath: 'themes',
 					destinationDirectory: wpContentPath,
-					excludeSubdirs: new Set( [ 'local-488' ] )
+					excludeSubdirs: new Set( [ 'local-488' ] ),
 				},
 				{
 					tarPath: 'uploads',
-					destinationDirectory: wpContentPath
+					destinationDirectory: wpContentPath,
 				},
 				{
 					tarPath: local488Config.dumpName,
-					destinationDirectory: path.join(workDirectoryPath, 'WordPress')
-				}
-			]
+					destinationDirectory: path.join(
+						workDirectoryPath,
+						'WordPress'
+					),
+				},
+			],
 		}
 	);
 
-	console.log('Importing database.')
-	importDatabase()
+	console.log( 'Importing database.' );
+	importDatabase();
 
 	console.log( 'Fixing up database paths.' );
 	replacePathsInDatabase();
 
-	console.log( 'Synchronization completed!' )
-	console.log( 'Remember to change $table_prefix in', path.join(workDirectoryPath, 'WordPress', 'wp-config.php' ) )
+	console.log( 'Synchronization completed!' );
+	console.log(
+		'Remember to change $table_prefix in',
+		path.join( workDirectoryPath, 'WordPress', 'wp-config.php' )
+	);
 
 	if ( typeof done === 'function' ) {
 		done();
@@ -231,7 +241,10 @@ export async function installFilesFromServer(
 }
 
 function importDatabase() {
-	execSync(`npx wp-env run cli 'wp db import ${ local488Config.dumpName }'`, { stdio: 'inherit' })
+	execSync(
+		`npx wp-env run cli 'wp db import ${ local488Config.dumpName }'`,
+		{ stdio: 'inherit' }
+	);
 }
 
 /**
@@ -239,8 +252,14 @@ function importDatabase() {
  * to be changed in the local environment.
  */
 export function replacePathsInDatabase() {
-	for( const [oldPath, newPath] of local488Config.transformPaths.entries() ) {
-		execSync( `npx wp-env run cli 'wp search-replace ${oldPath} ${newPath} --all-tables'`, { stdio: 'inherit' } )
+	for ( const [
+		oldPath,
+		newPath,
+	] of local488Config.transformPaths.entries() ) {
+		execSync(
+			`npx wp-env run cli 'wp search-replace ${ oldPath } ${ newPath } --all-tables'`,
+			{ stdio: 'inherit' }
+		);
 	}
 }
 
@@ -248,7 +267,7 @@ export function replacePathsInDatabase() {
  * Fixes permalinks for WordPress installation in dirPath.
  */
 function fixPermalinks( dirPath ) {
-	const accessPath = path.join(dirPath, '.htaccess')
+	const accessPath = path.join( dirPath, '.htaccess' );
 	const directives = `\
 
 # BEGIN WordPress
@@ -266,7 +285,7 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
-`
-	fs.writeFileSync(accessPath, directives, {flag: 'a'})
-	fs.chmodSync(accessPath, 0o777)
+`;
+	fs.writeFileSync( accessPath, directives, { flag: 'a' } );
+	fs.chmodSync( accessPath, 0o777 );
 }

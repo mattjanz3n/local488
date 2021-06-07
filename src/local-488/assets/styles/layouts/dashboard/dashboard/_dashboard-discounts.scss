@@ -1,17 +1,20 @@
 .discounts {
-  &__top-row {
-    span {
-      font-weight: 800;
-    }
-  }
 
-  &__accordion {
-    @include max-576 {
-      padding-bottom: 36px;
-    }
-  }
+	&__top-row {
+
+		span {
+			font-weight: 800;
+		}
+	}
+
+	&__accordion {
+
+		@include max-576 {
+			padding-bottom: 36px;
+		}
+	}
 }
 
 .card-link + .card-link {
-  margin-left: 0;
+	margin-left: 0;
 }

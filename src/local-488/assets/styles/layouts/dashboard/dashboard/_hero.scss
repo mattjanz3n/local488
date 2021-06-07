@@ -1,95 +1,97 @@
 .hero {
-  position: relative;
+	position: relative;
 
-  &--small {
-    background: linear-gradient(278.8deg, rgba(15, 31, 109, 0.8) -2.63%, #fff 85.54%), #131f5e;
-    background-blend-mode: multiply, normal;
-    padding-top: 192px;
-    padding-bottom: 90px;
+	&--small {
+		background: linear-gradient(278.8deg, rgba(15, 31, 109, 0.8) -2.63%, #fff 85.54%), #131f5e;
+		background-blend-mode: multiply, normal;
+		padding-top: 192px;
+		padding-bottom: 90px;
 
-    @include max-1200 {
-      padding-top: 120px;
-    }
+		@include max-1200 {
+			padding-top: 120px;
+		}
 
-    @include max-576 {
-      padding-top: 77px;
-      padding-bottom: 15px;
-      align-items: center;
-      display: flex;
-      min-height: 276px;
-    }
+		@include max-576 {
+			padding-top: 77px;
+			padding-bottom: 15px;
+			align-items: center;
+			display: flex;
+			min-height: 276px;
+		}
 
-    &.hero-dispatch {
-      @include max-576 {
-        padding-bottom: 37px;
-      }
-    }
-  }
+		&.hero-dispatch {
 
-  &--large {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/merchandise.jpg") center center no-repeat, linear-gradient(90deg, rgba(19, 31, 94, 0.8) 26.87%, rgba(19, 31, 94, 0) 82.16%);
-    background-blend-mode: normal, multiply, normal;
-    min-height: 100vh;
-    padding-top: 323px;
-    padding-bottom: 65px;
-    background-size: cover;
+			@include max-576 {
+				padding-bottom: 37px;
+			}
+		}
+	}
 
-    @include max-576 {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/merchandise-mob.jpg") center center no-repeat, linear-gradient(180deg, #131f5e 0%, rgba(19, 31, 94, 0) 100%);
-      background-blend-mode: normal, multiply, normal;
-      background-size: cover;
-      padding-top: 134px;
-      min-height: 100vh;
-      padding-bottom: 41px;
-    }
-  }
+	&--large {
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/merchandise.jpg") center center no-repeat, linear-gradient(90deg, rgba(19, 31, 94, 0.8) 26.87%, rgba(19, 31, 94, 0) 82.16%);
+		background-blend-mode: normal, multiply, normal;
+		min-height: 100vh;
+		padding-top: 323px;
+		padding-bottom: 65px;
+		background-size: cover;
 
-  &__wrap {
-    display: flex;
+		@include max-576 {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/merchandise-mob.jpg") center center no-repeat, linear-gradient(180deg, #131f5e 0%, rgba(19, 31, 94, 0) 100%);
+			background-blend-mode: normal, multiply, normal;
+			background-size: cover;
+			padding-top: 134px;
+			min-height: 100vh;
+			padding-bottom: 41px;
+		}
+	}
 
-    @include max-576 {
-      flex-direction: column;
-    }
+	&__wrap {
+		display: flex;
 
-    &-title {
-      flex-basis: 38.74%;
-    }
+		@include max-576 {
+			flex-direction: column;
+		}
 
-    &-notice {
-      flex-basis: 61.26%;
-      padding-top: 23px;
-      padding-left: 26px;
+		&-title {
+			flex-basis: 38.74%;
+		}
 
-      @include max-576 {
-        padding-left: 0;
-      }
-    }
-  }
+		&-notice {
+			flex-basis: 61.26%;
+			padding-top: 23px;
+			padding-left: 26px;
 
-  .has-notice {
-    @include max-576 {
-      padding-bottom: 36px;
-    }
-  }
+			@include max-576 {
+				padding-left: 0;
+			}
+		}
+	}
 
-  &__anchor {
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    bottom: 65px;
-    margin-top: auto;
-    transform: translateX(-50%);
-    width: 52px;
-    height: 52px;
-    mask: url("./images/arrow-anchor.svg") 0 0/52px 52px;
-    background: $white;
+	.has-notice {
 
-    &:hover {
-      background: $red;
-    }
+		@include max-576 {
+			padding-bottom: 36px;
+		}
+	}
 
-    @include max-576 {
-      bottom: 41px;
-    }
-  }
+	&__anchor {
+		display: inline-block;
+		position: absolute;
+		left: 50%;
+		bottom: 65px;
+		margin-top: auto;
+		transform: translateX(-50%);
+		width: 52px;
+		height: 52px;
+		mask: url("./images/arrow-anchor.svg") 0 0/52px 52px;
+		background: $white;
+
+		&:hover {
+			background: $red;
+		}
+
+		@include max-576 {
+			bottom: 41px;
+		}
+	}
 }

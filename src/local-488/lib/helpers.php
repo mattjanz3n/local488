@@ -14,7 +14,7 @@ if ( ! function_exists( 'studly_case' ) ) {
 	 * @return string
 	 */
 	function studly_case( $value ) {
-		$value = ucwords( str_replace( [ '-', '_' ], ' ', $value ) );
+		$value = ucwords( str_replace( array( '-', '_' ), ' ', $value ) );
 
 		return str_replace( ' ', '', $value );
 	}
@@ -42,7 +42,7 @@ if ( ! function_exists( 'snake_case' ) ) {
 	 * @return string
 	 */
 	function snake_case( $value, $delimiter = '_' ) {
-		static $snake_cache = [];
+		static $snake_cache = array();
 		$key                = $value . $delimiter;
 
 		if ( isset( $snake_cache[ $key ] ) ) {
@@ -107,10 +107,12 @@ if ( ! function_exists( 'array_get' ) ) {
 	 * @return mixed
 	 */
 	function array_get( $array, $key, $default = null ) {
-		if ( is_null( $key ) ) { return $array;
+		if ( is_null( $key ) ) {
+			return $array;
 		}
 
-		if ( isset( $array[ $key ] ) ) { return $array[ $key ];
+		if ( isset( $array[ $key ] ) ) {
+			return $array[ $key ];
 		}
 
 		foreach ( explode( '.', $key ) as $segment ) {
@@ -177,9 +179,11 @@ if ( ! function_exists( 'get' ) ) {
 	 * @return mixed
 	 */
 	function get( $array, $key, $default = null ) {
-		if ( is_null( $key ) ) { return $array;
+		if ( is_null( $key ) ) {
+			return $array;
 		}
-		if ( isset( $array[ $key ] ) ) { return $array[ $key ];
+		if ( isset( $array[ $key ] ) ) {
+			return $array[ $key ];
 		}
 		foreach ( explode( '.', $key ) as $segment ) {
 			if ( ! is_array( $array ) || ! array_key_exists( $segment, $array ) ) {

@@ -1,277 +1,281 @@
 .dispatch {
-  &__title,
-  .notice__title {
-    margin-bottom: 30px;
-    color: $red;
-  }
 
-  &__header {
-    padding-bottom: 60px;
-    margin-bottom: 48px;
-    border-bottom: 2px solid $light-gray;
-    margin-right: 92px;
+	&__title,
+	.notice__title {
+		margin-bottom: 30px;
+		color: $red;
+	}
 
-    @include max-1200 {
-      margin-right: 30px;
-    }
+	&__header {
+		padding-bottom: 60px;
+		margin-bottom: 48px;
+		border-bottom: 2px solid $light-gray;
+		margin-right: 92px;
 
-    @include max-576 {
-      padding-top: 21px;
-      padding-bottom: 24px;
-      margin-right: 0;
-    }
-  }
+		@include max-1200 {
+			margin-right: 30px;
+		}
 
-  &__notice,
-  &__accordion {
-    padding-right: 92px;
+		@include max-576 {
+			padding-top: 21px;
+			padding-bottom: 24px;
+			margin-right: 0;
+		}
+	}
 
-    @include max-1200 {
-      padding-right: 30px;
-    }
+	&__notice,
+	&__accordion {
+		padding-right: 92px;
 
-    @include max-992 {
-      padding-right: 15px;
-    }
+		@include max-1200 {
+			padding-right: 30px;
+		}
 
-    @include max-768 {
-      padding-right: 0;
-    }
-  }
+		@include max-992 {
+			padding-right: 15px;
+		}
 
-  &__header-desc {
-    font-weight: 700;
-    margin-bottom: 10px;
+		@include max-768 {
+			padding-right: 0;
+		}
+	}
 
-    span {
-      font-weight: normal;
-    }
-  }
+	&__header-desc {
+		font-weight: 700;
+		margin-bottom: 10px;
 
-  &__notice {
-    margin-bottom: 66px;
-  }
+		span {
+			font-weight: normal;
+		}
+	}
 
-  .notice {
-    &__desc,
-    &__list {
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
+	&__notice {
+		margin-bottom: 66px;
+	}
 
-    &__subtitle {
-      font-weight: 800;
-      margin-bottom: 32px;
-    }
+	.notice {
 
-    &__list {
-      padding-left: 25px;
-    }
-  }
+		&__desc,
+		&__list {
+			margin-bottom: 32px;
+			font-weight: 400;
+		}
 
-  &__accordion {
-    position: relative;
+		&__subtitle {
+			font-weight: 800;
+			margin-bottom: 32px;
+		}
 
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      bottom: 0;
-      left: -50vw;
-      right: -50vw;
-      background: #dadada;
-    }
-  }
+		&__list {
+			padding-left: 25px;
+		}
+	}
 
-  &__info-column {
-    border-top: 2px solid $black;
-    padding-top: 18px;
-    padding-bottom: 50px;
-  }
+	&__accordion {
+		position: relative;
 
-  &__info-subtitle {
-    margin-bottom: 30px;
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			bottom: 0;
+			left: -50vw;
+			right: -50vw;
+			background: #dadada;
+		}
+	}
 
-    .icon-column {
-      width: 20px;
-      height: 20px;
-      margin-right: 7px;
-    }
-  }
+	&__info-column {
+		border-top: 2px solid $black;
+		padding-top: 18px;
+		padding-bottom: 50px;
+	}
 
-  &__info-desc {
-    a {
-      font-weight: normal;
-    }
-  }
+	&__info-subtitle {
+		margin-bottom: 30px;
 
-  &__last-update {
-    padding-top: 15px;
-    padding-bottom: 37px;
-    color: $red;
-    font-weight: 800;
+		.icon-column {
+			width: 20px;
+			height: 20px;
+			margin-right: 7px;
+		}
+	}
 
-    span {
-      font-weight: normal;
-    }
+	&__info-desc {
 
-    @include max-576 {
-      padding-top: 0;
-      padding-bottom: 15px;
-    }
-  }
+		a {
+			font-weight: normal;
+		}
+	}
 
-  &__form {
-    display: flex;
-    padding-bottom: 71px;
+	&__last-update {
+		padding-top: 15px;
+		padding-bottom: 37px;
+		color: $red;
+		font-weight: 800;
 
-    @include max-992 {
-      flex-direction: column;
-      padding-bottom: 54px;
-    }
+		span {
+			font-weight: normal;
+		}
 
-    .form__left {
-      flex: 1 1 35%;
-      padding-right: 24px;
+		@include max-576 {
+			padding-top: 0;
+			padding-bottom: 15px;
+		}
+	}
 
-      @include max-992 {
-        flex-basis: 100%;
-        padding-right: 0;
-      }
+	&__form {
+		display: flex;
+		padding-bottom: 71px;
 
-      .input-wrap {
-        margin-bottom: 10px;
+		@include max-992 {
+			flex-direction: column;
+			padding-bottom: 54px;
+		}
 
-        &.dispatch {
-          margin-bottom: 35px;
-        }
+		.form__left {
+			flex: 1 1 35%;
+			padding-right: 24px;
 
-        select {
-          margin-bottom: 6px;
-        }
-      }
-    }
+			@include max-992 {
+				flex-basis: 100%;
+				padding-right: 0;
+			}
 
-    .form__right {
-      margin-top: 22px;
-      padding: 24px 31px;
-      flex: 1 1 65%;
-      background: $white;
-      min-height: 287px;
+			.input-wrap {
+				margin-bottom: 10px;
 
-      @include max-992 {
-        flex-basis: 100%;
-        margin-top: 27px;
-      }
+				&.dispatch {
+					margin-bottom: 35px;
+				}
 
-      &-text {
-        font-family: $sub-font;
-        font-size: rem-calc(16px);
-        line-height: rem-calc(22px);
-        font-weight: 600;
-        letter-spacing: 0.22px;
-        color: $gray;
-      }
-    }
-  }
+				select {
+					margin-bottom: 6px;
+				}
+			}
+		}
 
-  &__button {
-    min-width: 100%;
-  }
+		.form__right {
+			margin-top: 22px;
+			padding: 24px 31px;
+			flex: 1 1 65%;
+			background: $white;
+			min-height: 287px;
 
-  .button-primary {
-    margin-bottom: 6px;
-  }
+			@include max-992 {
+				flex-basis: 100%;
+				margin-top: 27px;
+			}
 
-  .aside {
-    .dispatch__aside-title {
-      margin-bottom: 26px !important;
-    }
+			&-text {
+				font-family: $sub-font;
+				font-size: rem-calc(16px);
+				line-height: rem-calc(22px);
+				font-weight: 600;
+				letter-spacing: 0.22px;
+				color: $gray;
+			}
+		}
+	}
 
-    &__header {
-      padding-bottom: 64px;
-      position: relative;
-      margin-bottom: 64px;
+	&__button {
+		min-width: 100%;
+	}
 
-      @media (min-width: 1680px) {
-        margin-right: -45px;
-      }
+	.button-primary {
+		margin-bottom: 6px;
+	}
 
-      @include max-576 {
-        padding-bottom: 12px;
-        margin-bottom: 49px;
-      }
+	.aside {
 
-      .aside__title {
-        margin-bottom: 26px;
-      }
+		.dispatch__aside-title {
+			margin-bottom: 26px !important;
+		}
 
-      .aside__content {
-        margin-bottom: 30px;
-      }
+		&__header {
+			padding-bottom: 64px;
+			position: relative;
+			margin-bottom: 64px;
 
-      &::after {
-        content: '';
-        position: absolute;
-        right: -50vw;
-        left: -92px;
-        bottom: 0;
-        height: 2px;
-        background: $gray;
+			@media (min-width: 1680px) {
+				margin-right: -45px;
+			}
 
-        @include max-1200 {
-          left: -30px;
-        }
-      }
-    }
+			@include max-576 {
+				padding-bottom: 12px;
+				margin-bottom: 49px;
+			}
 
-    &__row {
-      border-bottom: 2px solid $gray;
-      padding-top: 45px;
+			.aside__title {
+				margin-bottom: 26px;
+			}
 
-      &:last-child {
-        border: none;
-      }
+			.aside__content {
+				margin-bottom: 30px;
+			}
 
-      &-list-link {
-        color: $white;
-        font-size: rem-calc(14px);
-        line-height: rem-calc(22px);
+			&::after {
+				content: "";
+				position: absolute;
+				right: -50vw;
+				left: -92px;
+				bottom: 0;
+				height: 2px;
+				background: $gray;
 
-        &.download {
-          font-family: $sub-font;
-        }
+				@include max-1200 {
+					left: -30px;
+				}
+			}
+		}
 
-        &:hover {
-          color: $red;
-        }
-      }
+		&__row {
+			border-bottom: 2px solid $gray;
+			padding-top: 45px;
 
-      &-title {
-        margin-bottom: 25px;
-      }
+			&:last-child {
+				border: none;
+			}
 
-      &-list {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 18px;
+			&-list-link {
+				color: $white;
+				font-size: rem-calc(14px);
+				line-height: rem-calc(22px);
 
-        &-item {
-          display: inline-flex;
-          margin-bottom: 26px;
+				&.download {
+					font-family: $sub-font;
+				}
 
-          .icon-download {
-            width: 15px;
-            height: 20px;
-            margin-right: 7px;
+				&:hover {
+					color: $red;
+				}
+			}
 
-            svg {
-              fill: $white;
-            }
-          }
-        }
-      }
-    }
-  }
+			&-title {
+				margin-bottom: 25px;
+			}
+
+			&-list {
+				list-style: none;
+				padding-left: 0;
+				margin-bottom: 18px;
+
+				&-item {
+					display: inline-flex;
+					margin-bottom: 26px;
+
+					.icon-download {
+						width: 15px;
+						height: 20px;
+						margin-right: 7px;
+
+						svg {
+							fill: $white;
+						}
+					}
+				}
+			}
+		}
+	}
 }

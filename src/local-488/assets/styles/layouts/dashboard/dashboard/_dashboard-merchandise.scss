@@ -1,65 +1,67 @@
 .merchandise {
-  &__wrap {
-    max-width: 924px;
-    margin: 0 auto;
-  }
 
-  &-main {
-    margin-bottom: 26px;
+	&__wrap {
+		max-width: 924px;
+		margin: 0 auto;
+	}
 
-    @include max-576 {
-      .row {
-        margin-left: -2.5px;
-        margin-right: -2.5px;
-      }
+	&-main {
+		margin-bottom: 26px;
 
-      .col-6 {
-        padding-left: 2.5px;
-        padding-right: 2.5px;
-      }
+		@include max-576 {
 
-      .col-12 {
-        padding-left: 2.5px;
-        padding-right: 2.5px;
-      }
-    }
-  }
+			.row {
+				margin-left: -2.5px;
+				margin-right: -2.5px;
+			}
 
-  &__desc {
-    font-family: $sub-font;
-    font-size: rem-calc(14px);
-    line-height: rem-calc(22px);
-    letter-spacing: 0.22px;
-    color: $blue;
-    margin-bottom: 98px;
+			.col-6 {
+				padding-left: 2.5px;
+				padding-right: 2.5px;
+			}
 
-    span {
-      color: $red;
-    }
+			.col-12 {
+				padding-left: 2.5px;
+				padding-right: 2.5px;
+			}
+		}
+	}
 
-    @include max-576 {
-      font-size: rem-calc(12px);
-      line-height: rem-calc(16px);
-      margin-bottom: 26px;
-    }
-  }
+	&__desc {
+		font-family: $sub-font;
+		font-size: rem-calc(14px);
+		line-height: rem-calc(22px);
+		letter-spacing: 0.22px;
+		color: $blue;
+		margin-bottom: 98px;
 
-  &__img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    margin-bottom: 24px;
+		span {
+			color: $red;
+		}
 
-    @include max-576 {
-      margin-bottom: 6px;
-    }
+		@include max-576 {
+			font-size: rem-calc(12px);
+			line-height: rem-calc(16px);
+			margin-bottom: 26px;
+		}
+	}
 
-    &--large {
-      max-height: 590px;
-    }
+	&__img {
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		margin-bottom: 24px;
 
-    &--small {
-      max-height: 497px;
-    }
-  }
+		@include max-576 {
+			margin-bottom: 6px;
+		}
+
+		&--large {
+			max-height: 590px;
+		}
+
+		&--small {
+			max-height: 497px;
+		}
+	}
 }
