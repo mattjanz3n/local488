@@ -2,7 +2,10 @@
 
 function categories_news_and_events_posts_filter() {
 
-	$paged    = (int) $_POST['paged'];
+	$paged    = 1;
+	if ( isset( $_POST['paged'] ) ) {
+		$paged = (int) $_POST['paged'];
+	}
 
 	$arg = array();
 
@@ -16,7 +19,7 @@ function categories_news_and_events_posts_filter() {
 		);
 	}
 
-	$the_query_post = Local488_News_Query::get_wp_query( $arg );
+	$the_query_post = Local488_News_Query::get_wp_query( $arg, array( 'paged' => $paged ) );
 
 	if ( $the_query_post->have_posts() ) :
 

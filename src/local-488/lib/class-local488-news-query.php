@@ -22,17 +22,17 @@ class Local488_News_Query {
 	 * which takes an array of categories from which posts will be returned.
 	 *
 	 * @param array $args Query parameters. See description.
+	 * @param array $query_options Optional. Additional query options.
 	 * @return WP_Query results.
 	 */
-	public static function get_wp_query( $args ) {
-		$obj = new self( $args );
+	public static function get_wp_query( $args, $query_options = array() ) {
+		$obj = new self( $args, $query_options );
 		return $obj->query;
 	}
 
-	protected function __construct( $args ) {
+	protected function __construct( $args, $query_options = array() ) {
 		$this->args = $args;
 		$posts_per_page = 6;
-		$paged = get_query_var('paged', 1);
 
 		if (wp_is_mobile()) {
 			$posts_per_page = 8;
@@ -40,13 +40,18 @@ class Local488_News_Query {
 
 		add_filter('posts_results', array( $this, 'results_filter' ));
 
-		$this->query = new WP_Query(array(
+		$query_args = wp_parse_args($query_options,
+									array(
 			'post_type' => array_keys($args),
-			'paged' => $paged,
 			'posts_per_page' => $posts_per_page,
 			'orderby' => 'date',
 			'post_status' => 'publish'
 		));
+
+		error_log('Arguments are...');
+		error_log( print_r( $query_args, true ) );
+
+		$this->query = new WP_Query($query_args);
 
 		remove_filter('posts_results', array( $this, 'results_filter' ));
 	}

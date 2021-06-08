@@ -13,7 +13,11 @@ get_header(); ?>
 	<?php
 	get_template_part( 'template-parts/section-hero-small' );
 
-	$query = Local488_News_Query::get_wp_query( array( 'post' => true, 'managers-messages' => true ) );
+	$query = Local488_News_Query::get_wp_query( array( 'post' => true, 'managers-messages' => true ),
+	array(
+		'paged' => get_query_var( 'paged', 1 )
+	)
+	);
 
 	if ( $query->have_posts() ) :
 		?>
