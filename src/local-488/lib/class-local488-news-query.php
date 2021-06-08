@@ -59,7 +59,7 @@ class Local488_News_Query {
 	 * @param WP_Post[] $posts Post results.
 	 */
 	public function results_filter( $posts ) {
-		return array_filter(
+		return array_values( array_filter(
 			$posts,
 			function( $post ) {
 				$spec = $this->args[ $post->post_type ];
@@ -70,7 +70,7 @@ class Local488_News_Query {
 				}
 				return true;
 			}
-		);
+		));
 	}
 
 }
