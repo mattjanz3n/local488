@@ -86,6 +86,7 @@ export default function categoriesNewsAndEventsPostsFilter() {
 	$( document ).on( 'click', 'a.pagination', function ( e ) {
 		e.preventDefault();
 		$( '.pagination' ).removeClass( 'active' );
+		const paged = $( this ).attr( 'data-paged' );
 		renderNewPosts(paged);
 	} );
 
