@@ -2,7 +2,7 @@
 
 function categories_news_and_events_posts_filter() {
 
-	$paged    = 1;
+	$paged = 1;
 	if ( isset( $_POST['paged'] ) ) {
 		$paged = (int) $_POST['paged'];
 	}
@@ -15,7 +15,7 @@ function categories_news_and_events_posts_filter() {
 
 	if ( isset( $_POST['category'] ) ) {
 		$arg['post'] = array(
-			'categories' => $_POST['category']
+			'categories' => $_POST['category'],
 		);
 	}
 

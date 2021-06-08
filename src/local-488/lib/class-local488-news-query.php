@@ -31,44 +31,49 @@ class Local488_News_Query {
 	}
 
 	protected function __construct( $args, $query_options = array() ) {
-		$this->args = $args;
+		$this->args     = $args;
 		$posts_per_page = 6;
 
-		if (wp_is_mobile()) {
+		if ( wp_is_mobile() ) {
 			$posts_per_page = 8;
 		}
 
-		add_filter('posts_results', array( $this, 'results_filter' ));
+		add_filter( 'posts_results', array( $this, 'results_filter' ) );
 
-		$query_args = wp_parse_args($query_options,
-									array(
-			'post_type' => array_keys($args),
-			'posts_per_page' => $posts_per_page,
-			'orderby' => 'date',
-			'post_status' => 'publish'
-		));
+		$query_args = wp_parse_args(
+			$query_options,
+			array(
+				'post_type'      => array_keys( $args ),
+				'posts_per_page' => $posts_per_page,
+				'orderby'        => 'date',
+				'post_status'    => 'publish',
+			)
+		);
 
-		error_log('Arguments are...');
+		error_log( 'Arguments are...' );
 		error_log( print_r( $query_args, true ) );
 
-		$this->query = new WP_Query($query_args);
+		$this->query = new WP_Query( $query_args );
 
-		remove_filter('posts_results', array( $this, 'results_filter' ));
+		remove_filter( 'posts_results', array( $this, 'results_filter' ) );
 	}
 
 	/**
 	 * @param WP_Post[] $posts Post results.
 	 */
 	public function results_filter( $posts ) {
-		return array_filter( $posts, function( $post ) {
-			$spec = $this->args[$post->post_type];
-			if ( is_array( $spec ) ) {
-				if ( ! in_category($spec['categories'], $post) ) {
-					return false;
+		return array_filter(
+			$posts,
+			function( $post ) {
+				$spec = $this->args[ $post->post_type ];
+				if ( is_array( $spec ) ) {
+					if ( ! in_category( $spec['categories'], $post ) ) {
+						return false;
+					}
 				}
+				return true;
 			}
-			return true;
-		} );
+		);
 	}
 
 }

@@ -3,7 +3,11 @@
 //=================================\\
 
 export default function categoriesNewsAndEventsPostsFilter() {
-	function categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages ) {
+	function categoriesNewsAndEventsPostsSort(
+		categoryCurrent,
+		paged,
+		includeManagersMessages
+	) {
 		let categoryNewsAndEvents = categoryCurrent;
 		let pageNewsAndEvents = paged;
 		let postWrapNewsAndEvents = $(
@@ -14,7 +18,7 @@ export default function categoriesNewsAndEventsPostsFilter() {
 			action: 'categories_news_and_events_posts_filter',
 			category: categoryNewsAndEvents,
 			paged: pageNewsAndEvents,
-			...( includeManagersMessages && { managers: 1 } )
+			...( includeManagersMessages && { managers: 1 } ),
 		};
 
 		$.ajax( {
@@ -41,12 +45,16 @@ export default function categoriesNewsAndEventsPostsFilter() {
 			'.news-and-events-content-section__button.active'
 		)
 			.get()
-			.filter((n) => !n.dataset.postType || !n.dataset.postType === 'managers-messages')
-			.map((n) => n.dataset['slug']);
-		const includeManagersMessages = document.getElementById('filter-managers-messages')
-			.classList
-			.contains('active')
-		return { categoryCurrent, includeManagersMessages }
+			.filter(
+				( n ) =>
+					! n.dataset.postType ||
+					! n.dataset.postType === 'managers-messages'
+			)
+			.map( ( n ) => n.dataset[ 'slug' ] );
+		const includeManagersMessages = document
+			.getElementById( 'filter-managers-messages' )
+			.classList.contains( 'active' );
+		return { categoryCurrent, includeManagersMessages };
 	}
 
 	$( '.news-and-events-content-section__button' ).on(
@@ -54,9 +62,16 @@ export default function categoriesNewsAndEventsPostsFilter() {
 		function ( e ) {
 			e.preventDefault();
 			$( this ).toggleClass( 'active' );
-			const { categoryCurrent, includeManagersMessages } = getActiveFilters()
+			const {
+				categoryCurrent,
+				includeManagersMessages,
+			} = getActiveFilters();
 			let paged = 1;
-			categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages );
+			categoriesNewsAndEventsPostsSort(
+				categoryCurrent,
+				paged,
+				includeManagersMessages
+			);
 		}
 	);
 
@@ -72,9 +87,13 @@ export default function categoriesNewsAndEventsPostsFilter() {
 	$( document ).on( 'click', 'a.pagination', function ( e ) {
 		e.preventDefault();
 		const paged = $( this ).attr( 'data-paged' );
-		const { categoryCurrent, includeManagersMessages } = getActiveFilters()
+		const { categoryCurrent, includeManagersMessages } = getActiveFilters();
 		$( '.pagination' ).removeClass( 'active' );
-		categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages );
+		categoriesNewsAndEventsPostsSort(
+			categoryCurrent,
+			paged,
+			includeManagersMessages
+		);
 	} );
 
 	$( document ).on( 'click', 'a.page', function ( e ) {
