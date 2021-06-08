@@ -54,6 +54,9 @@ get_header(); ?>
 					endif;
 					?>
 
+					<a id="heytheregirl" class="news-and-events-content-section__button archive-category-button active">
+						Manager's Messages
+					</a>
 
 				</div>
 
