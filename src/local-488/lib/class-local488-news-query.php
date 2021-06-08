@@ -3,17 +3,15 @@
 /**
  * Query posts for the news and events page.
  *
- * Usage:
- * $obj = new Local488_News_Query( array( ... ) )
- * $query = $obj->query (Returns WP_Query, proceed from there)
+ * Usage: $query = Local488_News_Query::get_wp_query( array( ... ) );
  */
 class Local488_News_Query {
 
 	/** @var WP_Query Query results. */
-	public $query = null;
+	protected $query = null;
 
 	/** @var array Filtering arguments. */
-	public $args = null;
+	protected $args = null;
 
 	/**
 	 * $args is an array specifying what will be returned in the results. Keys are
@@ -24,8 +22,14 @@ class Local488_News_Query {
 	 * which takes an array of categories from which posts will be returned.
 	 *
 	 * @param array $args Query parameters. See description.
+	 * @return WP_Query results.
 	 */
-	public function __construct( $args ) {
+	public static function get_wp_query( $args ) {
+		$obj = new self( $args );
+		return $obj->query;
+	}
+
+	protected function __construct( $args ) {
 		$this->args = $args;
 		$posts_per_page = 6;
 		$paged = get_query_var('paged', 1);

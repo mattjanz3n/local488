@@ -13,21 +13,9 @@ get_header(); ?>
 	<?php
 	get_template_part( 'template-parts/section-hero-small' );
 
-	$args = array(
-		'posts_per_page' => 6,
-		'paged'          => get_query_var( 'paged' ),
-	);
+	$local488_query = new Local488_News_Query( array( 'post', 'managers-messages' ) );
 
-	if ( wp_is_mobile() ) :
-
-		$args = array(
-			'posts_per_page' => 8,
-			'paged'          => get_query_var( 'paged' ),
-		);
-
-	endif;
-
-	$query = new WP_Query( $args );
+	$query = $local488_query->query;
 
 	if ( $query->have_posts() ) :
 		?>
