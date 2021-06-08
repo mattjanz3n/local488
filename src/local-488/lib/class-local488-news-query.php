@@ -50,9 +50,6 @@ class Local488_News_Query {
 			)
 		);
 
-		error_log( 'Arguments are...' );
-		error_log( print_r( $query_args, true ) );
-
 		$this->query = new WP_Query( $query_args );
 
 		remove_filter( 'posts_results', array( $this, 'results_filter' ) );
