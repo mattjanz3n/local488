@@ -2,51 +2,19 @@
 
 function categories_news_and_events_posts_filter() {
 
-	$category = $_POST['category'];
-	$paged    = $_POST['paged'];
+	$paged    = (int) $_POST['paged'];
 
-	if ( ! empty( $category ) ) {
-		$arg = array(
-			'post_type'      => 'post',
-			'order'          => 'DESC',
-			'orderby'        => 'date',
-			'posts_per_page' => 6,
-			'post_status'    => 'publish',
-			'paged'          => $paged,
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'slug',
-					'terms'    => $category,
-				),
-			),
-		);
-	} else {
-		$arg = array(
-			'post_type'      => 'post',
-			'order'          => 'DESC',
-			'orderby'        => 'date',
-			'posts_per_page' => 6,
-			'post_status'    => 'publish',
-			'paged'          => $paged,
-		);
+	$arg = array();
+
+	if ( isset( $_POST['managers'] ) ) {
+		$arg['managers-messages'] = true;
 	}
 
-	if ( wp_is_mobile() ) :
+	if ( isset( $_POST['category'] ) ) {
+		$arg['post'] = $_POST['category']
+	}
 
-		$args = array(
-			'post_type'      => 'post',
-			'order'          => 'DESC',
-			'orderby'        => 'date',
-			'posts_per_page' => 8,
-			'post_status'    => 'publish',
-			'paged'          => $paged,
-			'category_name'  => $category,
-		);
-
-	endif;
-
-		$the_query_post = new WP_Query( $arg );
+	$the_query_post = Local488_News_Query::get_wp_query( $arg );
 
 	if ( $the_query_post->have_posts() ) :
 

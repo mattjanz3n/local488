@@ -55,7 +55,7 @@ class Local488_News_Query {
 	 * @param WP_Post[] $posts Post results.
 	 */
 	public function results_filter( $posts ) {
-		return array_filter( $posts, function( $post ) use ($this) {
+		return array_filter( $posts, function( $post ) {
 			$spec = $this->args[$post->post_type];
 			if ( is_array( $spec ) ) {
 				if ( ! in_category($spec['categories'], $post) ) {
