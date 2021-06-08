@@ -6,6 +6,7 @@
  * @package Local_488
  */
 
+global $post;
 ?>
 
 <article class="loc-single-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -25,7 +26,15 @@
 		<?php
 		$categories_list = get_the_category();
 
-		if ( ! empty( $categories_list ) ) :
+		if ( $post->post_type === 'managers-messages' ) :
+		?>
+			<div class="nav-categories loc-single-post__categories">
+
+				<a class="nav-categories-link loc-single-post__categories-link" href="#">Manager's Message</a>
+
+			</div>
+		<?php
+		elseif ( ! empty( $categories_list ) ) :
 			?>
 			<div class="nav-categories loc-single-post__categories">
 

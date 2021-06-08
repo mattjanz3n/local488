@@ -57,43 +57,36 @@ export default function categoriesNewsAndEventsPostsFilter() {
 		return { categoryCurrent, includeManagersMessages };
 	}
 
-	$( '.news-and-events-content-section__button' ).on(
-		'click',
-		function ( e ) {
-			e.preventDefault();
-			$( this ).toggleClass( 'active' );
-			const {
-				categoryCurrent,
-				includeManagersMessages,
-			} = getActiveFilters();
-			let paged = 1;
-			categoriesNewsAndEventsPostsSort(
-				categoryCurrent,
-				paged,
-				includeManagersMessages
-			);
-		}
-	);
-
-	$( '.loc-single-post__categories-link' ).on( 'click', function ( e ) {
-		e.preventDefault();
-		let categoryCurrent = $( '.archive-category-button.active' )
-			.get()
-			.map( ( n ) => n.dataset[ 'slug' ] );
-		let paged = 1;
-		categoriesNewsAndEventsPostsSort( categoryCurrent, paged );
-	} );
-
-	$( document ).on( 'click', 'a.pagination', function ( e ) {
-		e.preventDefault();
-		const paged = $( this ).attr( 'data-paged' );
-		const { categoryCurrent, includeManagersMessages } = getActiveFilters();
-		$( '.pagination' ).removeClass( 'active' );
+	function renderNewPosts(paged) {
+		const {
+			categoryCurrent,
+			includeManagersMessages,
+		} = getActiveFilters();
 		categoriesNewsAndEventsPostsSort(
 			categoryCurrent,
 			paged,
 			includeManagersMessages
 		);
+	}
+
+	$( '.news-and-events-content-section__button' ).on(
+		'click',
+		function ( e ) {
+			e.preventDefault();
+			$( this ).toggleClass( 'active' );
+			renderNewPosts(1)
+		}
+	);
+
+	$( '.loc-single-post__categories-link' ).on( 'click', function ( e ) {
+		e.preventDefault();
+		renderNewPosts(1);
+	} );
+
+	$( document ).on( 'click', 'a.pagination', function ( e ) {
+		e.preventDefault();
+		$( '.pagination' ).removeClass( 'active' );
+		renderNewPosts(paged);
 	} );
 
 	$( document ).on( 'click', 'a.page', function ( e ) {
