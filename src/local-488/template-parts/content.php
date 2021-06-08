@@ -6,7 +6,6 @@
  * @package Local_488
  */
 
-global $post;
 ?>
 
 <article class="loc-single-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -26,7 +25,7 @@ global $post;
 		<?php
 		$categories_list = get_the_category();
 
-		if ( $post->post_type === 'managers-messages' ) :
+		if ( get_post_type() === 'managers-messages' ) :
 		?>
 			<div class="nav-categories loc-single-post__categories">
 
@@ -55,7 +54,7 @@ global $post;
 			the_title( '<h4 class="entry-title loc-single-post__title-small"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
 		}
 
-		if ( 'post' === get_post_type() ) :
+		if ( in_array( get_post_type(), array( 'post', 'managers-messages' ), true ) ) :
 
 			if ( is_single() ) {
 				$post_time = get_the_time( 'l, j F, Y' );
