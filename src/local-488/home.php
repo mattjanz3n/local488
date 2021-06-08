@@ -48,8 +48,8 @@ get_header(); ?>
 					endif;
 					?>
 
-					<a id="filter-managers-messages" data-post-type="managers-messages" class="news-and-events-content-section__button archive-category-button active">
-						Manager's Messages
+					<a id="filter-managers-messages" href="#" data-post-type="managers-messages" class="news-and-events-content-section__button archive-category-button archive-category-button--managers-message active">
+						Manager's Message
 					</a>
 
 				</div>
