@@ -57,11 +57,8 @@ export default function categoriesNewsAndEventsPostsFilter() {
 		return { categoryCurrent, includeManagersMessages };
 	}
 
-	function renderNewPosts(paged) {
-		const {
-			categoryCurrent,
-			includeManagersMessages,
-		} = getActiveFilters();
+	function renderNewPosts( paged ) {
+		const { categoryCurrent, includeManagersMessages } = getActiveFilters();
 		categoriesNewsAndEventsPostsSort(
 			categoryCurrent,
 			paged,
@@ -74,20 +71,20 @@ export default function categoriesNewsAndEventsPostsFilter() {
 		function ( e ) {
 			e.preventDefault();
 			$( this ).toggleClass( 'active' );
-			renderNewPosts(1)
+			renderNewPosts( 1 );
 		}
 	);
 
 	$( '.loc-single-post__categories-link' ).on( 'click', function ( e ) {
 		e.preventDefault();
-		renderNewPosts(1);
+		renderNewPosts( 1 );
 	} );
 
 	$( document ).on( 'click', 'a.pagination', function ( e ) {
 		e.preventDefault();
 		$( '.pagination' ).removeClass( 'active' );
 		const paged = $( this ).attr( 'data-paged' );
-		renderNewPosts(paged);
+		renderNewPosts( paged );
 	} );
 
 	$( document ).on( 'click', 'a.page', function ( e ) {

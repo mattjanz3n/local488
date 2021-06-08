@@ -26,13 +26,13 @@
 		$categories_list = get_the_category();
 
 		if ( get_post_type() === 'managers-messages' ) :
-		?>
+			?>
 			<div class="nav-categories loc-single-post__categories">
 
 				<a class="nav-categories-link loc-single-post__categories-link" href="#">Manager's Message</a>
 
 			</div>
-		<?php
+			<?php
 		elseif ( ! empty( $categories_list ) ) :
 			?>
 			<div class="nav-categories loc-single-post__categories">
