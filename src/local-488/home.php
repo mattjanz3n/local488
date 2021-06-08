@@ -15,8 +15,8 @@ get_header(); ?>
 
 	$query = Local488_News_Query::get_wp_query(
 		array(
-			'post'              => true,
-			'managers-messages' => true,
+			'managers_messages' => true,
+			'post' => array( 'important' )
 		),
 		array(
 			'paged' => get_query_var( 'paged', 1 ),
