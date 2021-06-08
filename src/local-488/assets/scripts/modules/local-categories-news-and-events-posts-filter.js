@@ -3,7 +3,7 @@
 //=================================\\
 
 export default function categoriesNewsAndEventsPostsFilter() {
-	function categoriesNewsAndEventsPostsSort( categoryCurrent, paged ) {
+	function categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages ) {
 		let categoryNewsAndEvents = categoryCurrent;
 		let pageNewsAndEvents = paged;
 		let postWrapNewsAndEvents = $(
@@ -14,6 +14,7 @@ export default function categoriesNewsAndEventsPostsFilter() {
 			action: 'categories_news_and_events_posts_filter',
 			category: categoryNewsAndEvents,
 			paged: pageNewsAndEvents,
+			...( includeManagersMessages && { managers: 1 } )
 		};
 
 		$.ajax( {
@@ -44,9 +45,13 @@ export default function categoriesNewsAndEventsPostsFilter() {
 				'.news-and-events-content-section__button.active'
 			)
 				.get()
+				.filter( ( n ) => ! n.dataset.postType || ! n.dataset.postType === 'managers-messages' )
 				.map( ( n ) => n.dataset[ 'slug' ] );
+			const includeManagersMessages = document.getElementById('filter-managers-messages')
+													.classList
+													.has('active')
 			let paged = 1;
-			categoriesNewsAndEventsPostsSort( categoryCurrent, paged );
+			categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages );
 		}
 	);
 

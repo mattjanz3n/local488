@@ -11,7 +11,7 @@ function categories_news_and_events_posts_filter() {
 	}
 
 	if ( isset( $_POST['category'] ) ) {
-		$arg['post'] = $_POST['category']
+		$arg['post'] = $_POST['category'];
 	}
 
 	$the_query_post = Local488_News_Query::get_wp_query( $arg );
