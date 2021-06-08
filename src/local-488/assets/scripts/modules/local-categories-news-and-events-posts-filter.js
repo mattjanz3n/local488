@@ -49,7 +49,7 @@ export default function categoriesNewsAndEventsPostsFilter() {
 				.map( ( n ) => n.dataset[ 'slug' ] );
 			const includeManagersMessages = document.getElementById('filter-managers-messages')
 													.classList
-													.has('active')
+													.contains('active')
 			let paged = 1;
 			categoriesNewsAndEventsPostsSort( categoryCurrent, paged, includeManagersMessages );
 		}
