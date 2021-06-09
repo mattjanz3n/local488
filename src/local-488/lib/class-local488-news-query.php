@@ -32,13 +32,16 @@ class Local488_News_Query {
 	 * @return string SQL array.
 	 */
 	public function to_sql_array( $arr ) {
-		$arr = array_map(function( $elem ) {
-			$elem = sanitize_title_for_query( $elem );
-			$elem = "'". $elem ."'";
-			return $elem;
-		}, $arr);
+		$arr = array_map(
+			function( $elem ) {
+				$elem = sanitize_title_for_query( $elem );
+				$elem = "'" . $elem . "'";
+				return $elem;
+			},
+			$arr
+		);
 
-		return '('. implode(',', $arr) .')';
+		return '(' . implode( ',', $arr ) . ')';
 	}
 
 	protected function __construct( $args, $query_options = array() ) {
@@ -48,48 +51,48 @@ class Local488_News_Query {
 			$posts_per_page = 8;
 		}
 
-		if ( empty($args['post']) && empty($args['managers_messages']) ) {
+		if ( empty( $args['post'] ) && empty( $args['managers_messages'] ) ) {
 			// No results.
 			$this->query = new WP_Query();
 			return;
 		}
 
-		if ( empty($args['post'])) {
-			$query_args = wp_parse_args(
+		if ( empty( $args['post'] ) ) {
+			$query_args  = wp_parse_args(
 				$query_options,
 				array(
-					'post_type' => 'managers-messages',
+					'post_type'      => 'managers-messages',
 					'posts_per_page' => $posts_per_page,
-					'orderby' => 'date',
-					'post_status' => 'publish'
+					'orderby'        => 'date',
+					'post_status'    => 'publish',
 				)
 			);
 			$this->query = new WP_Query( $query_args );
 			return;
-		} else if ( empty($args['managers_messages']) ) {
-			$query_args = wp_parse_args(
+		} elseif ( empty( $args['managers_messages'] ) ) {
+			$query_args  = wp_parse_args(
 				$query_options,
 				array(
-					'post_type' => 'post',
-					'tax_query' => array(
+					'post_type'      => 'post',
+					'tax_query'      => array(
 						array(
 							'taxonomy' => 'category',
-							'terms' => $args['post'],
-							'field' => 'slug',
-						)
+							'terms'    => $args['post'],
+							'field'    => 'slug',
+						),
 					),
 					'posts_per_page' => $posts_per_page,
-					'orderby' => 'date',
-					'post_status' => 'publish'
+					'orderby'        => 'date',
+					'post_status'    => 'publish',
 				)
 			);
-			$this->query = new WP_Query($query_args);
+			$this->query = new WP_Query( $query_args );
 			return;
 		}
 
-		$select = "SELECT {$wpdb->posts}.id AS post_id";
-		$from = "FROM {$wpdb->posts}";
-		$join = <<<SQL
+		$select   = "SELECT {$wpdb->posts}.id AS post_id";
+		$from     = "FROM {$wpdb->posts}";
+		$join     = <<<SQL
 LEFT JOIN {$wpdb->term_relationships}
 ON {$wpdb->posts}.id = {$wpdb->term_relationships}.object_id
 LEFT JOIN {$wpdb->terms}
@@ -97,7 +100,7 @@ ON {$wpdb->terms}.term_id = {$wpdb->term_relationships}.term_taxonomy_id
 LEFT JOIN {$wpdb->term_taxonomy}
 ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_id
 SQL;
-		$where = <<<SQL
+		$where    = <<<SQL
 WHERE {$wpdb->posts}.post_type = 'managers-messages'
 OR {$wpdb->term_taxonomy}.taxonomy = 'category'
 AND {$wpdb->posts}.post_type = 'post'
@@ -109,21 +112,24 @@ SQL;
 
 		$results = $wpdb->get_results( $sql, ARRAY_A );
 
-		$post_ids = array_map(function( $result ) {
-			return (int) $result['post_id'];
-		}, $results);
+		$post_ids = array_map(
+			function( $result ) {
+				return (int) $result['post_id'];
+			},
+			$results
+		);
 
 		$query_args = wp_parse_args(
 			$query_options,
 			array(
-				'post_type' => 'any',
-				'post__in' => $post_ids,
+				'post_type'      => 'any',
+				'post__in'       => $post_ids,
 				'posts_per_page' => $posts_per_page,
-				'post_status' => 'publish',
-				'orderby' => 'date'
+				'post_status'    => 'publish',
+				'orderby'        => 'date',
 			)
 		);
 
-		$this->query = new WP_Query($query_args);
+		$this->query = new WP_Query( $query_args );
 	}
 }
