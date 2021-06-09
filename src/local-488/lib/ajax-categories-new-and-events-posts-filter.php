@@ -10,15 +10,12 @@ function categories_news_and_events_posts_filter() {
 	$arg = array();
 
 	if ( isset( $_POST['managers'] ) ) {
-		$arg['managers-messages'] = true;
+		$arg['managers_messages'] = true;
 	}
 
-	if ( isset( $_POST['category'] ) ) {
-		$arg['post'] = array(
-			'categories' => $_POST['category'],
-		);
+	if ( isset( $_POST['category'] ) && is_array( $_POST['category'] ) ) {
+		$arg['post'] = array_map('sanitize_key', $_POST['category']);
 	}
-
 	$the_query_post = Local488_News_Query::get_wp_query( $arg, array( 'paged' => $paged ) );
 
 	if ( $the_query_post->have_posts() ) :
