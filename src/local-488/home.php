@@ -18,7 +18,7 @@ get_header(); ?>
 	$query = Local488_News_Query::get_wp_query(
 		array(
 			'managers_messages' => true,
-			'post' => $categories
+			'post' => array_values( wp_list_pluck( $categories, 'slug' , 'term_id') )
 		),
 		array(
 			'paged' => get_query_var( 'paged', 1 ),

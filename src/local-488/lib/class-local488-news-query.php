@@ -109,9 +109,21 @@ SQL;
 
 		$results = $wpdb->get_results( $sql, ARRAY_A );
 
-		// I'll see how to best transform results into IDs.
-		var_dump($results);
-		var_dump($sql);
-		exit;
+		$post_ids = array_map(function( $result ) {
+			return (int) $result['post_id'];
+		}, $results);
+
+		$query_args = wp_parse_args(
+			$query_options,
+			array(
+				'post_type' => 'any',
+				'post__in' => $post_ids,
+				'posts_per_page' => $posts_per_page,
+				'post_status' => 'publish',
+				'orderby' => 'date'
+			)
+		);
+
+		$this->query = new WP_Query($query_args);
 	}
 }
