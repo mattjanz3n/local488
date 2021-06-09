@@ -13,10 +13,12 @@ get_header(); ?>
 	<?php
 	get_template_part( 'template-parts/section-hero-small' );
 
+	$categories = get_categories();
+
 	$query = Local488_News_Query::get_wp_query(
 		array(
 			'managers_messages' => true,
-			'post' => array( 'important' )
+			'post' => $categories
 		),
 		array(
 			'paged' => get_query_var( 'paged', 1 ),
@@ -32,7 +34,6 @@ get_header(); ?>
 				<div class="news-and-events-content-section__buttons-wrapper">
 
 					<?php
-					$categories = get_categories();
 
 					if ( $categories ) :
 						foreach ( $categories as $cat ) :
