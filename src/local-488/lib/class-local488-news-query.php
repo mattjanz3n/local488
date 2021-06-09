@@ -90,11 +90,11 @@ class Local488_News_Query {
 		$select = "SELECT {$wpdb->posts}.id AS post_id";
 		$from = "FROM {$wpdb->posts}";
 		$join = <<<SQL
-JOIN {$wpdb->term_relationships}
+LEFT JOIN {$wpdb->term_relationships}
 ON {$wpdb->posts}.id = {$wpdb->term_relationships}.object_id
-JOIN {$wpdb->terms}
+LEFT JOIN {$wpdb->terms}
 ON {$wpdb->terms}.term_id = {$wpdb->term_relationships}.term_taxonomy_id
-JOIN {$wpdb->term_taxonomy}
+LEFT JOIN {$wpdb->term_taxonomy}
 ON {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_id
 SQL;
 		$where = <<<SQL
