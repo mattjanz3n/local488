@@ -3,7 +3,11 @@
 //=================================\\
 
 export default function categoriesNewsAndEventsPostsFilter() {
-	function categoriesNewsAndEventsPostsSort( categoryCurrent, paged ) {
+	function categoriesNewsAndEventsPostsSort(
+		categoryCurrent,
+		paged,
+		includeManagersMessages
+	) {
 		let categoryNewsAndEvents = categoryCurrent;
 		let pageNewsAndEvents = paged;
 		let postWrapNewsAndEvents = $(
@@ -14,6 +18,7 @@ export default function categoriesNewsAndEventsPostsFilter() {
 			action: 'categories_news_and_events_posts_filter',
 			category: categoryNewsAndEvents,
 			paged: pageNewsAndEvents,
+			...( includeManagersMessages && { managers: 1 } ),
 		};
 
 		$.ajax( {
@@ -35,38 +40,51 @@ export default function categoriesNewsAndEventsPostsFilter() {
 		} );
 	}
 
+	function getActiveFilters() {
+		const categoryCurrent = $(
+			'.news-and-events-content-section__button.active'
+		)
+			.get()
+			.filter(
+				( n ) =>
+					! n.dataset.postType ||
+					! n.dataset.postType === 'managers-messages'
+			)
+			.map( ( n ) => n.dataset[ 'slug' ] );
+		const includeManagersMessages = document
+			.getElementById( 'filter-managers-messages' )
+			.classList.contains( 'active' );
+		return { categoryCurrent, includeManagersMessages };
+	}
+
+	function renderNewPosts( paged ) {
+		const { categoryCurrent, includeManagersMessages } = getActiveFilters();
+		categoriesNewsAndEventsPostsSort(
+			categoryCurrent,
+			paged,
+			includeManagersMessages
+		);
+	}
+
 	$( '.news-and-events-content-section__button' ).on(
 		'click',
 		function ( e ) {
 			e.preventDefault();
 			$( this ).toggleClass( 'active' );
-			const categoryCurrent = $(
-				'.news-and-events-content-section__button.active'
-			)
-				.get()
-				.map( ( n ) => n.dataset[ 'slug' ] );
-			let paged = 1;
-			categoriesNewsAndEventsPostsSort( categoryCurrent, paged );
+			renderNewPosts( 1 );
 		}
 	);
 
 	$( '.loc-single-post__categories-link' ).on( 'click', function ( e ) {
 		e.preventDefault();
-		let categoryCurrent = $( '.archive-category-button.active' )
-			.get()
-			.map( ( n ) => n.dataset[ 'slug' ] );
-		let paged = 1;
-		categoriesNewsAndEventsPostsSort( categoryCurrent, paged );
+		renderNewPosts( 1 );
 	} );
 
 	$( document ).on( 'click', 'a.pagination', function ( e ) {
 		e.preventDefault();
-		let paged = $( this ).attr( 'data-paged' );
-		let categoryCurrent = $( '.archive-category-button.active' )
-			.get()
-			.map( ( n ) => n.dataset[ 'slug' ] );
 		$( '.pagination' ).removeClass( 'active' );
-		categoriesNewsAndEventsPostsSort( categoryCurrent, paged );
+		const paged = $( this ).attr( 'data-paged' );
+		renderNewPosts( paged );
 	} );
 
 	$( document ).on( 'click', 'a.page', function ( e ) {

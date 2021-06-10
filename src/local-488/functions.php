@@ -14,6 +14,7 @@ defined( 'THEME_TD' ) ? THEME_TD : define( 'THEME_TD', 'local_488' );
 // Load modules
 $theme_includes = array(
 	'/lib/helpers.php',
+	'/lib/class-local488-news-query.php',
 	'/lib/cleanup.php',                                             // Clean up default theme includes
 	'/lib/enqueue-scripts.php',                                     // Enqueue styles and scripts
 	'/lib/protocol-relative-theme-assets.php',                  // Protocol (http/https) relative assets path

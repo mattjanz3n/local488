@@ -25,7 +25,15 @@
 		<?php
 		$categories_list = get_the_category();
 
-		if ( ! empty( $categories_list ) ) :
+		if ( get_post_type() === 'managers-messages' ) :
+			?>
+			<div class="nav-categories loc-single-post__categories">
+
+				<a class="nav-categories-link loc-single-post__categories-link" href="#">Manager's Message</a>
+
+			</div>
+			<?php
+		elseif ( ! empty( $categories_list ) ) :
 			?>
 			<div class="nav-categories loc-single-post__categories">
 
@@ -46,7 +54,7 @@
 			the_title( '<h4 class="entry-title loc-single-post__title-small"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
 		}
 
-		if ( 'post' === get_post_type() ) :
+		if ( in_array( get_post_type(), array( 'post', 'managers-messages' ), true ) ) :
 
 			if ( is_single() ) {
 				$post_time = get_the_time( 'l, j F, Y' );
