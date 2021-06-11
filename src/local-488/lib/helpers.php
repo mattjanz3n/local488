@@ -275,3 +275,42 @@ if ( ! function_exists( 'asset_path' ) ) {
 
 	}
 }
+
+if ( ! function_exists( 'local488_overflow32' ) ) {
+
+	/**
+	 * Helper for local488_hash_string.
+	 *
+	 * @param int $v Integer.
+	 * @return int 32 bit representation considering overflow.
+	 */
+	function local488_overflow32( $v ) {
+		$v = $v % 4294967296;
+		if ( $v > 2147483647 ) {
+			return $v - 4294967296;
+		} elseif ( $v < -2147483648 ) {
+			return $v + 4294967296;
+		} else {
+			return $v;
+		}
+	}
+}
+
+if ( ! function_exists( 'local488_hash_string' ) ) {
+	/**
+	 * Implementation of Java's string hashing in PHP. Taken from
+	 * https://stackoverflow.com/questions/8804875/php-internal-hashcode-function
+	 *
+	 * @param string $s String to hash.
+	 * @return int String hash as a 32 bit integer.
+	 */
+	function local488_hash_string( $s ) {
+		$h   = 0;
+		$len = strlen( $s );
+		for ( $i = 0; $i < $len; $i++ ) {
+			$h = local488_overflow32( 31 * $h + ord( $s[ $i ] ) );
+		}
+
+		return $h;
+	}
+}
