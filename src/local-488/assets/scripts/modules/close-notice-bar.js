@@ -24,11 +24,15 @@ export default function closeNotice() {
 		} );
 
 		$( '.notice-bar__close-btn' ).on( 'click', function () {
-			let d = new Date();
+			const noticeText = $( '.notice-bar' ).text();
+			const noticeLink = $( '.notice-bar__link' ).attr( 'href' );
+			const stringToHash = noticeLink ? `${ noticeText.trim() }_${ noticeLink.trim() }` :
+				  noticeText.trim()
+			const d = new Date();
 			//change here how many day this is visible
 			const expDays = 7;
 			d.setTime( d.getTime() + expDays * 24 * 60 * 60 * 1000 );
-			document.cookie = `isClosedNotice_${ hashCode() }=true; expires=${ d.toUTCString() }; path=/;`;
+			document.cookie = `isClosedNotice_${ hashCode( stringToHash ) }=true; expires=${ d.toUTCString() }; path=/;`;
 
 			$( '.hero__wrap' ).css( 'margin-top', function () {
 				return 0 + 'px';
