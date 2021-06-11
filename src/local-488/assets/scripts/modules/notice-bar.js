@@ -49,6 +49,8 @@ request.onreadystatechange = function () {
 
 			var footer_content = $( resultsArray.footer_feed );
 
+			var header_content = $( resultsArray.header_feed );
+
 			var notice_content = $( resultsArray.notice_feed );
 
 			// $('footer.site-footer.json-target').append(footer_content);

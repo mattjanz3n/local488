@@ -1,5 +1,5 @@
 <?php
-  header( 'Access-Control-Allow-Origin: *' );
+	header( 'Access-Control-Allow-Origin: *' );
 
   /*
 	grab with jquery like:
@@ -32,6 +32,10 @@ if ( ! $portal_cache || isset( $_GET['flush_cache'] ) ) {
 
 	get_template_part( 'template-parts/notice-content', '' );
 	$portal_cache['notice_feed'] = ob_get_contents();
+	ob_clean();
+
+	get_template_part( 'template-parts/header-content', '' );
+	$portal_cache['header_feed'] = ob_get_contents();
 	ob_clean();
 
 	get_template_part( 'template-parts/footer-content', '' );

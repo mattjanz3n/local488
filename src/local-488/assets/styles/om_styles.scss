@@ -1,0 +1,68 @@
+/*
+Om Styles
+*/
+
+.hero-section,
+.wp-block-cover {
+	max-width: none !important;
+}
+
+.page-narrow .hero-section__wrap,
+.community-involvment,
+.about-managers,
+.our-offices {
+	max-width: none !important;
+}
+
+.hero-section__wrap,
+.wp-block-cover__inner-container,
+.entry-content > * {
+	max-width: 1556px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: unset;
+	margin-bottom: unset;
+}
+
+@media (min-width: 1025px) {
+
+	.hero-section__wrap,
+	.wp-block-cover__inner-container,
+	.community-involvment__container,
+	.entry-content > * {
+		max-width: 1096px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: unset;
+		margin-bottom: unset;
+	}
+}
+
+@media (min-width: 1441px) {
+
+	.hero-section__wrap,
+	.wp-block-cover__inner-container,
+	.community-involvment__container,
+	.entry-content > * {
+		max-width: 1556px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: unset;
+		margin-bottom: unset;
+	}
+}
+
+@media (max-width: 1630px) {
+
+	.entry-content > * {
+		padding: 0 15px;
+	}
+
+	.community-involvment__container {
+		padding: 60px 15px;
+	}
+
+	.about-managers {
+		padding: 0;
+	}
+}
