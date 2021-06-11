@@ -37,6 +37,10 @@ $theme_includes = array(
 	'/lib/breadcrumbs.php',                                         // Breadcrumbs
 );
 
+/**
+ * TODO: This seems like unnecessary overhead. What is the point of using
+ * locate_template to require files instead of just requiring them directly?
+ */
 foreach ( $theme_includes as $file ) {
 	if ( ! locate_template( $file ) ) {
 		/* translators: %s error*/
@@ -46,6 +50,8 @@ foreach ( $theme_includes as $file ) {
 	require_once locate_template( $file );
 }
 unset( $file, $filepath );
+
+require 'lib/shortcodes/class-local488-business-agents-and-reps.php';
 
 // Remove Comments//
 function hide_menu() {
