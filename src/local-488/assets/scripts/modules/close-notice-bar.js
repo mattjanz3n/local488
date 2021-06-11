@@ -1,4 +1,17 @@
 export default function closeNotice() {
+	// Taken from:
+	// https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0#gistcomment-2775538
+	// Great because it hashes a string into a 32-bit integer so it will not be
+	// too long, and it is faster than doing this with md5 or some other
+	// similar algorithm.
+	function hashCode(s) {
+		let h;
+		for (let i = 0; i < s.length; i++)
+			h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+
+		return h;
+	}
+
 	$( window ).load( function () {
 		let $noticeHeight = $( '.notice-bar__wrap' ).innerHeight();
 		$( '.hero__wrap' ).css( 'margin-top', function () {
