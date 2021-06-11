@@ -4,11 +4,11 @@ export default function closeNotice() {
 	// Great because it hashes a string into a 32-bit integer so it will not be
 	// too long, and it is faster than doing this with md5 or some other
 	// similar algorithm.
-	function hashCode(s) {
+	function hashCode( s ) {
 		// Modified from let h; to let h = 0 so that '' returns 0
 		let h = 0;
-		for (let i = 0; i < s.length; i++)
-			h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+		for ( let i = 0; i < s.length; i++ )
+			h = ( Math.imul( 31, h ) + s.charCodeAt( i ) ) | 0;
 
 		return h;
 	}
@@ -26,13 +26,16 @@ export default function closeNotice() {
 		$( '.notice-bar__close-btn' ).on( 'click', function () {
 			const noticeText = $( '.notice-bar' ).text();
 			const noticeLink = $( '.notice-bar__link' ).attr( 'href' );
-			const stringToHash = noticeLink ? `${ noticeText.trim() }_${ noticeLink.trim() }` :
-				  noticeText.trim()
+			const stringToHash = noticeLink
+				? `${ noticeText.trim() }_${ noticeLink.trim() }`
+				: noticeText.trim();
 			const d = new Date();
 			//change here how many day this is visible
 			const expDays = 7;
 			d.setTime( d.getTime() + expDays * 24 * 60 * 60 * 1000 );
-			document.cookie = `isClosedNotice_${ hashCode( stringToHash ) }=true; expires=${ d.toUTCString() }; path=/;`;
+			document.cookie = `isClosedNotice_${ hashCode(
+				stringToHash
+			) }=true; expires=${ d.toUTCString() }; path=/;`;
 
 			$( '.hero__wrap' ).css( 'margin-top', function () {
 				return 0 + 'px';
