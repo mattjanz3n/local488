@@ -34,6 +34,10 @@ if ( ! $portal_cache || isset( $_GET['flush_cache'] ) ) {
 	$portal_cache['notice_feed'] = ob_get_contents();
 	ob_clean();
 
+	get_template_part( 'template-parts/header-content', '' );
+	$portal_cache['header_feed'] = ob_get_contents();
+	ob_clean();
+
 	get_template_part( 'template-parts/footer-content', '' );
 	$portal_cache['footer_feed'] = ob_get_contents();
 	ob_clean();
