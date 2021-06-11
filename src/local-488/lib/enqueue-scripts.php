@@ -15,6 +15,8 @@ if ( ! function_exists( 'local_488_scripts' ) ) :
 	 * @return void
 	 */
 	function local_488_scripts() {
+		$version = wp_get_theme( get_template() )->version;
+
 		// Enqueue the main Stylesheet.
 		wp_enqueue_style( 'main-stylesheet', asset_path( 'styles/main.css' ), false, '1.0.3', 'all' );
 
@@ -25,10 +27,10 @@ if ( ! function_exists( 'local_488_scripts' ) ) :
 		wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-2.2.4.min.js', array(), '2.2.4', false );
 
 		// Enqueue the main JS file.
-		wp_enqueue_script( 'main-javascript', asset_path( 'scripts/main.js' ), array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'main-javascript', asset_path( 'scripts/main.js' ), array( 'jquery' ), $version, true );
 
 		// Enqueue the notification cookie script
-		wp_enqueue_script( 'notice-bar-script', asset_path( 'scripts/notice-bar.js' ), array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'notice-bar-script', asset_path( 'scripts/notice-bar.js' ), array( 'jquery' ), $version, true );
 
 		// Enqueue the Google maps JS file.
 		$key = get_field( 'google_api_key', 'option' );
