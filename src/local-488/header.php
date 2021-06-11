@@ -21,19 +21,19 @@ $option_fields = get_fields( 'options' );
 <body <?php body_class(); ?>>
 <header class="header">
 
-	<?php if( $option_fields['bar_active'] ): ?>
+	<?php if ( $option_fields['bar_active'] ) : ?>
 		<?php
 			$notice_hash_string = trim( $option_fields['bar_message'] );
-			if ( ! empty( $option_fields['bar_link'] ) ) {
-				$notice_hash_string .= '_' . trim( $option_fields['bar_link'] );
-			}
+		if ( ! empty( $option_fields['bar_link'] ) ) {
+			$notice_hash_string .= '_' . trim( $option_fields['bar_link'] );
+		}
 			$hash = local488_hash_string( $notice_hash_string );
 
-			if ( ! isset( $_COOKIE['isClosedNotice_' . $hash ] ) ):
-		?>
+		if ( ! isset( $_COOKIE[ 'isClosedNotice_' . $hash ] ) ) :
+			?>
 			<div class="notice-bar__wrap" style="background-color: <?php echo $option_fields['bar_color']; ?>">
 				<div class="notice-bar">
-					<?php if ( ! empty( $option_fields['bar_link'] ) ) : ?>
+				<?php if ( ! empty( $option_fields['bar_link'] ) ) : ?>
 						<a class="notice-bar__link" href="<?php echo ( $option_fields['bar_link'] ); ?>">
 							<?php if ( ! empty( $option_fields['bar_message'] ) ) : ?>
 								<?php echo $option_fields['bar_message']; ?>
@@ -49,7 +49,7 @@ $option_fields = get_fields( 'options' );
 					<button class="notice-bar__close-btn"></button>
 				</div>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<div class="secondary-menu">
