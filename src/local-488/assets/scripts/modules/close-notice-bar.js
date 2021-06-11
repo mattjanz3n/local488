@@ -5,7 +5,8 @@ export default function closeNotice() {
 	// too long, and it is faster than doing this with md5 or some other
 	// similar algorithm.
 	function hashCode(s) {
-		let h;
+		// Modified from let h; to let h = 0 so that '' returns 0
+		let h = 0;
 		for (let i = 0; i < s.length; i++)
 			h = Math.imul(31, h) + s.charCodeAt(i) | 0;
 
@@ -27,7 +28,7 @@ export default function closeNotice() {
 			//change here how many day this is visible
 			const expDays = 7;
 			d.setTime( d.getTime() + expDays * 24 * 60 * 60 * 1000 );
-			document.cookie = `isClosedNotice=true; expires=${ d.toUTCString() }; path=/;`;
+			document.cookie = `isClosedNotice_${ hashCode() }=true; expires=${ d.toUTCString() }; path=/;`;
 
 			$( '.hero__wrap' ).css( 'margin-top', function () {
 				return 0 + 'px';

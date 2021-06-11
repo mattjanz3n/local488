@@ -275,3 +275,29 @@ if ( ! function_exists( 'asset_path' ) ) {
 
 	}
 }
+
+if ( ! function_exists( 'local488_hash_string' ) ) {
+	/**
+	 * Implementation of Java's string hashing in PHP. Taken from
+	 * http://www.queryadmin.com/1611/java-hashcode-php-javascript/.
+	 *
+	 * @param string $str String to hash.
+	 * @return int String hash as a 32 bit integer.
+	 */
+	function local488_hash_string($str){
+		$str = (string)$str;
+		$hash = 0;
+		$len = strlen($str);
+		if ($len == 0)
+			return $hash;
+
+		for ($i = 0; $i < $len; $i++) {
+			$h = $hash << 5;
+			$h -= $hash;
+			$h += ord($str[$i]);
+			$hash = $h;
+			$hash &= 0xFFFFFFFF;
+		}
+		return $hash;
+	}
+}
