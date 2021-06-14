@@ -18,7 +18,7 @@ if ( ! function_exists( 'local_488_scripts' ) ) :
 		$version = wp_get_theme( get_template() )->version;
 
 		// Enqueue the main Stylesheet.
-		wp_enqueue_style( 'main-stylesheet', asset_path( 'styles/main.css' ), false, '1.0.3', 'all' );
+		wp_enqueue_style( 'main-stylesheet', asset_path( 'styles/main.css' ), false, $version, 'all' );
 
 		// Deregister the jquery version bundled with WordPress.
 		wp_deregister_script( 'jquery' );
