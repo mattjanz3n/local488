@@ -53,7 +53,7 @@ class Local488_Business_Agents_And_Reps {
 
 		$post = $query_results[0];
 		$html = '<p>';
-		$html .= '<b>' . $post->post_title . '</b>';
+		$html .= '<strong>' . $post->post_title . '</strong>';
 		$html .= $post->post_content;
 		$html .= '</p>';
 		return $html;
