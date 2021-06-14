@@ -52,10 +52,12 @@ class Local488_Business_Agents_And_Reps {
 		}
 
 		$post = $query_results[0];
-		$html = '<p>';
+		$html = '<div class="agents-and-reps-data">';
+		$html .= '<p>';
 		$html .= '<strong>' . $post->post_title . '</strong>';
-		$html .= $post->post_content;
 		$html .= '</p>';
+		$html .= $post->post_content;
+		$html .= '</div>';
 		return $html;
 	}
 
