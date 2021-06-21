@@ -70,10 +70,6 @@ p:empty {
 
 .accordion-block {
 	color: $black;
-
-	.accordion .card .card-body p {
-		color: $black;
-	}
 }
 
 .alignwide {
@@ -377,7 +373,7 @@ p.has-black-color {
 		padding-inline-start: 25px;
 
 		li {
-			margin-bottom: 20px;
+			margin-bottom: 10px;
 			font-weight: inherit;
 		}
 	}
